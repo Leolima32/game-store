@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
+using System.Net;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
@@ -51,7 +52,7 @@ namespace GameStore.UI.WebApi.Controllers
         {
             var user = new IdentityUser
             {
-                UserName = model.Email,
+                UserName = model.UserName,
                 Email = model.Email
             };
             var result = await _userManager.CreateAsync(user, model.Password);
@@ -61,8 +62,7 @@ namespace GameStore.UI.WebApi.Controllers
                 await _signInManager.SignInAsync(user, false);
                 return await GenerateJwtToken(model.Email, user);
             }
-
-            throw new ApplicationException("UNKNOWN_ERROR");
+            return Json(result.Errors);
         }
 
         private async Task<object> GenerateJwtToken(string email, IdentityUser user)

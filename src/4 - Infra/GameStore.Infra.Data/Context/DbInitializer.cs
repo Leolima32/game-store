@@ -10,7 +10,8 @@ namespace GameStore.Infra.Data.Context
 {
     public static class DbInitializer
     {
-        public static void Initialize(GameStoreContext context, IConfiguration Configuration)
+        public static void Initialize(GameStoreContext context, IConfiguration Configuration, 
+        UserManager<IdentityUser> _userManager, RoleManager<IdentityRole> _roleManager)
         {
             context.Database.EnsureDeleted();
             context.Database.EnsureCreated();
@@ -20,16 +21,18 @@ namespace GameStore.Infra.Data.Context
                 return;   // DB has been seeded
             }
 
-            //var users = new IdentityUser[]
-            //{
-            //    new IdentityUser() { UserName = "Admin",   0= "Admin" },
-            //    new IdentityUser() { UserName = "RandomCustomer", AccessKey = "123456" }
-            //};
+            var role1 = new IdentityRole() { Name = "Admin"};
+            var role2 = new IdentityRole() { Name = "Customer"};
 
-            //foreach (User s in users)
-            //{
-            //    context.Users.Add(s);
-            //}
+            _roleManager.CreateAsync(role1);
+            _roleManager.CreateAsync(role2);
+
+            var user1 = new IdentityUser() { UserName = "Admin", Email = "admin@admin.com"  };
+            var user2 = new IdentityUser() { UserName = "RandomCustomer", Email = "satisfiedcustomer@email.com" };
+
+             _userManager.CreateAsync(user1, "Admin123*");
+             _userManager.CreateAsync(user2, "R@mdonUs3r");
+             _userManager.AddToRoleAsync(user1, "Admin");  
 
             var companies = new Company[]
             {

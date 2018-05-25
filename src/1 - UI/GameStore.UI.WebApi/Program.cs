@@ -10,6 +10,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.DependencyInjection;
 using GameStore.Infra.Data;
 using GameStore.Infra.Data.Context;
+using Microsoft.AspNetCore.Identity;
 
 namespace GameStore.UI.WebApi
 {
@@ -27,7 +28,9 @@ namespace GameStore.UI.WebApi
                 {
                     var context = services.GetRequiredService<GameStoreContext>();
                     var configuration = services.GetRequiredService<IConfiguration>();
-                    DbInitializer.Initialize(context, configuration);
+                    var userManager = services.GetRequiredService<UserManager<IdentityUser>>();
+                    var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
+                    DbInitializer.Initialize(context, configuration, userManager,roleManager);
                 }
                 catch (Exception ex)
                 {
