@@ -10,7 +10,7 @@ namespace GameStore.Infra.Data.Context
 {
     public static class DbInitializer
     {
-        public static void Initialize(GameStoreContext context, IConfiguration Configuration, 
+        public static void Initialize(GameStoreContext context, IConfiguration Configuration,
         UserManager<IdentityUser> _userManager, RoleManager<IdentityRole> _roleManager)
         {
             context.Database.EnsureDeleted();
@@ -21,18 +21,19 @@ namespace GameStore.Infra.Data.Context
                 return;   // DB has been seeded
             }
 
-            var role1 = new IdentityRole() { Name = "Admin"};
-            var role2 = new IdentityRole() { Name = "Customer"};
+            var role1 = new IdentityRole() { Name = "Admin" };
+            var role2 = new IdentityRole() { Name = "Customer" };
 
             _roleManager.CreateAsync(role1);
             _roleManager.CreateAsync(role2);
 
-            var user1 = new IdentityUser() { UserName = "Admin", Email = "admin@admin.com"  };
+
+            var user1 = new IdentityUser() { UserName = "Admin", Email = "admin@admin.com" };
             var user2 = new IdentityUser() { UserName = "RandomCustomer", Email = "satisfiedcustomer@email.com" };
 
-             _userManager.CreateAsync(user1, "Admin123*");
-             _userManager.CreateAsync(user2, "R@mdonUs3r");
-             _userManager.AddToRoleAsync(user1, "Admin");  
+            _userManager.CreateAsync(user1, "Admin123*");
+            _userManager.CreateAsync(user2, "R@mdonUs3r");
+            _userManager.AddToRoleAsync(user1, "Admin");
 
             var companies = new Company[]
             {
@@ -118,7 +119,7 @@ namespace GameStore.Infra.Data.Context
                 new Game() { Id = new Guid(), Name = "Grand Theft Auto V",
                 ShortDescription = "the single-player story follows three criminals and their efforts to commit "
                 +"heists while under pressure from a government agency.", Score = 10, Price = 59.99,
-                Description = "The game is played from either a third-person or first-person" 
+                Description = "The game is played from either a third-person or first-person"
                 +"perspective and its world is navigated on foot or by vehicle. Players control the "
                 +"three lead protagonists throughout single-player and switch between them both during "
                 +"and outside missions.",
@@ -128,7 +129,7 @@ namespace GameStore.Infra.Data.Context
                 ShortDescription = "Aurora, a young girl from 1895 Austria, "
                 +"awakens on the lost fairytale", Score = 8.5, Price = 69.99,
                 Description = "The game's story takes place in the fictional land of Lemuria. "
-                +"Aurora, a child who wakes up in Lemuria after freezing to death, " 
+                +"Aurora, a child who wakes up in Lemuria after freezing to death, "
                 +"must bring back the sun, the moon and the stars held captive "
                 +"by the Queen of the Night in order to return.",
                 ReleaseDate = new DateTime(2014,4,29), ImageUrl =  $"http://{Configuration["BaseUrl"]}images/childoflight.jpg"
@@ -137,7 +138,7 @@ namespace GameStore.Infra.Data.Context
                 ShortDescription = "The Legend of Zelda: Breath of the Wild was very highly received. "
                 +"It currently has a 98/100 on Metacritic, making it the highest scoring game this decade", Score = 8.5, Price = 129.99,
                 Description = "The Legend of Zelda: Breath of the Wild is the nineteenth "
-                +"main installment of The Legend of Zelda series. It was " 
+                +"main installment of The Legend of Zelda series. It was "
                 +"released simultaneously worldwide for the Wii U and "
                 +"Nintendo Switch on March 3, 2017.",
                 ReleaseDate = new DateTime(2014,4,29), ImageUrl =  $"http://{Configuration["BaseUrl"]}images/childoflight.jpg"
@@ -167,7 +168,7 @@ namespace GameStore.Infra.Data.Context
                 new GamePublisher { Game = games[1], Publisher = companies[3] },
                 new GamePublisher { Game = games[2], Publisher = companies[4] },
                 new GamePublisher { Game = games[3], Publisher = companies[6] });
-            
+
             context.SaveChanges();
         }
     }
