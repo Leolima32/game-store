@@ -41,5 +41,4 @@ msbuild.wrn
 .Infra.Data/obj
 .WebApi/bin
 .WebApi/obj
-src/1 - UI/GameStore.UI.WebApi/appsettings.Development.json
-src/1 - UI/GameStore.UI.WebApi/appsettings.json
+
