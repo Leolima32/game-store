@@ -6,6 +6,7 @@ using GameStore.Application.Interfaces;
 using System.Collections.Generic;
 using GameStore.UI.WebApi.Filters;
 using GameStore.Application.DTOS.Games;
+using Microsoft.AspNetCore.Authorization;
 
 namespace GameStore.UI.WebApi.Controllers
 {
@@ -30,6 +31,7 @@ namespace GameStore.UI.WebApi.Controllers
             return await _services.GetGameById(id);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public void Post([FromBody]AddOrUpdateGameDTO game)
         {

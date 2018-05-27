@@ -36,12 +36,12 @@ namespace GameStore.UI.WebApi.Controllers
         [HttpPost]
         public async Task<object> Login([FromBody] LoginDto model)
         {
-            var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, false, false);
+            var result = await _signInManager.PasswordSignInAsync(model.UserName, model.Password, false, false);
 
             if (result.Succeeded)
             {
-                var appUser = _userManager.Users.SingleOrDefault(r => r.Email == model.Email);
-                return await GenerateJwtToken(model.Email, appUser);
+                var appUser = _userManager.Users.SingleOrDefault(r => r.UserName == model.UserName);
+                return await GenerateJwtToken(model.UserName, appUser);
             }
 
             throw new ApplicationException("INVALID_LOGIN_ATTEMPT");
@@ -65,13 +65,14 @@ namespace GameStore.UI.WebApi.Controllers
             return Json(result.Errors);
         }
 
-        private async Task<object> GenerateJwtToken(string email, IdentityUser user)
+        private async Task<object> GenerateJwtToken(string userName, IdentityUser user)
         {
             var claims = new List<Claim>
             {
-                new Claim(JwtRegisteredClaimNames.Sub, email),
+                new Claim(JwtRegisteredClaimNames.Sub, userName),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
-                new Claim(ClaimTypes.NameIdentifier, user.Id)
+                new Claim(ClaimTypes.NameIdentifier, user.Id),
+                new Claim("Roles", "[Admin]")
             };
 
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["JwtKey"]));
@@ -92,7 +93,7 @@ namespace GameStore.UI.WebApi.Controllers
         public class LoginDto
         {
             [Required]
-            public string Email { get; set; }
+            public string UserName { get; set; }
 
             [Required]
             public string Password { get; set; }
