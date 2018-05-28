@@ -1,611 +1,365 @@
 {
-	"id": "00f26d93-9fc7-2fb3-98a5-5da9d16f4596",
-	"name": "GameStore",
-	"description": "",
-	"order": [],
-	"folders": [
-		{
-			"id": "20051a5a-7eb3-9bb7-edac-a6c83f93ea20",
-			"name": "Companies",
-			"description": "",
-			"order": [
-				"1abf682d-0a1c-8c0f-62a0-8aef8cede01e",
-				"eb3c52f6-588a-58cc-19ca-495d84d6848c",
-				"b7cae75d-188c-6f3b-1902-0daa64ecfa9c",
-				"4d7c9e5d-0373-d4f2-db8d-e8ffd9a3a393",
-				"480cfce3-55bd-3602-16e5-f4958a6a58e4"
-			],
-			"owner": "970979",
-			"folder": null,
-			"folders_order": [],
-			"lastUpdatedBy": "970979",
-			"collectionId": "00f26d93-9fc7-2fb3-98a5-5da9d16f4596"
-		},
+	"variables": [],
+	"info": {
+		"name": "GameStore",
+		"_postman_id": "1c684c81-1129-8e1b-2c13-9b2e99fd051a",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
 		{
 			"name": "Games",
 			"description": "",
-			"collectionId": "00f26d93-9fc7-2fb3-98a5-5da9d16f4596",
-			"order": [
-				"a36c7ac7-91aa-f0f2-d662-806ba3a6c773",
-				"c89cf227-dc04-990d-dc7b-8b1dfae3d84f",
-				"10dc4880-2aae-9244-cc5f-0230b2e308ea",
-				"d02dc9a1-8ed6-1c38-3207-06693795f6b2",
-				"e46e8fd2-ec02-ed50-359d-425ea362a375"
-			],
-			"owner": "970979",
-			"folders_order": [],
-			"auth": null,
-			"id": "7ec63c97-4e04-6c3b-d820-38c6daf5e095"
+			"item": [
+				{
+					"name": "Add games",
+					"request": {
+						"url": "{{URL}}/api/games",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Tomb Raider\",\n    \"releaseDate\": \"2013-03-05T00:00:00\",\n    \"score\": 8.4,\n    \"price\": 59.99,\n    \"description\": \"Tomb Raider é um videojogo de ação-aventura, décimo título da série Tomb Raider e o quinto produzido pela Crystal Dynamics. Foi publicado pela Square Enix em 5 de Março de 2013 para Microsoft Windows, PlayStation 3 e Xbox 360\",\n    \"shortDescription\": \"Tomb Raider é um videojogo\",\n    \"imageUrl\": \"http://localhost/gamestore/images/ffxv.jpg\",\n    \"gameDevelopers\": [{\"DeveloperId\":\"3a332845-6a75-48f9-b7bf-5427570f8d9a\"}],\n    \"gamePublishers\": [{\"PublisherId\":\"3a332845-6a75-48f9-b7bf-5427570f8d9a\"}],\n    \"gameGenres\" : [{\"GenreId\":\"8a2593d7-7ae1-4a0a-89e4-a9aaeaba8074\"},\n    \t\t\t\t{\"GenreId\":\"089345b7-8ee8-4290-b840-5d0e20aba317\"}],\n    \"gamePlataforms\" : [{\"PlataformId\":\"d64c2f9d-7a4e-423d-bc1c-28f50387b3ad\"},\n    \t\t\t\t{\"PlataformId\":\"16df4c17-7f30-4fff-a90e-b379eb720f3f\"}]\n}"
+						},
+						"description": "Add new games"
+					},
+					"response": []
+				},
+				{
+					"name": "Update games",
+					"request": {
+						"url": "{{URL}}/api/games",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"id\":\"bc0e9cdc-709d-43bb-e315-08d58787302f\",\n\t\"name\": \"TESTE\",\n    \"releaseDate\": \"2013-03-05T00:00:00\",\n    \"score\": 9.3,\n    \"price\": 59.99,\n    \"description\": \"Tomb Raider é um videojogo de ação-aventura, décimo título da série Tomb Raider e o quinto produzido pela Crystal Dynamics. Foi publicado pela Square Enix em 5 de Março de 2013 para Microsoft Windows, PlayStation 3 e Xbox 360\",\n    \"shortDescription\": \"Tomb Raider é um videojogo\",\n    \"imageUrl\": \"http://localhost/gamestore/images/ffxv.jpg\",\n    \"gameDevelopers\": [{\"DeveloperId\":\"3a332845-6a75-48f9-b7bf-5427570f8d9a\"}],\n    \"gamePublishers\": [{\"PublisherId\":\"3a332845-6a75-48f9-b7bf-5427570f8d9a\"}],\n    \"gameGenres\" : [{\"GenreId\":\"8a2593d7-7ae1-4a0a-89e4-a9aaeaba8074\"},\n    \t\t\t\t{\"GenreId\":\"089345b7-8ee8-4290-b840-5d0e20aba317\"}],\n    \"gamePlataforms\" : [{\"PlataformId\":\"d64c2f9d-7a4e-423d-bc1c-28f50387b3ad\"},\n    \t\t\t\t{\"PlataformId\":\"16df4c17-7f30-4fff-a90e-b379eb720f3f\"}]\n}"
+						},
+						"description": "update games"
+					},
+					"response": []
+				},
+				{
+					"name": "Get all games",
+					"request": {
+						"url": "{{URL}}/api/games",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": "Get all games"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Game",
+					"request": {
+						"url": "{{URL}}/api/games/bc0e9cdc-709d-43bb-e315-08d58787302f",
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": "Delete one game"
+					},
+					"response": []
+				},
+				{
+					"name": "Get game by id",
+					"request": {
+						"url": "{{URL}}/api/games/bc0e9cdc-709d-43bb-e315-08d58787302f",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				}
+			]
 		},
 		{
-			"id": "69ef5c5f-4e94-4be8-f8a6-c03086dab172",
+			"name": "Companies",
+			"description": "",
+			"item": [
+				{
+					"name": "Add company",
+					"request": {
+						"url": "{{URL}}/api/companies",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Sony\",\n    \"fouded\": \"2013-03-05T00:00:00\",\n    \"country\": \"Japan\"\n}"
+						},
+						"description": "Add new games"
+					},
+					"response": []
+				},
+				{
+					"name": "Update company",
+					"request": {
+						"url": "{{URL}}/api/companies",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"id\":\"809c535b-bff0-4e9b-9166-08d5878cdbf8\",\n\t\"name\": \"TESTE\",\n    \"fouded\": \"2013-03-05T00:00:00\",\n    \"country\": \"Japan\"\n}"
+						},
+						"description": "update games"
+					},
+					"response": []
+				},
+				{
+					"name": "Get all companies",
+					"request": {
+						"url": "{{URL}}/api/companies",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": "Get all games"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete company",
+					"request": {
+						"url": "{{URL}}/api/companies/809c535b-bff0-4e9b-9166-08d5878cdbf8",
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": "Delete one game"
+					},
+					"response": []
+				},
+				{
+					"name": "Get company by id",
+					"request": {
+						"url": "{{URL}}/api/companies/4cb6f093-ad07-461c-a06e-2397c085da24",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
+		{
 			"name": "Genres",
 			"description": "",
-			"order": [
-				"5f4d5ed3-3d2e-41e3-02e6-90fc899a96fa",
-				"f685608c-be74-ed4a-07a9-f7f8ac21ce67",
-				"a8b940d8-8c3e-de04-8760-e635c8ef32a1",
-				"43507fce-91cc-eff3-e9a0-0ee8bfb6c0fc",
-				"13ccef6a-c906-35f0-e2d2-e05b7c4334d2"
-			],
-			"owner": "970979",
-			"folder": null,
-			"folders_order": [],
-			"lastUpdatedBy": "970979",
-			"collectionId": "00f26d93-9fc7-2fb3-98a5-5da9d16f4596"
+			"item": [
+				{
+					"name": "Add genre",
+					"request": {
+						"url": "{{URL}}/api/genres",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"RTS\",\n    \"description\": \"Real time strategy and action. \"\n}"
+						},
+						"description": "Add new games"
+					},
+					"response": []
+				},
+				{
+					"name": "Update genre",
+					"request": {
+						"url": "{{URL}}/api/genres",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"id\":\"AC8985F3-B833-4338-BE08-08D566815411\",\n\t\"name\": \"RTS\",\n    \"description\": \"Real time strategy and action. \"\n}"
+						},
+						"description": "update games"
+					},
+					"response": []
+				},
+				{
+					"name": "Get all genres",
+					"request": {
+						"url": "{{URL}}/api/genres",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": "Get all games"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete genre",
+					"request": {
+						"url": "{{URL}}/api/genres",
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": "Delete one game"
+					},
+					"response": []
+				},
+				{
+					"name": "Get genre by id",
+					"request": {
+						"url": "{{URL}}/api/genres/faad5629-9fd8-4208-2315-08d5878e059e",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				}
+			]
 		},
 		{
-			"id": "0fc297cf-0ddd-c95b-35f3-4f0ee08de69b",
 			"name": "Plataforms",
 			"description": "",
-			"order": [
-				"ac5b4747-fbc8-9e1b-68f8-6fca1cbc497e",
-				"8c7e73c8-20ca-c6d7-0602-121d2e6eaf17",
-				"2b5988b4-7b50-9d1d-c725-e7dd8172c673",
-				"20255326-4e7a-1b39-57ab-0e0312f9a771",
-				"02c2cbe8-60fd-8738-f133-040e28430d44"
-			],
-			"owner": "970979",
-			"folder": null,
-			"folders_order": [],
-			"lastUpdatedBy": "970979",
-			"collectionId": "00f26d93-9fc7-2fb3-98a5-5da9d16f4596"
-		}
-	],
-	"folders_order": [
-		"7ec63c97-4e04-6c3b-d820-38c6daf5e095",
-		"20051a5a-7eb3-9bb7-edac-a6c83f93ea20",
-		"69ef5c5f-4e94-4be8-f8a6-c03086dab172",
-		"0fc297cf-0ddd-c95b-35f3-4f0ee08de69b"
-	],
-	"timestamp": 1516458909222,
-	"owner": "970979",
-	"public": false,
-	"events": [],
-	"variables": [],
-	"auth": null,
-	"requests": [
+			"item": [
+				{
+					"name": "Add plataform",
+					"request": {
+						"url": "{{URL}}/api/plataforms",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Atari\"\n}"
+						},
+						"description": "Add new games"
+					},
+					"response": []
+				},
+				{
+					"name": "Update plataform",
+					"request": {
+						"url": "{{URL}}/api/plataforms",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"id\":\"AC8985F3-B833-4338-BE08-08D566815411\",\n\t\"name\": \"Atari\"\n}"
+						},
+						"description": "update games"
+					},
+					"response": []
+				},
+				{
+					"name": "Get all plataforms",
+					"request": {
+						"url": "{{URL}}/api/plataforms",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": "Get all games"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete plataform",
+					"request": {
+						"url": "{{URL}}/api/plataforms",
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"description": "Delete one game"
+					},
+					"response": []
+				},
+				{
+					"name": "Get plataform by id",
+					"request": {
+						"url": "{{URL}}/api/plataforms/4cb6f093-ad07-461c-a06e-2397c085da24",
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"description": ""
+					},
+					"response": []
+				}
+			]
+		},
 		{
-			"id": "02c2cbe8-60fd-8738-f133-040e28430d44",
-			"headers": "",
-			"headerData": [],
-			"url": "{{URL}}/api/plataforms/4cb6f093-ad07-461c-a06e-2397c085da24",
-			"folder": "0fc297cf-0ddd-c95b-35f3-4f0ee08de69b",
-			"queryParams": [],
-			"events": [],
-			"pathVariables": {},
-			"pathVariableData": [],
-			"method": "GET",
-			"data": null,
-			"dataMode": "params",
-			"version": 2,
-			"auth": null,
-			"time": 1520718735500,
-			"name": "Get plataform by id",
+			"name": "Account",
 			"description": "",
-			"collectionId": "00f26d93-9fc7-2fb3-98a5-5da9d16f4596",
-			"responses": [],
-			"currentHelper": null,
-			"helperAttributes": null
-		},
-		{
-			"id": "10dc4880-2aae-9244-cc5f-0230b2e308ea",
-			"headers": "",
-			"headerData": [],
-			"url": "{{URL}}/api/games",
-			"folder": "7ec63c97-4e04-6c3b-d820-38c6daf5e095",
-			"queryParams": [],
-			"events": [],
-			"pathVariables": {},
-			"pathVariableData": [],
-			"method": "GET",
-			"data": null,
-			"dataMode": "params",
-			"version": 2,
-			"auth": null,
-			"time": 1517168011307,
-			"name": "Get all games",
-			"description": "Get all games",
-			"collectionId": "00f26d93-9fc7-2fb3-98a5-5da9d16f4596",
-			"responses": [],
-			"currentHelper": null,
-			"helperAttributes": null
-		},
-		{
-			"id": "13ccef6a-c906-35f0-e2d2-e05b7c4334d2",
-			"headers": "",
-			"headerData": [],
-			"url": "{{URL}}/api/genres/faad5629-9fd8-4208-2315-08d5878e059e",
-			"folder": "69ef5c5f-4e94-4be8-f8a6-c03086dab172",
-			"queryParams": [],
-			"events": [],
-			"pathVariables": {},
-			"pathVariableData": [],
-			"method": "GET",
-			"data": null,
-			"dataMode": "params",
-			"version": 2,
-			"auth": null,
-			"time": 1520799860741,
-			"name": "Get genre by id",
-			"description": "",
-			"collectionId": "00f26d93-9fc7-2fb3-98a5-5da9d16f4596",
-			"responses": [],
-			"currentHelper": null,
-			"helperAttributes": null
-		},
-		{
-			"id": "1abf682d-0a1c-8c0f-62a0-8aef8cede01e",
-			"headers": "Content-Type: application/json\n",
-			"headerData": [
+			"item": [
 				{
-					"key": "Content-Type",
-					"value": "application/json",
-					"description": "",
-					"enabled": true
+					"name": "Login",
+					"request": {
+						"url": "{{URL}}/api/account/login",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"userName\": \"Admin\",\n\t\"password\": \"Admin123*\"\n}"
+						},
+						"description": ""
+					},
+					"response": []
 				}
-			],
-			"url": "{{URL}}/api/companies",
-			"folder": "20051a5a-7eb3-9bb7-edac-a6c83f93ea20",
-			"queryParams": [],
-			"events": [],
-			"pathVariables": {},
-			"pathVariableData": [],
-			"method": "POST",
-			"data": [],
-			"dataMode": "raw",
-			"auth": null,
-			"time": 1520718542819,
-			"name": "Add company",
-			"description": "Add new games",
-			"collectionId": "00f26d93-9fc7-2fb3-98a5-5da9d16f4596",
-			"responses": [],
-			"currentHelper": null,
-			"helperAttributes": null,
-			"rawModeData": "{\n\t\"name\": \"Sony\",\n    \"fouded\": \"2013-03-05T00:00:00\",\n    \"country\": \"Japan\"\n}"
-		},
-		{
-			"id": "20255326-4e7a-1b39-57ab-0e0312f9a771",
-			"headers": "",
-			"headerData": [],
-			"url": "{{URL}}/api/plataforms",
-			"folder": "0fc297cf-0ddd-c95b-35f3-4f0ee08de69b",
-			"queryParams": [],
-			"events": [],
-			"pathVariables": {},
-			"pathVariableData": [],
-			"method": "DELETE",
-			"data": [],
-			"dataMode": "raw",
-			"version": 2,
-			"auth": null,
-			"time": 1520718732050,
-			"name": "Delete plataform",
-			"description": "Delete one game",
-			"collectionId": "00f26d93-9fc7-2fb3-98a5-5da9d16f4596",
-			"responses": [],
-			"currentHelper": null,
-			"helperAttributes": null,
-			"rawModeData": ""
-		},
-		{
-			"id": "2b5988b4-7b50-9d1d-c725-e7dd8172c673",
-			"headers": "",
-			"headerData": [],
-			"url": "{{URL}}/api/plataforms",
-			"folder": "0fc297cf-0ddd-c95b-35f3-4f0ee08de69b",
-			"queryParams": [],
-			"events": [],
-			"pathVariables": {},
-			"pathVariableData": [],
-			"method": "GET",
-			"data": null,
-			"dataMode": "params",
-			"version": 2,
-			"auth": null,
-			"time": 1520718729758,
-			"name": "Get all plataforms",
-			"description": "Get all games",
-			"collectionId": "00f26d93-9fc7-2fb3-98a5-5da9d16f4596",
-			"responses": [],
-			"currentHelper": null,
-			"helperAttributes": null
-		},
-		{
-			"id": "43507fce-91cc-eff3-e9a0-0ee8bfb6c0fc",
-			"headers": "",
-			"headerData": [],
-			"url": "{{URL}}/api/genres",
-			"folder": "69ef5c5f-4e94-4be8-f8a6-c03086dab172",
-			"queryParams": [],
-			"events": [],
-			"pathVariables": {},
-			"pathVariableData": [],
-			"method": "DELETE",
-			"data": [],
-			"dataMode": "raw",
-			"version": 2,
-			"auth": null,
-			"time": 1520476137236,
-			"name": "Delete genre",
-			"description": "Delete one game",
-			"collectionId": "00f26d93-9fc7-2fb3-98a5-5da9d16f4596",
-			"responses": [],
-			"currentHelper": null,
-			"helperAttributes": null,
-			"rawModeData": ""
-		},
-		{
-			"id": "480cfce3-55bd-3602-16e5-f4958a6a58e4",
-			"headers": "",
-			"headerData": [],
-			"url": "{{URL}}/api/companies/4cb6f093-ad07-461c-a06e-2397c085da24",
-			"folder": "20051a5a-7eb3-9bb7-edac-a6c83f93ea20",
-			"queryParams": [],
-			"events": [],
-			"pathVariables": {},
-			"pathVariableData": [],
-			"method": "GET",
-			"data": null,
-			"dataMode": "params",
-			"version": 2,
-			"auth": null,
-			"time": 1520718167434,
-			"name": "Get company by id",
-			"description": "",
-			"collectionId": "00f26d93-9fc7-2fb3-98a5-5da9d16f4596",
-			"responses": [],
-			"currentHelper": null,
-			"helperAttributes": null
-		},
-		{
-			"id": "4d7c9e5d-0373-d4f2-db8d-e8ffd9a3a393",
-			"headers": "",
-			"headerData": [],
-			"url": "{{URL}}/api/companies/809c535b-bff0-4e9b-9166-08d5878cdbf8",
-			"folder": "20051a5a-7eb3-9bb7-edac-a6c83f93ea20",
-			"queryParams": [],
-			"events": [],
-			"pathVariables": {},
-			"pathVariableData": [],
-			"method": "DELETE",
-			"data": [],
-			"dataMode": "raw",
-			"version": 2,
-			"auth": null,
-			"time": 1520799429493,
-			"name": "Delete company",
-			"description": "Delete one game",
-			"collectionId": "00f26d93-9fc7-2fb3-98a5-5da9d16f4596",
-			"responses": [],
-			"currentHelper": null,
-			"helperAttributes": null,
-			"rawModeData": ""
-		},
-		{
-			"id": "5f4d5ed3-3d2e-41e3-02e6-90fc899a96fa",
-			"headers": "Content-Type: application/json\n",
-			"headerData": [
-				{
-					"key": "Content-Type",
-					"value": "application/json",
-					"description": "",
-					"enabled": true
-				}
-			],
-			"url": "{{URL}}/api/genres",
-			"folder": "69ef5c5f-4e94-4be8-f8a6-c03086dab172",
-			"queryParams": [],
-			"events": [],
-			"pathVariables": {},
-			"pathVariableData": [],
-			"method": "POST",
-			"data": [],
-			"dataMode": "raw",
-			"auth": null,
-			"time": 1520718639860,
-			"name": "Add genre",
-			"description": "Add new games",
-			"collectionId": "00f26d93-9fc7-2fb3-98a5-5da9d16f4596",
-			"responses": [],
-			"currentHelper": null,
-			"helperAttributes": null,
-			"rawModeData": "{\n\t\"name\": \"RTS\",\n    \"description\": \"Real time strategy and action. \"\n}"
-		},
-		{
-			"id": "8c7e73c8-20ca-c6d7-0602-121d2e6eaf17",
-			"headers": "Content-Type: application/json\n",
-			"headerData": [
-				{
-					"key": "Content-Type",
-					"value": "application/json",
-					"description": "",
-					"enabled": true
-				}
-			],
-			"url": "{{URL}}/api/plataforms",
-			"folder": "0fc297cf-0ddd-c95b-35f3-4f0ee08de69b",
-			"queryParams": [],
-			"events": [],
-			"pathVariables": {},
-			"pathVariableData": [],
-			"method": "PUT",
-			"data": [],
-			"dataMode": "raw",
-			"version": 2,
-			"auth": null,
-			"time": 1520718829373,
-			"name": "Update plataform",
-			"description": "update games",
-			"collectionId": "00f26d93-9fc7-2fb3-98a5-5da9d16f4596",
-			"responses": [],
-			"currentHelper": null,
-			"helperAttributes": null,
-			"rawModeData": "{\n\t\"id\":\"AC8985F3-B833-4338-BE08-08D566815411\",\n\t\"name\": \"Atari\"\n}"
-		},
-		{
-			"id": "a36c7ac7-91aa-f0f2-d662-806ba3a6c773",
-			"headers": "Content-Type: application/json\n",
-			"headerData": [
-				{
-					"key": "Content-Type",
-					"value": "application/json",
-					"description": "",
-					"enabled": true
-				}
-			],
-			"url": "{{URL}}/api/games",
-			"folder": "7ec63c97-4e04-6c3b-d820-38c6daf5e095",
-			"queryParams": [],
-			"events": [],
-			"pathVariables": {},
-			"pathVariableData": [],
-			"method": "POST",
-			"data": [],
-			"dataMode": "raw",
-			"auth": null,
-			"time": 1520799082461,
-			"name": "Add games",
-			"description": "Add new games",
-			"collectionId": "00f26d93-9fc7-2fb3-98a5-5da9d16f4596",
-			"responses": [],
-			"currentHelper": null,
-			"helperAttributes": null,
-			"rawModeData": "{\n\t\"name\": \"Tomb Raider\",\n    \"releaseDate\": \"2013-03-05T00:00:00\",\n    \"score\": 8.4,\n    \"price\": 59.99,\n    \"description\": \"Tomb Raider é um videojogo de ação-aventura, décimo título da série Tomb Raider e o quinto produzido pela Crystal Dynamics. Foi publicado pela Square Enix em 5 de Março de 2013 para Microsoft Windows, PlayStation 3 e Xbox 360\",\n    \"shortDescription\": \"Tomb Raider é um videojogo\",\n    \"imageUrl\": \"http://localhost/gamestore/images/ffxv.jpg\",\n    \"gameDevelopers\": [{\"DeveloperId\":\"3a332845-6a75-48f9-b7bf-5427570f8d9a\"}],\n    \"gamePublishers\": [{\"PublisherId\":\"3a332845-6a75-48f9-b7bf-5427570f8d9a\"}],\n    \"gameGenres\" : [{\"GenreId\":\"8a2593d7-7ae1-4a0a-89e4-a9aaeaba8074\"},\n    \t\t\t\t{\"GenreId\":\"089345b7-8ee8-4290-b840-5d0e20aba317\"}],\n    \"gamePlataforms\" : [{\"PlataformId\":\"d64c2f9d-7a4e-423d-bc1c-28f50387b3ad\"},\n    \t\t\t\t{\"PlataformId\":\"16df4c17-7f30-4fff-a90e-b379eb720f3f\"}]\n}"
-		},
-		{
-			"id": "a8b940d8-8c3e-de04-8760-e635c8ef32a1",
-			"headers": "",
-			"headerData": [],
-			"url": "{{URL}}/api/genres",
-			"folder": "69ef5c5f-4e94-4be8-f8a6-c03086dab172",
-			"queryParams": [],
-			"events": [],
-			"pathVariables": {},
-			"pathVariableData": [],
-			"method": "GET",
-			"data": null,
-			"dataMode": "params",
-			"version": 2,
-			"auth": null,
-			"time": 1520476111548,
-			"name": "Get all genres",
-			"description": "Get all games",
-			"collectionId": "00f26d93-9fc7-2fb3-98a5-5da9d16f4596",
-			"responses": [],
-			"currentHelper": null,
-			"helperAttributes": null
-		},
-		{
-			"id": "ac5b4747-fbc8-9e1b-68f8-6fca1cbc497e",
-			"headers": "Content-Type: application/json\n",
-			"headerData": [
-				{
-					"key": "Content-Type",
-					"value": "application/json",
-					"description": "",
-					"enabled": true
-				}
-			],
-			"url": "{{URL}}/api/plataforms",
-			"folder": "0fc297cf-0ddd-c95b-35f3-4f0ee08de69b",
-			"queryParams": [],
-			"events": [],
-			"pathVariables": {},
-			"pathVariableData": [],
-			"method": "POST",
-			"data": [],
-			"dataMode": "raw",
-			"auth": null,
-			"time": 1520718826277,
-			"name": "Add plataform",
-			"description": "Add new games",
-			"collectionId": "00f26d93-9fc7-2fb3-98a5-5da9d16f4596",
-			"responses": [],
-			"currentHelper": null,
-			"helperAttributes": null,
-			"rawModeData": "{\n\t\"name\": \"Atari\"\n}"
-		},
-		{
-			"id": "b7cae75d-188c-6f3b-1902-0daa64ecfa9c",
-			"headers": "",
-			"headerData": [],
-			"url": "{{URL}}/api/companies",
-			"folder": "20051a5a-7eb3-9bb7-edac-a6c83f93ea20",
-			"queryParams": [],
-			"events": [],
-			"pathVariables": {},
-			"pathVariableData": [],
-			"method": "GET",
-			"data": null,
-			"dataMode": "params",
-			"version": 2,
-			"auth": null,
-			"time": 1520718152691,
-			"name": "Get all companies",
-			"description": "Get all games",
-			"collectionId": "00f26d93-9fc7-2fb3-98a5-5da9d16f4596",
-			"responses": [],
-			"currentHelper": null,
-			"helperAttributes": null
-		},
-		{
-			"id": "c89cf227-dc04-990d-dc7b-8b1dfae3d84f",
-			"headers": "Content-Type: application/json\n",
-			"headerData": [
-				{
-					"key": "Content-Type",
-					"value": "application/json",
-					"description": "",
-					"enabled": true
-				}
-			],
-			"url": "{{URL}}/api/games",
-			"folder": "7ec63c97-4e04-6c3b-d820-38c6daf5e095",
-			"queryParams": [],
-			"events": [],
-			"pathVariables": {},
-			"pathVariableData": [],
-			"method": "PUT",
-			"data": [],
-			"dataMode": "raw",
-			"version": 2,
-			"auth": null,
-			"time": 1520799321434,
-			"name": "Update games",
-			"description": "update games",
-			"collectionId": "00f26d93-9fc7-2fb3-98a5-5da9d16f4596",
-			"responses": [],
-			"currentHelper": null,
-			"helperAttributes": null,
-			"rawModeData": "{\n\t\"id\":\"bc0e9cdc-709d-43bb-e315-08d58787302f\",\n\t\"name\": \"TESTE\",\n    \"releaseDate\": \"2013-03-05T00:00:00\",\n    \"score\": 9.3,\n    \"price\": 59.99,\n    \"description\": \"Tomb Raider é um videojogo de ação-aventura, décimo título da série Tomb Raider e o quinto produzido pela Crystal Dynamics. Foi publicado pela Square Enix em 5 de Março de 2013 para Microsoft Windows, PlayStation 3 e Xbox 360\",\n    \"shortDescription\": \"Tomb Raider é um videojogo\",\n    \"imageUrl\": \"http://localhost/gamestore/images/ffxv.jpg\",\n    \"gameDevelopers\": [{\"DeveloperId\":\"3a332845-6a75-48f9-b7bf-5427570f8d9a\"}],\n    \"gamePublishers\": [{\"PublisherId\":\"3a332845-6a75-48f9-b7bf-5427570f8d9a\"}],\n    \"gameGenres\" : [{\"GenreId\":\"8a2593d7-7ae1-4a0a-89e4-a9aaeaba8074\"},\n    \t\t\t\t{\"GenreId\":\"089345b7-8ee8-4290-b840-5d0e20aba317\"}],\n    \"gamePlataforms\" : [{\"PlataformId\":\"d64c2f9d-7a4e-423d-bc1c-28f50387b3ad\"},\n    \t\t\t\t{\"PlataformId\":\"16df4c17-7f30-4fff-a90e-b379eb720f3f\"}]\n}"
-		},
-		{
-			"id": "d02dc9a1-8ed6-1c38-3207-06693795f6b2",
-			"headers": "",
-			"headerData": [],
-			"url": "{{URL}}/api/games/bc0e9cdc-709d-43bb-e315-08d58787302f",
-			"folder": "7ec63c97-4e04-6c3b-d820-38c6daf5e095",
-			"queryParams": [],
-			"events": [],
-			"pathVariables": {},
-			"pathVariableData": [],
-			"method": "DELETE",
-			"data": [],
-			"dataMode": "raw",
-			"auth": null,
-			"time": 1520799324064,
-			"name": "Delete Game",
-			"description": "Delete one game",
-			"collectionId": "00f26d93-9fc7-2fb3-98a5-5da9d16f4596",
-			"responses": [],
-			"currentHelper": null,
-			"helperAttributes": null,
-			"rawModeData": ""
-		},
-		{
-			"id": "e46e8fd2-ec02-ed50-359d-425ea362a375",
-			"headers": "",
-			"headerData": [],
-			"url": "{{URL}}/api/games/bc0e9cdc-709d-43bb-e315-08d58787302f",
-			"folder": "7ec63c97-4e04-6c3b-d820-38c6daf5e095",
-			"queryParams": [],
-			"events": [],
-			"pathVariables": {},
-			"pathVariableData": [],
-			"method": "GET",
-			"data": null,
-			"dataMode": "params",
-			"auth": null,
-			"time": 1520799326178,
-			"name": "Get game by id",
-			"description": "",
-			"collectionId": "00f26d93-9fc7-2fb3-98a5-5da9d16f4596",
-			"responses": [],
-			"currentHelper": null,
-			"helperAttributes": null
-		},
-		{
-			"id": "eb3c52f6-588a-58cc-19ca-495d84d6848c",
-			"headers": "Content-Type: application/json\n",
-			"headerData": [
-				{
-					"key": "Content-Type",
-					"value": "application/json",
-					"description": "",
-					"enabled": true
-				}
-			],
-			"url": "{{URL}}/api/companies",
-			"folder": "20051a5a-7eb3-9bb7-edac-a6c83f93ea20",
-			"queryParams": [],
-			"events": [],
-			"pathVariables": {},
-			"pathVariableData": [],
-			"method": "PUT",
-			"data": [],
-			"dataMode": "raw",
-			"version": 2,
-			"auth": null,
-			"time": 1520799432060,
-			"name": "Update company",
-			"description": "update games",
-			"collectionId": "00f26d93-9fc7-2fb3-98a5-5da9d16f4596",
-			"responses": [],
-			"currentHelper": null,
-			"helperAttributes": null,
-			"rawModeData": "{\n\t\"id\":\"809c535b-bff0-4e9b-9166-08d5878cdbf8\",\n\t\"name\": \"TESTE\",\n    \"fouded\": \"2013-03-05T00:00:00\",\n    \"country\": \"Japan\"\n}"
-		},
-		{
-			"id": "f685608c-be74-ed4a-07a9-f7f8ac21ce67",
-			"headers": "Content-Type: application/json\n",
-			"headerData": [
-				{
-					"key": "Content-Type",
-					"value": "application/json",
-					"description": "",
-					"enabled": true
-				}
-			],
-			"url": "{{URL}}/api/genres",
-			"folder": "69ef5c5f-4e94-4be8-f8a6-c03086dab172",
-			"queryParams": [],
-			"events": [],
-			"pathVariables": {},
-			"pathVariableData": [],
-			"method": "PUT",
-			"data": [],
-			"dataMode": "raw",
-			"version": 2,
-			"auth": null,
-			"time": 1520718649776,
-			"name": "Update genre",
-			"description": "update games",
-			"collectionId": "00f26d93-9fc7-2fb3-98a5-5da9d16f4596",
-			"responses": [],
-			"currentHelper": null,
-			"helperAttributes": null,
-			"rawModeData": "{\n\t\"id\":\"AC8985F3-B833-4338-BE08-08D566815411\",\n\t\"name\": \"RTS\",\n    \"description\": \"Real time strategy and action. \"\n}"
+			]
 		}
 	]
 }

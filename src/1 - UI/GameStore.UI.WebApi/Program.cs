@@ -30,7 +30,7 @@ namespace GameStore.UI.WebApi
                     var configuration = services.GetRequiredService<IConfiguration>();
                     var userManager = services.GetRequiredService<UserManager<IdentityUser>>();
                     var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
-                    DbInitializer.Initialize(context, configuration, userManager,roleManager);
+                    DbInitializer.Initialize(context, configuration, userManager,roleManager).GetAwaiter().GetResult();
                 }
                 catch (Exception ex)
                 {

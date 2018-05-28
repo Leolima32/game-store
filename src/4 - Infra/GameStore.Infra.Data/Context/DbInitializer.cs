@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using GameStore.Domain.Entities;
 using GameStore.Domain.Entities.ReleationshipEntities;
 using Microsoft.AspNetCore.Identity;
@@ -10,7 +11,7 @@ namespace GameStore.Infra.Data.Context
 {
     public static class DbInitializer
     {
-        public static void Initialize(GameStoreContext context, IConfiguration Configuration,
+        public static async Task Initialize(GameStoreContext context, IConfiguration Configuration,
         UserManager<IdentityUser> _userManager, RoleManager<IdentityRole> _roleManager)
         {
             context.Database.EnsureDeleted();
@@ -24,16 +25,17 @@ namespace GameStore.Infra.Data.Context
             var role1 = new IdentityRole() { Name = "Admin" };
             var role2 = new IdentityRole() { Name = "Customer" };
 
-            _roleManager.CreateAsync(role1);
-            _roleManager.CreateAsync(role2);
+            await _roleManager.CreateAsync(role1);
+            await _roleManager.CreateAsync(role2);
 
 
             var user1 = new IdentityUser() { UserName = "Admin", Email = "admin@admin.com" };
             var user2 = new IdentityUser() { UserName = "RandomCustomer", Email = "satisfiedcustomer@email.com" };
 
-            _userManager.CreateAsync(user1, "Admin123*");
-            _userManager.CreateAsync(user2, "R@mdonUs3r");
-            _userManager.AddToRoleAsync(user1, "Admin");
+            await _userManager.CreateAsync(user1, "Admin123*");
+            await _userManager.CreateAsync(user2, "R@mdonUs3r");
+            await _userManager.AddToRoleAsync(user1, "Admin");
+            await _userManager.AddToRoleAsync(user2, "Customer");
 
             var companies = new Company[]
             {

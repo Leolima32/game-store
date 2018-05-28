@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using GameStore.UI.WebApi.Filters;
 using GameStore.Application.DTOS.Games;
 using Microsoft.AspNetCore.Authorization;
+using System.Linq;
 
 namespace GameStore.UI.WebApi.Controllers
 {
@@ -20,6 +21,7 @@ namespace GameStore.UI.WebApi.Controllers
             _services = services;
         }
         [HttpGet]
+        [Authorize]
         public async Task<IEnumerable<GameViewModel>> Get()
         {
             return await _services.GetAllGames();
