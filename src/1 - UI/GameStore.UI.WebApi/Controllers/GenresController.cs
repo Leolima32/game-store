@@ -6,6 +6,7 @@ using GameStore.Application.Interfaces;
 using System.Collections.Generic;
 using GameStore.UI.WebApi.Filters;
 using GameStore.Application.DTOS.Genres;
+using Microsoft.AspNetCore.Authorization;
 
 namespace GameStore.UI.WebApi.Controllers
 {
@@ -30,16 +31,21 @@ namespace GameStore.UI.WebApi.Controllers
             return await _services.GetGenreById(id);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public void Post([FromBody]AddOrUpdateGenreDTO genre)
         {
             _services.InsertGenre(genre);
         }
+
+        [Authorize(Roles = "Admin")]
         [HttpPut]
         public void Update([FromBody]AddOrUpdateGenreDTO genre)
         {
             _services.UpdateGenre(genre);
         }
+
+        [Authorize(Roles = "Admin")]
         [HttpDelete("{id}")]
         public void Delete(Guid id)
         {

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using GameStore.Domain.Entities;
+using GameStore.Domain.Entities.Enums;
 using GameStore.Domain.Entities.ReleationshipEntities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
@@ -111,7 +112,7 @@ namespace GameStore.Infra.Data.Context
             {
                 new Game() { Id = new Guid(), Name = "Final Fantasy XV",
                 ShortDescription = "an open world action role-playing video game developed "
-                +"and published by Square Enix", Score = 9.8, Price = 89.99,
+                +"and published by Square Enix", Score = 9.8, Price = 89.99, Category = Category.Game,
                 Description = "Final Fantasy XV takes place on the fictional world of Eos. "
                 +"All the world's countries,bar the kingdom of Lucis, are under the dominion of"
                 +"the empire of Niflheim. Noctis Lucis Caelum, heir to the Lucian throne, goes on"
@@ -120,7 +121,7 @@ namespace GameStore.Infra.Data.Context
                 },
                 new Game() { Id = new Guid(), Name = "Grand Theft Auto V",
                 ShortDescription = "the single-player story follows three criminals and their efforts to commit "
-                +"heists while under pressure from a government agency.", Score = 10, Price = 59.99,
+                +"heists while under pressure from a government agency.", Score = 10, Price = 59.99, Category = Category.Game,
                 Description = "The game is played from either a third-person or first-person"
                 +"perspective and its world is navigated on foot or by vehicle. Players control the "
                 +"three lead protagonists throughout single-player and switch between them both during "
@@ -129,7 +130,7 @@ namespace GameStore.Infra.Data.Context
                 },
                 new Game() { Id = new Guid(), Name = "Child of light",
                 ShortDescription = "Aurora, a young girl from 1895 Austria, "
-                +"awakens on the lost fairytale", Score = 8.5, Price = 69.99,
+                +"awakens on the lost fairytale", Score = 8.5, Price = 69.99, Category = Category.Game,
                 Description = "The game's story takes place in the fictional land of Lemuria. "
                 +"Aurora, a child who wakes up in Lemuria after freezing to death, "
                 +"must bring back the sun, the moon and the stars held captive "
@@ -138,7 +139,8 @@ namespace GameStore.Infra.Data.Context
                 },
                 new Game() { Id = new Guid(), Name = "The Legend of Zelda: Breath of the Wild",
                 ShortDescription = "The Legend of Zelda: Breath of the Wild was very highly received. "
-                +"It currently has a 98/100 on Metacritic, making it the highest scoring game this decade", Score = 8.5, Price = 129.99,
+                +"It currently has a 98/100 on Metacritic, making it the highest scoring game this decade",
+                Score = 8.5, Price = 129.99, Category = Category.Game,
                 Description = "The Legend of Zelda: Breath of the Wild is the nineteenth "
                 +"main installment of The Legend of Zelda series. It was "
                 +"released simultaneously worldwide for the Wii U and "

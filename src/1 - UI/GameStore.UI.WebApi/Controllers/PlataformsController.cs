@@ -6,6 +6,7 @@ using GameStore.Application.Interfaces;
 using System.Collections.Generic;
 using GameStore.UI.WebApi.Filters;
 using GameStore.Application.DTOS.Plataforms;
+using Microsoft.AspNetCore.Authorization;
 
 namespace GameStore.UI.WebApi.Controllers
 {
@@ -30,16 +31,21 @@ namespace GameStore.UI.WebApi.Controllers
             return await _services.GetPlataformById(id);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public void Post([FromBody]AddOrUpdatePlataformDTO plataform)
         {
             _services.InsertPlataform(plataform);
         }
+
+        [Authorize(Roles = "Admin")]
         [HttpPut]
         public void Update([FromBody]AddOrUpdatePlataformDTO plataform)
         {
             _services.UpdatePlataform(plataform);
         }
+
+        [Authorize(Roles = "Admin")]
         [HttpDelete("{id}")]
         public void Delete(Guid id)
         {

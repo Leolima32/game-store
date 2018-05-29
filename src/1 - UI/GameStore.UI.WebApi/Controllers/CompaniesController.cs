@@ -6,6 +6,7 @@ using GameStore.Application.DTOS.Companies;
 using GameStore.Application.Interfaces;
 using GameStore.Application.Services;
 using GameStore.Application.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GameStore.UI.WebApi.Controllers
@@ -18,6 +19,7 @@ namespace GameStore.UI.WebApi.Controllers
         {
             _services = services;
         }
+
         [HttpGet]
         public async Task<IEnumerable<CompanyViewModel>> Get() {
             return await _services.GetAllCompanies();
@@ -28,18 +30,21 @@ namespace GameStore.UI.WebApi.Controllers
             return await _services.GetCompanyById(id);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public void Post([FromBody]AddOrUpdateCompanyDTO company)
         {
             _services.InsertCompany(company);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPut]
         public void Update([FromBody]AddOrUpdateCompanyDTO company)
         {
             _services.UpdateCompany(company);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpDelete("{id}")]
         public void Delete(Guid id)
         {

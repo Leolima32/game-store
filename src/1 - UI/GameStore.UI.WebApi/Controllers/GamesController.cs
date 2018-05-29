@@ -20,8 +20,8 @@ namespace GameStore.UI.WebApi.Controllers
         {
             _services = services;
         }
+
         [HttpGet]
-        [Authorize]
         public async Task<IEnumerable<GameViewModel>> Get()
         {
             return await _services.GetAllGames();
@@ -39,11 +39,15 @@ namespace GameStore.UI.WebApi.Controllers
         {
             _services.InsertGame(game);
         }
+
+        [Authorize(Roles = "Admin")]
         [HttpPut]
         public void Update([FromBody]AddOrUpdateGameDTO game)
         {
             _services.UpdateGame(game);
         }
+
+        [Authorize(Roles = "Admin")]
         [HttpDelete("{id}")]
         public void Delete(Guid id)
         {
