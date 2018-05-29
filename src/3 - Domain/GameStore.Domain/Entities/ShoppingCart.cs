@@ -22,9 +22,14 @@ namespace GameStore.Domain.Entities
             }   
         }
 
+        public void RemoveItem(CartItem item)
+        {
+            ListOfItems.Remove(item);
+        }
+
         public bool AlreadyContainThisItem (CartItem item)
         {
-            return ListOfItems.Contains(item);
+            return ListOfItems.Where(_ => _.GetProduct() == item.GetProduct()).Count() > 0;
         }
 
     }

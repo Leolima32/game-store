@@ -23,6 +23,16 @@ namespace GameStore.Domain.Entities
         private Product Product;
         private int Quantity;
 
+        public int GetQuantity()
+        {
+            return Quantity;
+        }
+
+        public Product GetProduct()
+        {
+            return Product;
+        }
+
         public double ItemPrice
         {
             get
@@ -58,10 +68,5 @@ namespace GameStore.Domain.Entities
             //increase quantity by value
             Quantity += value;
         }
-
-        public int GetQuantity()
-        {
-            return Quantity;
-        } 
     }
 }
