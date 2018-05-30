@@ -65,28 +65,37 @@ namespace GameStore.Infra.Data.Context
 
         public override int SaveChanges()
         {
-            foreach (var entry in ChangeTracker.Entries().Where(entry => entry.Entity.GetType().GetProperty("CreatedDate") != null))
+            try
             {
-                if (entry.State == EntityState.Added)
+                foreach (var entry in ChangeTracker.Entries().Where(entry => entry.Entity.GetType().GetProperty("CreatedDate") != null))
                 {
-                    entry.Property("CreatedDate").CurrentValue = DateTime.Now;
+                    if (entry.State == EntityState.Added)
+                    {
+                        entry.Property("CreatedDate").CurrentValue = DateTime.Now;
+                    }
+                    if (entry.State == EntityState.Modified)
+                    {
+                        entry.Property("CreatedDate").IsModified = false;
+                    }
                 }
-                if (entry.State == EntityState.Modified)
+                foreach (var entry in ChangeTracker.Entries().Where(entry => entry.Entity.GetType().GetProperty("LastUpdated") != null))
                 {
-                    entry.Property("CreatedDate").IsModified = false;
+                    entry.Property("LastUpdated").CurrentValue = DateTime.Now;
+                }
+                foreach (var entry in ChangeTracker.Entries().Where(entry => entry.Entity.GetType().GetProperty("Active") != null))
+                {
+                    if (entry.State == EntityState.Added)
+                    {
+                        entry.Property("Active").CurrentValue = true;
+                    }
                 }
             }
-            foreach (var entry in ChangeTracker.Entries().Where(entry => entry.Entity.GetType().GetProperty("LastUpdated") != null))
+            catch (Exception ex)
             {
-                entry.Property("LastUpdated").CurrentValue = DateTime.Now;
+
+                throw ex;
             }
-            foreach (var entry in ChangeTracker.Entries().Where(entry => entry.Entity.GetType().GetProperty("Active") != null))
-            {
-                if (entry.State == EntityState.Added)
-                {
-                    entry.Property("Active").CurrentValue = true;
-                }
-            }
+            
             return base.SaveChanges();
         }
 

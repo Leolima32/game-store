@@ -8,13 +8,20 @@ namespace GameStore.Domain.Entities
 {
     public class User: BaseEntity
     {
+        public User(string userId, string name, DateTime birthDate)
+        {
+            UserId = userId;
+            Name = name;
+            BirthDate = birthDate;
+        }
+
         [Key]
-        public string UserId { get; set; }
-        public string Name { get; set; }
-        public string AccessKey { get; set; }
-        public DateTime BirthDate { get; set; }
-        public IEnumerable<Genre> GenreInterests{ get; set; }
-        public IEnumerable<Game> WishsList { get; set; }
+        public string UserId { get; private set; }
+        public string Name { get; private set; }
+        public string AccessKey { get; private set; }
+        public DateTime BirthDate { get; private set; }
+        public IEnumerable<Genre> GenreInterests{ get; private set; }
+        public IEnumerable<Game> WishsList { get; private set; }
 
         public bool IsVipMember()
         {

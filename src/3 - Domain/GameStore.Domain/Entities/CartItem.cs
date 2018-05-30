@@ -20,18 +20,8 @@ namespace GameStore.Domain.Entities
             }
         }
 
-        private Product Product;
-        private int Quantity;
-
-        public int GetQuantity()
-        {
-            return Quantity;
-        }
-
-        public Product GetProduct()
-        {
-            return Product;
-        }
+        public Product Product { get; private set; }
+        public int Quantity { get; private set; }
 
         public double ItemPrice
         {

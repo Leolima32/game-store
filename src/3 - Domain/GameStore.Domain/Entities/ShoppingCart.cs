@@ -6,30 +6,39 @@ namespace GameStore.Domain.Entities
 {
     public class ShoppingCart
     {
-        ICollection<CartItem> ListOfItems { get; }
-        User User { get; }
+        
+        public User User { get; private set; }
+
+        private IList<CartItem> _listOfItems;
+        public IReadOnlyCollection<CartItem> ListOfItems
+        {
+            get
+            {
+                return _listOfItems.ToArray();
+            }
+        }
 
         public void AddItem(CartItem item)
         {
             if (!AlreadyContainThisItem(item))
             {
-                ListOfItems.Add(item);
+                _listOfItems.Add(item);
             }
             else
             {
                 var foundItem = ListOfItems.Where(_ => _ == item).FirstOrDefault();
-                foundItem.ChangeQuantity(item.GetQuantity());
-            }   
+                foundItem.ChangeQuantity(item.Quantity);
+            }
         }
 
         public void RemoveItem(CartItem item)
         {
-            ListOfItems.Remove(item);
+            _listOfItems.Remove(item);
         }
 
-        public bool AlreadyContainThisItem (CartItem item)
+        public bool AlreadyContainThisItem(CartItem item)
         {
-            return ListOfItems.Where(_ => _.GetProduct() == item.GetProduct()).Count() > 0;
+            return ListOfItems.Where(_ => _.Product == item.Product).Count() > 0;
         }
 
     }

@@ -3,13 +3,22 @@ using GameStore.Domain.Entities.Enums;
 
 namespace GameStore.Domain.Entities
 {
-    public abstract class Product: BaseEntity
+    public abstract class Product : BaseEntity
     {
-        public string Name { get; set; }
-        public Category Category { get; set; }
-        public double Price { get; set; }
-        public string Description { get; set; }
-        public string ShortDescription { get; set; }
-        public string ImageUrl { get; set; }
+        public Product(string name, Category category, double price, string description, string shortDescription)
+        {
+            Name = name;
+            Category = category;
+            Price = price;
+            Description = description;
+            ShortDescription = shortDescription;
+        }
+
+        public string Name { get; private set; }
+        public Category Category { get; private set; }
+        public double Price { get; private set; }
+        public string Description { get; private set; }
+        public string ShortDescription { get; private set; }
+        public string ImageUrl { get; private set; }
     }
 }

@@ -8,8 +8,13 @@ namespace GameStore.Domain.Entities
 {
     public class Genre : BaseEntity
     {
-        public string Name { get; set; }
-        public string Description { get; set; }
-        public ICollection<GameGenre> GameGenres { get; set; }
+        public Genre(string name)
+        {
+            Name = name;
+        }
+
+        public string Name { get; private set; }
+        public string Description { get; private set; }
+        public ICollection<GameGenre> GameGenres { get; private set; }
     }
 }

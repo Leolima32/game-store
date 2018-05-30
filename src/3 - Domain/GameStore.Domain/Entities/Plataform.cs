@@ -10,7 +10,12 @@ namespace GameStore.Domain.Entities
 {
     public class Plataform: BaseEntity
     {
-        public string Name { get; set; }
+        public Plataform(string name)
+        {
+            Name = name;
+        }
+
+        public string Name { get; private set; }
         public ICollection<GamePlataform> GamePlataforms { get; set; }
 
     }

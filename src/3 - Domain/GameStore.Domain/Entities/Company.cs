@@ -10,11 +10,18 @@ namespace GameStore.Domain.Entities
 {
     public class Company: BaseEntity
     {
-        public string Name { get; set; }
-        public DateTime Founded { get; set; }
-        public string Country { get; set; }
+        public Company(string name, string country, DateTime founded)
+        {
+            Name = name;
+            Country = country;
+            Founded = founded;
+        }
 
-        public ICollection<GameDeveloper> GameDevelopers { get; set;}
-        public ICollection<GamePublisher> GamePublishers { get; set; }
+        public string Name { get; private set; }
+        public string Country { get; private set; }
+        public DateTime Founded { get; private set; }
+
+        public ICollection<GameDeveloper> GameDevelopers { get; private set; }
+        public ICollection<GamePublisher> GamePublishers { get; private set; }
     }
 }
