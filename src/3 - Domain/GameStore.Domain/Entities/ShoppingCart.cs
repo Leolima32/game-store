@@ -1,15 +1,16 @@
 ﻿using System;
 using System.Linq;
 using System.Collections.Generic;
+using GameStore.Domain.Entities.Common;
 
 namespace GameStore.Domain.Entities
 {
-    public class ShoppingCart
+    public class ShoppingCart: BaseEntity
     {
         
-        public User User { get; private set; }
+        public Guid UserId { get; private set; }
 
-        private IList<CartItem> _listOfItems;
+        private IList<CartItem> _listOfItems = new List<CartItem>();
         public IReadOnlyCollection<CartItem> ListOfItems
         {
             get
