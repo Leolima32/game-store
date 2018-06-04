@@ -15,6 +15,7 @@ namespace GameStore.Infra.CrossCutting.IoC
             services.AddTransient<IGameServices, GameServices>();
             services.AddTransient<ICompanyServices, CompanyServices>();
             services.AddTransient<IGenreServices, GenreServices>();
+            services.AddTransient<IOrderServices, OrderServices>();
             services.AddTransient<IPlataformServices, PlataformServices>();
             services.AddTransient<IUnitOfWork, UnitOfWork>();
             services.AddSingleton(Mapper.Configuration);
