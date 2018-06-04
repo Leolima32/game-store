@@ -6,9 +6,9 @@ namespace GameStore.Domain.Entities.Common
     {
         public BaseEntity() { Id = Guid.NewGuid(); }
 
-        public Guid Id { get; set; }
-        public DateTime CreatedDate{ get; set; }
-        public DateTime LastUpdated { get; set; }
-        public bool Active { get; set; }
+        public Guid Id { get; private set; }
+        public DateTime CreatedDate{ get; private set; }
+        public DateTime LastUpdated { get; private set; }
+        public bool Active { get; private set; }
     }
 }

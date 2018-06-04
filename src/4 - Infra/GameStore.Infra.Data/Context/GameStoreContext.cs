@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Reflection;
 using GameStore.Domain.Entities;
 using GameStore.Domain.Entities.ReleationshipEntities;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
@@ -89,14 +90,14 @@ namespace GameStore.Infra.Data.Context
                         entry.Property("Active").CurrentValue = true;
                     }
                 }
+                return base.SaveChanges();
             }
             catch (Exception ex)
             {
-
-                throw ex;
+                throw new InvalidOperationException("Error on seeding the database.");
             }
             
-            return base.SaveChanges();
+           
         }
 
     }

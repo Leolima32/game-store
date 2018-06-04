@@ -5,7 +5,7 @@ namespace GameStore.Domain.Entities
 {
     public abstract class Product : BaseEntity
     {
-        public Product(string name, Category category, double price, string description, string shortDescription)
+        public Product(string name, ECategory category, double price, string description, string shortDescription)
         {
             Name = name;
             Category = category;
@@ -15,7 +15,7 @@ namespace GameStore.Domain.Entities
         }
 
         public string Name { get; private set; }
-        public Category Category { get; private set; }
+        public ECategory Category { get; private set; }
         public double Price { get; private set; }
         public string Description { get; private set; }
         public string ShortDescription { get; private set; }

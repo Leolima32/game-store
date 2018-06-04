@@ -14,7 +14,7 @@ namespace GameStore.Domain.Entities
             string description,
             string shortDescription,
             double score,
-            Category category,
+            ECategory category,
             double price,
             DateTime releaseDate
            ) : base(

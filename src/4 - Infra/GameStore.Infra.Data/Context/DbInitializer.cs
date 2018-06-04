@@ -93,7 +93,7 @@ namespace GameStore.Infra.Data.Context
                 +"the empire of Niflheim. Noctis Lucis Caelum, heir to the Lucian throne, goes on"
                 +"a quest to retake his homeland and its magical Crystal ",
                 "an open world action role-playing video game developed and published by Square Enix",
-                9.8, Category.Game, 89.99, new DateTime(2016,11,9)),
+                9.8, ECategory.Game, 89.99, new DateTime(2016,11,9)),
 
                 new Game("Grand Theft Auto V",
                 "The game is played from either a third-person or first-person"
@@ -101,7 +101,7 @@ namespace GameStore.Infra.Data.Context
                 +"three lead protagonists throughout single-player and switch between them both during "
                 +"and outside missions.",
                 "the single-player story follows three criminals and their efforts to commit "
-                +"heists while under pressure from a government agency.", 10, Category.Game, 59.99, new DateTime(2013,9,17)),
+                +"heists while under pressure from a government agency.", 10, ECategory.Game, 59.99, new DateTime(2013,9,17)),
 
                 new Game("Child of light",
                 "The game's story takes place in the fictional land of Lemuria. "
@@ -109,7 +109,7 @@ namespace GameStore.Infra.Data.Context
                 +"must bring back the sun, the moon and the stars held captive "
                 +"by the Queen of the Night in order to return.",
                 " Aurora, a young girl from 1895 Austria, awakens on the lost fairytale", 
-                8.5, Category.Game, 69.99, new DateTime(2014,4,29)),
+                8.5, ECategory.Game, 69.99, new DateTime(2014,4,29)),
 
                 new Game("The Legend of Zelda: Breath of the Wild",
                 "The Legend of Zelda: Breath of the Wild is the nineteenth "
@@ -118,7 +118,7 @@ namespace GameStore.Infra.Data.Context
                 +"Nintendo Switch on March 3, 2017.",
                 "The Legend of Zelda: Breath of the Wild was very highly received. "
                 +"It currently has a 98/100 on Metacritic, making it the highest scoring game this decade",
-                8.5, Category.Game, 129.99, new DateTime(2014,4,29))
+                8.5, ECategory.Game, 129.99, new DateTime(2014,4,29))
             };
             foreach (Game s in games)
             {
