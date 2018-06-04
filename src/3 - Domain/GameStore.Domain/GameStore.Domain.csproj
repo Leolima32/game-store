@@ -5,11 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Flunt" Version="1.0.2" />
     <PackageReference Include="System.ComponentModel.Annotations" Version="4.4.0" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Interfaces\Behavior\" />
-    <Folder Include="ValueObjects\" />
   </ItemGroup>
 </Project>

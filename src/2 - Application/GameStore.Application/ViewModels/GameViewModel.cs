@@ -33,7 +33,7 @@ namespace GameStore.Application.ViewModels
                     Id = e.Developer.Id,
                     Name = e.Developer.Name,
                     Foundingdate = e.Developer.Founded,
-                    Country = e.Developer.Country
+                    LogoPath = e.Developer.LogoPath
                 });
             }
         }
@@ -58,7 +58,7 @@ namespace GameStore.Application.ViewModels
                     Id = e.Publisher.Id,
                     Name = e.Publisher.Name,
                     Foundingdate = e.Publisher.Founded,
-                    Country = e.Publisher.Country
+                    LogoPath = e.Publisher.LogoPath
                 });
             }
         }

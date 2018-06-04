@@ -1,6 +1,6 @@
 ﻿namespace GameStore.Domain.Entities.Enums
 {
-    public enum ECategory
+    public enum EDepartment
     {
         Game,
         Console,

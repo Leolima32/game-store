@@ -3,7 +3,6 @@ using GameStore.Domain.Entities.Enums;
 using GameStore.Domain.Entities.ReleationshipEntities;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace GameStore.Domain.Entities
 {
@@ -14,12 +13,12 @@ namespace GameStore.Domain.Entities
             string description,
             string shortDescription,
             double score,
-            ECategory category,
+            EDepartment department,
             double price,
             DateTime releaseDate
            ) : base(
                 name,
-                category,
+                department,
                 price,
                 description,
                 shortDescription)

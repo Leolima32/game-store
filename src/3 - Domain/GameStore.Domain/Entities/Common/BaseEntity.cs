@@ -1,8 +1,9 @@
-﻿using System;
+﻿using Flunt.Notifications;
+using System;
 
 namespace GameStore.Domain.Entities.Common
 {
-    public abstract class BaseEntity
+    public abstract class BaseEntity: Notifiable
     {
         public BaseEntity() { Id = Guid.NewGuid(); }
 

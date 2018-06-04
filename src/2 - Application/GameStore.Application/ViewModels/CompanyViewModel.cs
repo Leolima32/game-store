@@ -3,15 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using GameStore.Domain.Entities;
 using GameStore.Domain.Entities.ReleationshipEntities;
+using GameStore.Domain.ValueObjects;
 
 namespace GameStore.Application.ViewModels
 {
     public class CompanyViewModel
     {
         public Guid Id { get; set; }
-        public string Name { get; set; }
+        public CompanyName Name { get; set; }
         public DateTime Founded { get; set; }
-        public string Country { get; set; }
+        public string LogoPath { get; set; }
 
         private ICollection<GameDeveloper> GameDevelopers { get; set; }
         private ICollection<GamePublisher> GamePublishers { get; set; }

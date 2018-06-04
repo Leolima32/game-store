@@ -1,7 +1,5 @@
-﻿using GameStore.Domain.Exceptions;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using GameStore.Domain.Entities.Common;
+using GameStore.Domain.Exceptions;
 
 namespace GameStore.Domain.Entities
 {
