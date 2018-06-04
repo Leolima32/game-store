@@ -1,4 +1,5 @@
 ﻿using GameStore.Domain.Entities;
+using GameStore.Infra.Data.Context;
 using GameStore.Infra.Data.Repositories;
 using System;
 using System.Collections.Generic;
@@ -9,18 +10,18 @@ namespace GameStore.Tests
 {
     public class GameSelectsTests
     {
-        private GameRepository _repository;
+        private FakeRepository _repository;
 
-        public GameSelectsTests(GameRepository repository)
+        public GameSelectsTests(GameStoreContext db)
         {
-            _repository = repository;
+            _repository = new FakeRepository(db);
         }
 
         [Fact]
-        public void QueryAllGames()
+        public void ShoulReturnGamesList()
         {
             var list = _repository.GetAllAsync().GetAwaiter().GetResult();
-            Assert.True(list.Count() > 0);
+            Assert.True(list.Count() == 10);
         }
     }
 }
