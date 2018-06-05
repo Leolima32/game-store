@@ -18,11 +18,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\src\1 - UI\GameStore.UI.WebApi\GameStore.UI.WebApi.csproj" />
-    <ProjectReference Include="..\src\2 - Application\GameStore.Application\GameStore.Application.csproj" />
-    <ProjectReference Include="..\src\3 - Domain\GameStore.Domain\GameStore.Domain.csproj" />
-    <ProjectReference Include="..\src\4 - Infra\GameStore.Infra.CrossCutting.IoC\GameStore.Infra.CrossCutting.IoC.csproj" />
-    <ProjectReference Include="..\src\4 - Infra\GameStore.Infra.Data\GameStore.Infra.Data.csproj" />
+    <ProjectReference Include="..\..\1 - UI\GameStore.UI.WebApi\GameStore.UI.WebApi.csproj" />
+    <ProjectReference Include="..\..\2 - Application\GameStore.Application\GameStore.Application.csproj" />
+    <ProjectReference Include="..\..\3 - Domain\GameStore.Domain\GameStore.Domain.csproj" />
+    <ProjectReference Include="..\..\4 - Infra\GameStore.Infra.CrossCutting.IoC\GameStore.Infra.CrossCutting.IoC.csproj" />
+    <ProjectReference Include="..\..\4 - Infra\GameStore.Infra.Data\GameStore.Infra.Data.csproj" />
   </ItemGroup>
 
 </Project>

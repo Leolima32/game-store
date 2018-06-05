@@ -3,7 +3,8 @@ using System;
 
 namespace GameStore.Domain.Entities.Common
 {
-    public abstract class BaseEntity: Notifiable
+
+    public abstract class BaseEntity
     {
         public BaseEntity() { Id = Guid.NewGuid(); }
 

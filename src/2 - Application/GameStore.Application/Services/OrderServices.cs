@@ -5,7 +5,6 @@ using GameStore.Domain.Interfaces.Repositories;
 using GameStore.Application.Commands;
 using Flunt.Notifications;
 using GameStore.Domain.ValueObjects;
-using PaymentContext.Domain.ValueObjects;
 using GameStore.Domain.Entities;
 
 namespace GameStore.Application.Services
@@ -29,26 +28,26 @@ namespace GameStore.Application.Services
                 return new CommandResult(false, "Can't finish the order request.");
             }
 
-            var name = new PersonName(command.FirstName, command.LastName);
-            var email = new Email(command.Email);
+            //var name = new PersonName(command.FirstName, command.LastName);
+            //var email = new Email(command.Email);
 
-            // Gerar as Entidades
-            var payment = new CreditCardPayment(
-                command.CardHolderName,
-                command.CardNumber,
-                command.LastTransactionNumber,
-                command.PaidDate,
-                command.ExpireDate,
-                command.Total,
-                command.TotalPaid,
-                command.Payer,
-                email);
+            //// Gerar as Entidades
+            //var payment = new CreditCardPayment(
+            //    command.CardHolderName,
+            //    command.CardNumber,
+            //    command.LastTransactionNumber,
+            //    command.PaidDate,
+            //    command.ExpireDate,
+            //    command.Total,
+            //    command.TotalPaid,
+            //    command.Payer,
+            //    email);
 
             var cart = new ShoppingCart(command.UserId,command.ListOfItems);
 
-            var order = new Order(command.UserId, payment, cart);
+            var order = new Order(command.UserId, cart);
 
-            AddNotifications(name, email, payment);
+            //AddNotifications(name, email, payment);
 
             if (Invalid)
                 return new CommandResult(false, "Can't finish the order request.");

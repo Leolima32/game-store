@@ -1,11 +1,12 @@
 ﻿using GameStore.Domain.Entities.Common;
-using PaymentContext.Domain.ValueObjects;
+using GameStore.Domain.ValueObjects;
 using System;
 
 namespace GameStore.Domain.Entities
 {
     public class PayPalPayment: Payment
     {
+        protected PayPalPayment() { }
         public PayPalPayment(
             string transactionCode,
             DateTime paidDate,

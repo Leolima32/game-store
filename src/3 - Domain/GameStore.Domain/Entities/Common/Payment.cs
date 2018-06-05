@@ -1,11 +1,13 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations.Schema;
 using Flunt.Validations;
-using PaymentContext.Domain.ValueObjects;
+using GameStore.Domain.ValueObjects;
 
 namespace GameStore.Domain.Entities.Common
 {
     public abstract class Payment : BaseEntity
     {
+        protected Payment() { }
         public Payment(DateTime paidDate, DateTime expireDate, decimal total, decimal totalPaid, string payer, Email email)
         {
             Number = Guid.NewGuid().ToString().Replace("-", "").Substring(0, 10).ToUpper();
@@ -16,11 +18,11 @@ namespace GameStore.Domain.Entities.Common
             Payer = payer;
             Email = email;
 
-            AddNotifications(new Contract()
-                .Requires()
-                .IsLowerOrEqualsThan(0, Total, "Payment.Total", "total value cannot be 0")
-                .IsGreaterOrEqualsThan(Total, TotalPaid, "Payment.TotalPaid", "total paid cannot be less than total value")
-            );
+            //AddNotifications(new Contract()
+            //    .Requires()
+            //    .IsLowerOrEqualsThan(0, Total, "Payment.Total", "total value cannot be 0")
+            //    .IsGreaterOrEqualsThan(Total, TotalPaid, "Payment.TotalPaid", "total paid cannot be less than total value")
+            //);
         }
 
         public string Number { get; private set; }

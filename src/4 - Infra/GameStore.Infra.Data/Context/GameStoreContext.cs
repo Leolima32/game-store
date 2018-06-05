@@ -2,7 +2,9 @@
 using System.Linq;
 using System.Reflection;
 using GameStore.Domain.Entities;
+using GameStore.Domain.Entities.Common;
 using GameStore.Domain.Entities.ReleationshipEntities;
+using GameStore.Domain.ValueObjects;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
@@ -18,10 +20,16 @@ namespace GameStore.Infra.Data.Context
         public DbSet<Game> Games { get; set; }
         public DbSet<Genre> Genres { get; set; }
         public DbSet<Plataform> Plataforms { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<CreditCardPayment> CreditCardPayments { get; set; }
+        public DbSet<PayPalPayment> PayPalPayments { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<GameDeveloper>().HasKey(t => new { t.GameId, t.DeveloperId });
+
+            modelBuilder.Entity<Payment>().OwnsOne(typeof(Email), "Email");
+            modelBuilder.Entity<Company>().OwnsOne(typeof(CompanyName), "Name");
 
             modelBuilder.Entity<GameDeveloper>()
             .HasOne(gg => gg.Game)
@@ -95,9 +103,7 @@ namespace GameStore.Infra.Data.Context
             catch (Exception ex)
             {
                 throw new InvalidOperationException("Error on seeding the database.");
-            }
-            
-           
+            }           
         }
 
     }

@@ -16,7 +16,7 @@ namespace GameStore.Infra.Data.Context
         public static async Task Initialize(GameStoreContext context, IConfiguration Configuration,
         UserManager<IdentityUser> _userManager, RoleManager<IdentityRole> _roleManager)
         {
-            // context.Database.EnsureDeleted();
+            context.Database.EnsureDeleted();
             context.Database.EnsureCreated();
             // Look for any games.
             if (context.Games.Any())

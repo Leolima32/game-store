@@ -9,8 +9,10 @@ using GameStore.Domain.ValueObjects;
 
 namespace GameStore.Domain.Entities
 {
-    public class Company: BaseEntity
+    public class Company : BaseEntity
     {
+        protected Company() { }
+
         public Company(CompanyName name, DateTime founded)
         {
             Name = name;

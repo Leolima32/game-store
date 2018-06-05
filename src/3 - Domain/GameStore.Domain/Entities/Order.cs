@@ -1,16 +1,14 @@
-﻿
-
-using GameStore.Domain.Entities.Common;
+﻿using GameStore.Domain.Entities.Common;
 using System;
 
 namespace GameStore.Domain.Entities
 {
     public class Order: BaseEntity
     {
-        public Order(Guid userId, Payment formOfPayment, ShoppingCart shoppingCart)
+        protected Order() { }
+        public Order(Guid userId, ShoppingCart shoppingCart)
         {
             UserId = userId;
-            FormOfPayment = formOfPayment;
             ShoppingCart = shoppingCart;
         }
 

@@ -7,7 +7,7 @@ namespace GameStore.Domain.Entities
 {
     public class ShoppingCart: BaseEntity
     {
-        
+        protected ShoppingCart() { }
         public Guid UserId { get; private set; }
 
         private IList<CartItem> _listOfItems = new List<CartItem>();

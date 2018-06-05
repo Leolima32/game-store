@@ -1,5 +1,5 @@
 ﻿using GameStore.Domain.Entities.Common;
-using PaymentContext.Domain.ValueObjects;
+using GameStore.Domain.ValueObjects;
 using System;
 
 
@@ -7,6 +7,7 @@ namespace GameStore.Domain.Entities
 {
     public class CreditCardPayment: Payment
     {
+        protected CreditCardPayment() { }
         public CreditCardPayment(
             string cardHolderName,
             string cardNumber,

@@ -1,10 +1,12 @@
 ﻿using GameStore.Domain.Entities.Common;
 using GameStore.Domain.Exceptions;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace GameStore.Domain.Entities
 {
-    public class CartItem
+    public class CartItem: BaseEntity
     {
+        protected CartItem() { }
         public CartItem(Product product, int quantity)
         {
             if (product != null && quantity >= 0)
