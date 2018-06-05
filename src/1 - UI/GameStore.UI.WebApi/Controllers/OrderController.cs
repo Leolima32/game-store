@@ -17,7 +17,8 @@ namespace GameStore.UI.WebApi.Controllers
         [HttpPost]
         public void FinishOrder(FinishCreditCardOrderCommand order)
         {
-            _services.FinishOrder(order);
+            //todo create handler
+            _services.FinishCreditCardOrder(order);
         }
     }
 }

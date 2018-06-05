@@ -11,6 +11,13 @@ namespace GameStore.Domain.Entities
         public Guid UserId { get; private set; }
 
         private IList<CartItem> _listOfItems = new List<CartItem>();
+
+        public ShoppingCart(Guid userId, IList<CartItem> listOfItems)
+        {
+            UserId = userId;
+            _listOfItems = listOfItems;
+        }
+
         public IReadOnlyCollection<CartItem> ListOfItems
         {
             get

@@ -23,7 +23,6 @@ namespace GameStore.Application.Commands
         public decimal TotalPaid { get; set; }
         public string Payer { get; set; }
         public string PayerDocument { get; set; }
-        public EDocumentType PayerDocumentType { get; set; }
         public string PayerEmail { get; set; }
 
         public void Validate() { }

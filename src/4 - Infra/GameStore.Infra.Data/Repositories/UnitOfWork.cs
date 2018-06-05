@@ -13,6 +13,7 @@ namespace GameStore.Infra.Data.Repositories
         private IGenreRepository _genreRepository;
         private IPlataformRepository _plataformRepository;
         private IUserRepository _userRepository;
+        private IOrderRepository _orderRepository;
 
         private readonly GameStoreContext _db;
         public UnitOfWork(GameStoreContext db) { _db = db; }
@@ -74,6 +75,18 @@ namespace GameStore.Infra.Data.Repositories
                     _userRepository = new UserRepository(_db);
                 }
                 return _userRepository;
+            }
+        }
+
+        public IOrderRepository Orders
+        {
+            get
+            {
+                if (_orderRepository == null)
+                {
+                    _orderRepository = new OrderRepository(_db);
+                }
+                return _orderRepository;
             }
         }
 

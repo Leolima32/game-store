@@ -29,46 +29,33 @@ namespace GameStore.Application.Services
                 return new CommandResult(false, "Can't finish the order request.");
             }
 
-            //// Verificar se Documento já está cadastrado
-            //if (_repository.DocumentExists(command.Document))
-            //    AddNotification("Document", "Este CPF já está em uso");
-
-            // Gerar os VOs
             var name = new PersonName(command.FirstName, command.LastName);
             var email = new Email(command.Email);
 
             // Gerar as Entidades
-            CreditCardPayment payment = new CreditCardPayment();
-            var order = new Order(command.UserId,);
-            var subscription = new Subscription(DateTime.Now.AddMonths(1));
             var payment = new CreditCardPayment(
+                command.CardHolderName,
+                command.CardNumber,
+                command.LastTransactionNumber,
                 command.PaidDate,
                 command.ExpireDate,
                 command.Total,
                 command.TotalPaid,
                 command.Payer,
-                email
-            );
+                email);
 
-            // Relacionamentos
-            subscription.AddPayment(payment);
-            student.AddSubscription(subscription);
+            var cart = new ShoppingCart(command.UserId,command.ListOfItems);
 
-            // Agrupar as Validações
-            AddNotifications(name, document, email, address, student, subscription, payment);
+            var order = new Order(command.UserId, payment, cart);
 
-            // Checar as notificações
+            AddNotifications(name, email, payment);
+
             if (Invalid)
-                return new CommandResult(false, "Não foi possível realizar sua assinatura");
+                return new CommandResult(false, "Can't finish the order request.");
 
-            // Salvar as Informações
-            _repository.CreateSubscription(student);
+            _unit.Orders.CreateOrder(order);
 
-            // Enviar E-mail de boas vindas
-            _emailService.Send(student.Name.ToString(), student.Email.Address, "bem vindo ao balta.io", "Sua assinatura foi criada");
-
-            // Retornar informações
-            return new CommandResult(true, "Assinatura realizada com sucesso");
+            return new CommandResult(true, "Order finished with success.");
         }
 
         public CommandResult FinishPayPalOrder(FinishPayPalOrderCommand order)
