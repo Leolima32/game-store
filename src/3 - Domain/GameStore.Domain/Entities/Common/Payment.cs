@@ -18,11 +18,18 @@ namespace GameStore.Domain.Entities.Common
             Payer = payer;
             Email = email;
 
-            //AddNotifications(new Contract()
-            //    .Requires()
-            //    .IsLowerOrEqualsThan(0, Total, "Payment.Total", "total value cannot be 0")
-            //    .IsGreaterOrEqualsThan(Total, TotalPaid, "Payment.TotalPaid", "total paid cannot be less than total value")
-            //);
+
+            if(Total is 0)
+                AddNonconformity(new Nonconformity("payment.total", "total value cannot be 0."));
+
+            if(TotalPaid < Total)
+                AddNonconformity(new Nonconformity("payment.totalPaid", "total paid cannot be less than total value."));
+
+            if(email is null)
+                AddNonconformity(new Nonconformity("payment.email","email cannot be null."));
+            
+            if(expireDate < DateTime.Today)
+                AddNonconformity(new Nonconformity("payment.expireDate","the date limit for this payment is already expired."));
         }
 
         public string Number { get; private set; }
