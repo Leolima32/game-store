@@ -17,6 +17,9 @@ namespace GameStore.Domain.Entities
         {
             Name = name;
             Founded = founded;
+
+            if (String.IsNullOrEmpty(Name.FantasyName))
+                AddNonconformity(new Nonconformity("company.name.fantasyName", "Fantasy Name cannot be null."));
         }
 
         public CompanyName Name { get; private set; }

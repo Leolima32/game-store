@@ -1,4 +1,5 @@
 ﻿using GameStore.Domain.Entities.Enums;
+using GameStore.Domain.ValueObjects;
 
 namespace GameStore.Domain.Entities.Common
 {
@@ -11,6 +12,13 @@ namespace GameStore.Domain.Entities.Common
             Price = price;
             Description = description;
             ShortDescription = shortDescription;
+
+            if (string.IsNullOrEmpty(name))
+                AddNonconformity(new Nonconformity("product.name", "Name cannot be null or empty"));
+            if (string.IsNullOrEmpty(description))
+                AddNonconformity(new Nonconformity("product.description", "Description cannot be null or empty"));
+            if(Price <= 0)
+                AddNonconformity(new Nonconformity("product.price","Price cannot be 0 or a negative number"));
         }
 
         public string Name { get; private set; }

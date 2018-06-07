@@ -20,5 +20,12 @@ namespace GameStore.UI.WebApi.Controllers
             //todo create handler
             _services.FinishCreditCardOrder(order);
         }
+
+        [Authorize(Roles = "Customer")]
+        [HttpPost]
+        public void FinishOrder(FinishPayPalOrderCommand order)
+        {
+            _services.FinishPayPalOrder(order);
+        }
     }
 }

@@ -35,7 +35,7 @@ namespace GameStore.Domain.Entities
             else
             {
                 var foundItem = ListOfItems.Where(_ => _ == item).FirstOrDefault();
-                foundItem.ChangeQuantity(item.Quantity);
+                foundItem.ChangeQuantityBy(item.Quantity);
             }
         }
 

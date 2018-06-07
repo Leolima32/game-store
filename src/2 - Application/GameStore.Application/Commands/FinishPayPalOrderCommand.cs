@@ -8,7 +8,7 @@ namespace GameStore.Application.Commands
     public class FinishPayPalOrderCommand: Notifiable
     {
         public Guid UserId { get; private set; }
-        private IList<CartItem> _listOfItems = new List<CartItem>();
+        public IList<CartItem> ListOfItems = new List<CartItem>();
 
         public string FirstName { get; set; }
         public string LastName { get; set; }

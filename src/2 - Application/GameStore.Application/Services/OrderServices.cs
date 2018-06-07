@@ -21,35 +21,25 @@ namespace GameStore.Application.Services
 
         public CommandResult FinishCreditCardOrder(FinishCreditCardOrderCommand command)
         {
-            command.Validate();
-            if (command.Invalid)
-            {
-                AddNotifications(command);
-                return new CommandResult(false, "Can't finish the order request.");
-            }
+            var email = new Email(command.Email);
 
-            //var name = new PersonName(command.FirstName, command.LastName);
-            //var email = new Email(command.Email);
-
-            //// Gerar as Entidades
-            //var payment = new CreditCardPayment(
-            //    command.CardHolderName,
-            //    command.CardNumber,
-            //    command.LastTransactionNumber,
-            //    command.PaidDate,
-            //    command.ExpireDate,
-            //    command.Total,
-            //    command.TotalPaid,
-            //    command.Payer,
-            //    email);
+            var payment = new CreditCardPayment(
+               command.CardHolderName,
+               command.CardNumber,
+               command.PaidDate,
+               command.ExpireDate,
+               command.Total,
+               command.TotalPaid,
+               command.Payer,
+               email);
 
             var cart = new ShoppingCart(command.UserId,command.ListOfItems);
 
-            var order = new Order(command.UserId, cart);
+            var order = new Order(command.UserId, cart, payment);
 
-            //AddNotifications(name, email, payment);
+            order.AddNonconformity(payment, cart);
 
-            if (Invalid)
+            if (order.IsInvalid)
                 return new CommandResult(false, "Can't finish the order request.");
 
             _unit.Orders.CreateOrder(order);
@@ -57,9 +47,31 @@ namespace GameStore.Application.Services
             return new CommandResult(true, "Order finished with success.");
         }
 
-        public CommandResult FinishPayPalOrder(FinishPayPalOrderCommand order)
+        public CommandResult FinishPayPalOrder(FinishPayPalOrderCommand command)
         {
-            throw new NotImplementedException();
+            var email = new Email(command.Email);
+
+            var payment = new PayPalPayment(
+               command.TransactionCode,
+               command.PaidDate,
+               command.ExpireDate,
+               command.Total,
+               command.TotalPaid,
+               command.Payer,
+               email);
+
+            var cart = new ShoppingCart(command.UserId,command.ListOfItems);
+
+            var order = new Order(command.UserId, cart, payment);
+
+            order.AddNonconformity(payment, cart);
+
+            if (order.IsInvalid)
+                return new CommandResult(false, "Can't finish the order request.");
+
+            _unit.Orders.CreateOrder(order);
+
+            return new CommandResult(true, "Order finished with success.");
         }
     }
 }

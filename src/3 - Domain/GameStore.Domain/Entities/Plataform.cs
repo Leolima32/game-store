@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using GameStore.Domain.Entities.Common;
 using GameStore.Domain.Entities.ReleationshipEntities;
+using GameStore.Domain.ValueObjects;
 
 namespace GameStore.Domain.Entities
 {
@@ -13,6 +14,9 @@ namespace GameStore.Domain.Entities
         public Plataform(string name)
         {
             Name = name;
+
+            if (String.IsNullOrEmpty(name))
+                AddNonconformity(new Nonconformity("plataform.name", "Plataform Name cannot be null or empty."));
         }
 
         public string Name { get; private set; }

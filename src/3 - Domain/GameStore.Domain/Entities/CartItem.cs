@@ -1,23 +1,20 @@
 ﻿using GameStore.Domain.Entities.Common;
 using GameStore.Domain.Exceptions;
+using GameStore.Domain.ValueObjects;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace GameStore.Domain.Entities
 {
-    public class CartItem: BaseEntity
+    public class CartItem : BaseEntity
     {
         protected CartItem() { }
         public CartItem(Product product, int quantity)
         {
-            if (product != null && quantity >= 0)
-            {
-                Product = product;
-                Quantity = quantity;
-            }
-            else
-            {
-                throw new InvalidParameters();
-            }
+            Product = product;
+            Quantity = quantity;
+
+            if (product is null)
+                AddNonconformity(new Nonconformity("cartItem.product", "Product cannot be null."));
         }
 
         public Product Product { get; private set; }
@@ -53,7 +50,7 @@ namespace GameStore.Domain.Entities
             }
         }
 
-        public void ChangeQuantity(int value)
+        public void ChangeQuantityBy(int value)
         {
             //increase quantity by value
             Quantity += value;

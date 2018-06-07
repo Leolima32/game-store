@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
 using GameStore.Domain.ValueObjects;
 
 namespace GameStore.Domain.Entities.Common
@@ -25,6 +26,13 @@ namespace GameStore.Domain.Entities.Common
 
         public void AddNonconformity(Nonconformity nonconformity) {
             Nonconformities.Add(nonconformity);
+        }
+
+        public void AddNonconformity(params BaseEntity[] baseEntities) {
+            foreach (var item in baseEntities)
+            {
+                Nonconformities.Concat(item.Nonconformities);
+            }
         }
     }
 }

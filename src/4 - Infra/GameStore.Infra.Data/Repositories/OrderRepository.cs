@@ -13,7 +13,8 @@ namespace GameStore.Infra.Data.Repositories
         }
         public void CreateOrder(Order order)
         {
-            
+            _db.Orders.Add(order);
+            _db.SaveChanges();
         }
     }
 }
