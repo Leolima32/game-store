@@ -10,6 +10,7 @@ namespace GameStore.Domain.Entities
 {
     public class Genre : BaseEntity
     {
+        protected Genre () { }
         public Genre(string name)
         {
             Name = name;

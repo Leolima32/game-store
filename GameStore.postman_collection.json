@@ -1,31 +1,47 @@
 {
-	"variables": [],
 	"info": {
+		"_postman_id": "978296f7-5391-44cc-b969-09997c588128",
 		"name": "GameStore",
-		"_postman_id": "1c684c81-1129-8e1b-2c13-9b2e99fd051a",
-		"description": "",
-		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
 			"name": "Games",
-			"description": "",
+			"description": null,
 			"item": [
 				{
 					"name": "Add games",
 					"request": {
-						"url": "{{URL}}/api/games",
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJBZG1pbiIsImp0aSI6IjNiMGRlN2Q3LTRmOGUtNGVjMS1hZjY2LTg1OTQ1ZGQ5ODUwZiIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWVpZGVudGlmaWVyIjoiZGE3MGZhYzMtZmUxNC00NWIzLWJmYWItZDczNTMwZTA1M2EwIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiQWRtaW4iLCJleHAiOjE1MzEwNzE0NTUsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6NjMzNzYiLCJhdWQiOiJhcGktdXNlciJ9.nBhdILqL_4vOoRkbcZ_ZrZzlKtVWc4iqulrc4uBy4d4",
+									"type": "string"
+								}
+							]
+						},
 						"method": "POST",
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"name\": \"Tomb Raider\",\n    \"releaseDate\": \"2013-03-05T00:00:00\",\n    \"score\": 8.4,\n    \"price\": 59.99,\n    \"description\": \"Tomb Raider é um videojogo de ação-aventura, décimo título da série Tomb Raider e o quinto produzido pela Crystal Dynamics. Foi publicado pela Square Enix em 5 de Março de 2013 para Microsoft Windows, PlayStation 3 e Xbox 360\",\n    \"shortDescription\": \"Tomb Raider é um videojogo\",\n    \"imageUrl\": \"http://localhost/gamestore/images/ffxv.jpg\",\n    \"gameDevelopers\": [{\"DeveloperId\":\"3a332845-6a75-48f9-b7bf-5427570f8d9a\"}],\n    \"gamePublishers\": [{\"PublisherId\":\"3a332845-6a75-48f9-b7bf-5427570f8d9a\"}],\n    \"gameGenres\" : [{\"GenreId\":\"8a2593d7-7ae1-4a0a-89e4-a9aaeaba8074\"},\n    \t\t\t\t{\"GenreId\":\"089345b7-8ee8-4290-b840-5d0e20aba317\"}],\n    \"gamePlataforms\" : [{\"PlataformId\":\"d64c2f9d-7a4e-423d-bc1c-28f50387b3ad\"},\n    \t\t\t\t{\"PlataformId\":\"16df4c17-7f30-4fff-a90e-b379eb720f3f\"}]\n}"
+							"raw": "{\n\t\"name\": \"Tomb Raider\",\n    \"releaseDate\": \"2013-03-05T00:00:00\",\n    \"score\": 8.4,\n    \"price\": 59.99,\n    \"description\": \"Tomb Raider é um videojogo de ação-aventura, décimo título da série Tomb Raider e o quinto produzido pela Crystal Dynamics. Foi publicado pela Square Enix em 5 de Março de 2013 para Microsoft Windows, PlayStation 3 e Xbox 360\",\n    \"shortDescription\": \"Tomb Raider é um videojogo\",\n    \"imageUrl\": \"http://localhost/gamestore/images/ffxv.jpg\",\n    \"gameDevelopers\": [{\"DeveloperId\":\"CF3B03F4-C8E3-4BFD-8049-F062D9D284B3\"}],\n    \"gamePublishers\": [{\"PublisherId\":\"CF3B03F4-C8E3-4BFD-8049-F062D9D284B3\"}],\n    \"gameGenres\" : [{\"GenreId\":\"2F9C2551-643C-4EAB-BBF7-E39D1AADDB19\"},\n    \t\t\t\t{\"GenreId\":\"2BFC07A6-1E89-40A8-A329-24A33386BFB7\"}],\n    \"gamePlataforms\" : [{\"PlataformId\":\"752C8964-6317-4C8F-8A61-46FC2D387499\"},\n    \t\t\t\t{\"PlataformId\":\"19EFC320-7EAA-4C60-9E15-84B9A213307F\"}]\n}"
+						},
+						"url": {
+							"raw": "{{URL}}/api/games",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"games"
+							]
 						},
 						"description": "Add new games"
 					},
@@ -34,18 +50,26 @@
 				{
 					"name": "Update games",
 					"request": {
-						"url": "{{URL}}/api/games",
 						"method": "PUT",
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n\t\"id\":\"bc0e9cdc-709d-43bb-e315-08d58787302f\",\n\t\"name\": \"TESTE\",\n    \"releaseDate\": \"2013-03-05T00:00:00\",\n    \"score\": 9.3,\n    \"price\": 59.99,\n    \"description\": \"Tomb Raider é um videojogo de ação-aventura, décimo título da série Tomb Raider e o quinto produzido pela Crystal Dynamics. Foi publicado pela Square Enix em 5 de Março de 2013 para Microsoft Windows, PlayStation 3 e Xbox 360\",\n    \"shortDescription\": \"Tomb Raider é um videojogo\",\n    \"imageUrl\": \"http://localhost/gamestore/images/ffxv.jpg\",\n    \"gameDevelopers\": [{\"DeveloperId\":\"3a332845-6a75-48f9-b7bf-5427570f8d9a\"}],\n    \"gamePublishers\": [{\"PublisherId\":\"3a332845-6a75-48f9-b7bf-5427570f8d9a\"}],\n    \"gameGenres\" : [{\"GenreId\":\"8a2593d7-7ae1-4a0a-89e4-a9aaeaba8074\"},\n    \t\t\t\t{\"GenreId\":\"089345b7-8ee8-4290-b840-5d0e20aba317\"}],\n    \"gamePlataforms\" : [{\"PlataformId\":\"d64c2f9d-7a4e-423d-bc1c-28f50387b3ad\"},\n    \t\t\t\t{\"PlataformId\":\"16df4c17-7f30-4fff-a90e-b379eb720f3f\"}]\n}"
+						},
+						"url": {
+							"raw": "{{URL}}/api/games",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"games"
+							]
 						},
 						"description": "update games"
 					},
@@ -54,10 +78,22 @@
 				{
 					"name": "Get all games",
 					"request": {
-						"url": "{{URL}}/api/games",
 						"method": "GET",
 						"header": [],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{URL}}/api/games",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"games"
+							]
+						},
 						"description": "Get all games"
 					},
 					"response": []
@@ -65,12 +101,22 @@
 				{
 					"name": "Delete Game",
 					"request": {
-						"url": "{{URL}}/api/games/bc0e9cdc-709d-43bb-e315-08d58787302f",
 						"method": "DELETE",
 						"header": [],
 						"body": {
 							"mode": "raw",
 							"raw": ""
+						},
+						"url": {
+							"raw": "{{URL}}/api/games/bc0e9cdc-709d-43bb-e315-08d58787302f",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"games",
+								"bc0e9cdc-709d-43bb-e315-08d58787302f"
+							]
 						},
 						"description": "Delete one game"
 					},
@@ -79,11 +125,23 @@
 				{
 					"name": "Get game by id",
 					"request": {
-						"url": "{{URL}}/api/games/bc0e9cdc-709d-43bb-e315-08d58787302f",
 						"method": "GET",
 						"header": [],
-						"body": {},
-						"description": ""
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{URL}}/api/games/bc0e9cdc-709d-43bb-e315-08d58787302f",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"games",
+								"bc0e9cdc-709d-43bb-e315-08d58787302f"
+							]
+						}
 					},
 					"response": []
 				}
@@ -91,23 +149,31 @@
 		},
 		{
 			"name": "Companies",
-			"description": "",
+			"description": null,
 			"item": [
 				{
 					"name": "Add company",
 					"request": {
-						"url": "{{URL}}/api/companies",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n\t\"name\": \"Sony\",\n    \"fouded\": \"2013-03-05T00:00:00\",\n    \"country\": \"Japan\"\n}"
+						},
+						"url": {
+							"raw": "{{URL}}/api/companies",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"companies"
+							]
 						},
 						"description": "Add new games"
 					},
@@ -116,18 +182,26 @@
 				{
 					"name": "Update company",
 					"request": {
-						"url": "{{URL}}/api/companies",
 						"method": "PUT",
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n\t\"id\":\"809c535b-bff0-4e9b-9166-08d5878cdbf8\",\n\t\"name\": \"TESTE\",\n    \"fouded\": \"2013-03-05T00:00:00\",\n    \"country\": \"Japan\"\n}"
+						},
+						"url": {
+							"raw": "{{URL}}/api/companies",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"companies"
+							]
 						},
 						"description": "update games"
 					},
@@ -136,10 +210,22 @@
 				{
 					"name": "Get all companies",
 					"request": {
-						"url": "{{URL}}/api/companies",
 						"method": "GET",
 						"header": [],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{URL}}/api/companies",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"companies"
+							]
+						},
 						"description": "Get all games"
 					},
 					"response": []
@@ -147,12 +233,22 @@
 				{
 					"name": "Delete company",
 					"request": {
-						"url": "{{URL}}/api/companies/809c535b-bff0-4e9b-9166-08d5878cdbf8",
 						"method": "DELETE",
 						"header": [],
 						"body": {
 							"mode": "raw",
 							"raw": ""
+						},
+						"url": {
+							"raw": "{{URL}}/api/companies/809c535b-bff0-4e9b-9166-08d5878cdbf8",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"companies",
+								"809c535b-bff0-4e9b-9166-08d5878cdbf8"
+							]
 						},
 						"description": "Delete one game"
 					},
@@ -161,11 +257,23 @@
 				{
 					"name": "Get company by id",
 					"request": {
-						"url": "{{URL}}/api/companies/4cb6f093-ad07-461c-a06e-2397c085da24",
 						"method": "GET",
 						"header": [],
-						"body": {},
-						"description": ""
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{URL}}/api/companies/4cb6f093-ad07-461c-a06e-2397c085da24",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"companies",
+								"4cb6f093-ad07-461c-a06e-2397c085da24"
+							]
+						}
 					},
 					"response": []
 				}
@@ -173,23 +281,31 @@
 		},
 		{
 			"name": "Genres",
-			"description": "",
+			"description": null,
 			"item": [
 				{
 					"name": "Add genre",
 					"request": {
-						"url": "{{URL}}/api/genres",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n\t\"name\": \"RTS\",\n    \"description\": \"Real time strategy and action. \"\n}"
+						},
+						"url": {
+							"raw": "{{URL}}/api/genres",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"genres"
+							]
 						},
 						"description": "Add new games"
 					},
@@ -198,18 +314,26 @@
 				{
 					"name": "Update genre",
 					"request": {
-						"url": "{{URL}}/api/genres",
 						"method": "PUT",
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n\t\"id\":\"AC8985F3-B833-4338-BE08-08D566815411\",\n\t\"name\": \"RTS\",\n    \"description\": \"Real time strategy and action. \"\n}"
+						},
+						"url": {
+							"raw": "{{URL}}/api/genres",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"genres"
+							]
 						},
 						"description": "update games"
 					},
@@ -218,10 +342,22 @@
 				{
 					"name": "Get all genres",
 					"request": {
-						"url": "{{URL}}/api/genres",
 						"method": "GET",
 						"header": [],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{URL}}/api/genres",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"genres"
+							]
+						},
 						"description": "Get all games"
 					},
 					"response": []
@@ -229,12 +365,21 @@
 				{
 					"name": "Delete genre",
 					"request": {
-						"url": "{{URL}}/api/genres",
 						"method": "DELETE",
 						"header": [],
 						"body": {
 							"mode": "raw",
 							"raw": ""
+						},
+						"url": {
+							"raw": "{{URL}}/api/genres",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"genres"
+							]
 						},
 						"description": "Delete one game"
 					},
@@ -243,11 +388,23 @@
 				{
 					"name": "Get genre by id",
 					"request": {
-						"url": "{{URL}}/api/genres/faad5629-9fd8-4208-2315-08d5878e059e",
 						"method": "GET",
 						"header": [],
-						"body": {},
-						"description": ""
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{URL}}/api/genres/faad5629-9fd8-4208-2315-08d5878e059e",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"genres",
+								"faad5629-9fd8-4208-2315-08d5878e059e"
+							]
+						}
 					},
 					"response": []
 				}
@@ -255,23 +412,31 @@
 		},
 		{
 			"name": "Plataforms",
-			"description": "",
+			"description": null,
 			"item": [
 				{
 					"name": "Add plataform",
 					"request": {
-						"url": "{{URL}}/api/plataforms",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n\t\"name\": \"Atari\"\n}"
+						},
+						"url": {
+							"raw": "{{URL}}/api/plataforms",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"plataforms"
+							]
 						},
 						"description": "Add new games"
 					},
@@ -280,18 +445,26 @@
 				{
 					"name": "Update plataform",
 					"request": {
-						"url": "{{URL}}/api/plataforms",
 						"method": "PUT",
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n\t\"id\":\"AC8985F3-B833-4338-BE08-08D566815411\",\n\t\"name\": \"Atari\"\n}"
+						},
+						"url": {
+							"raw": "{{URL}}/api/plataforms",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"plataforms"
+							]
 						},
 						"description": "update games"
 					},
@@ -300,10 +473,22 @@
 				{
 					"name": "Get all plataforms",
 					"request": {
-						"url": "{{URL}}/api/plataforms",
 						"method": "GET",
 						"header": [],
-						"body": {},
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{URL}}/api/plataforms",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"plataforms"
+							]
+						},
 						"description": "Get all games"
 					},
 					"response": []
@@ -311,12 +496,21 @@
 				{
 					"name": "Delete plataform",
 					"request": {
-						"url": "{{URL}}/api/plataforms",
 						"method": "DELETE",
 						"header": [],
 						"body": {
 							"mode": "raw",
 							"raw": ""
+						},
+						"url": {
+							"raw": "{{URL}}/api/plataforms",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"plataforms"
+							]
 						},
 						"description": "Delete one game"
 					},
@@ -325,11 +519,23 @@
 				{
 					"name": "Get plataform by id",
 					"request": {
-						"url": "{{URL}}/api/plataforms/4cb6f093-ad07-461c-a06e-2397c085da24",
 						"method": "GET",
 						"header": [],
-						"body": {},
-						"description": ""
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{URL}}/api/plataforms/4cb6f093-ad07-461c-a06e-2397c085da24",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"plataforms",
+								"4cb6f093-ad07-461c-a06e-2397c085da24"
+							]
+						}
 					},
 					"response": []
 				}
@@ -337,25 +543,106 @@
 		},
 		{
 			"name": "Account",
-			"description": "",
+			"description": null,
 			"item": [
 				{
 					"name": "Login",
 					"request": {
-						"url": "{{URL}}/api/account/login",
 						"method": "POST",
 						"header": [
 							{
 								"key": "Content-Type",
-								"value": "application/json",
-								"description": ""
+								"value": "application/json"
 							}
 						],
 						"body": {
 							"mode": "raw",
 							"raw": "{\n\t\"userName\": \"Admin\",\n\t\"password\": \"Admin123*\"\n}"
 						},
-						"description": ""
+						"url": {
+							"raw": "{{URL}}/api/account/login",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"account",
+								"login"
+							]
+						},
+						"description": "For Costumer User\n{\n\t\"userName\": \"RandomCustomer\",\n\t\"password\": \"R@mdonUs3r\"\n}\nFor Admin User \n{\n\t\"userName\": \"Admin\",\n\t\"password\": \"Admin123*\"\t\n}"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Orders",
+			"description": "",
+			"item": [
+				{
+					"name": "Finish Credit Card Order",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"listOfItems\": [\r\n    {\r\n\t\t\"id\":\t\"E379B0D1-409C-474F-8F5E-08D5CD6B5B2C\"\r\n    }\r\n  ],\r\n  \"firstName\": \"string\",\r\n  \"lastName\": \"string\",\r\n  \"document\": \"string\",\r\n  \"email\": \"string\",\r\n  \"cardHolderName\": \"string\",\r\n  \"cardNumber\": \"string\",\r\n  \"lastTransactionNumber\": \"string\",\r\n  \"paymentNumber\": \"string\",\r\n  \"paidDate\": \"2018-06-08T18:55:08.916Z\",\r\n  \"expireDate\": \"2018-06-08T18:55:08.916Z\",\r\n  \"total\": 0,\r\n  \"totalPaid\": 0,\r\n  \"payer\": \"string\",\r\n  \"payerDocument\": \"string\",\r\n  \"payerEmail\": \"string\"\r\n}"
+						},
+						"url": {
+							"raw": "{{URL}}/api/orders/finishcreditcardorder",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"orders",
+								"finishcreditcardorder"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Finish PayPal Order",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJSYW5kb21DdXN0b21lciIsImp0aSI6IjBiNTUzZDhmLTEzNDYtNGQwYS1hNzU5LWFjNmIwNGNhMTA4NiIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWVpZGVudGlmaWVyIjoiZjAxNzYzMmYtZWI5Yi00NzUxLWE0NGUtNTkyOGIxNTBlMTZjIiwiaHR0cDovL3NjaGVtYXMubWljcm9zb2Z0LmNvbS93cy8yMDA4LzA2L2lkZW50aXR5L2NsYWltcy9yb2xlIjoiQ3VzdG9tZXIiLCJleHAiOjE1MzEwNzY3OTAsImlzcyI6Imh0dHA6Ly9sb2NhbGhvc3Q6NjMzNzYiLCJhdWQiOiJhcGktdXNlciJ9.3jyVV0QuAjYQS8DHx-L-CCAWaluoYPFeoRZhB5CWy1s",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"listOfItems\": [\r\n    {\r\n\t\t\"id\":\t\"E379B0D1-409C-474F-8F5E-08D5CD6B5B2C\"\r\n    }\r\n  ],\r\n  \"firstName\": \"string\",\r\n  \"lastName\": \"string\",\r\n  \"document\": \"string\",\r\n  \"email\": \"string\",\r\n  \"transactionCode\": \"string\",\r\n  \"paymentNumber\": \"string\",\r\n  \"paidDate\": \"2018-06-08T19:14:44.998Z\",\r\n  \"expireDate\": \"2018-06-08T19:14:44.998Z\",\r\n  \"total\": 0,\r\n  \"totalPaid\": 0,\r\n  \"payer\": \"string\",\r\n  \"payerDocument\": \"string\",\r\n  \"payerEmail\": \"string\"\r\n}"
+						},
+						"url": {
+							"raw": "{{URL}}/api/orders/finishpaypalorder",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"orders",
+								"finishpaypalorder"
+							]
+						}
 					},
 					"response": []
 				}

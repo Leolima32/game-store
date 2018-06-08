@@ -9,11 +9,11 @@ using System;
 namespace GameStore.UI.WebApi.Controllers
 {
     [Route("api/[controller]/[action]")]
-    public class OrderController : Controller
+    public class OrdersController : Controller
     {
         private readonly UserManager<IdentityUser> _userManager;
         private IOrderServices _services;
-        public OrderController(IOrderServices services, UserManager<IdentityUser> userManager)
+        public OrdersController(IOrderServices services, UserManager<IdentityUser> userManager)
         {
             _services = services;
             _userManager = userManager;
@@ -21,7 +21,7 @@ namespace GameStore.UI.WebApi.Controllers
 
         [Authorize(Roles = "Customer")]
         [HttpPost]
-        public CommandResult FinishCreditCardOrder(FinishCreditCardOrderCommand order)
+        public CommandResult FinishCreditCardOrder([FromBody]FinishCreditCardOrderCommand order)
         {
             //todo create handler
             return _services.FinishCreditCardOrder(order, Guid.Parse(_userManager.GetUserId(HttpContext.User)));
@@ -29,7 +29,7 @@ namespace GameStore.UI.WebApi.Controllers
 
         [Authorize(Roles = "Customer")]
         [HttpPost]
-        public CommandResult FinishPayPalOrder(FinishPayPalOrderCommand order)
+        public CommandResult FinishPayPalOrder([FromBody]FinishPayPalOrderCommand order)
         {
             //todo create handler
             return _services.FinishPayPalOrder(order, Guid.Parse(_userManager.GetUserId(HttpContext.User)));

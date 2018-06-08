@@ -5,6 +5,7 @@ namespace GameStore.Domain.Entities.Common
 {
     public abstract class Product : BaseEntity
     {
+        protected Product() { }
         public Product(string name, EDepartment department, double price, string description, string shortDescription)
         {
             Name = name;

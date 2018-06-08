@@ -8,6 +8,7 @@ namespace GameStore.Domain.Entities
 {
     public class Game : Product
     {
+        protected Game() {}
         public Game(
             string name,
             string description,

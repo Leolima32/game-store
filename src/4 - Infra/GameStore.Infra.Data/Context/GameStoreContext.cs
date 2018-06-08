@@ -105,6 +105,5 @@ namespace GameStore.Infra.Data.Context
                 throw new InvalidOperationException("Error on seeding the database.");
             }           
         }
-
     }
 }
