@@ -5,9 +5,8 @@ using System.Collections.Generic;
 
 namespace GameStore.Application.Commands
 {
-    public class FinishCreditCardOrderCommand: Notifiable
+    public class FinishCreditCardOrderCommand
     {
-        public Guid UserId { get; set; }
         public IList<CartItem> ListOfItems { get; set; } = new List<CartItem>();
 
         public string FirstName { get; set; }

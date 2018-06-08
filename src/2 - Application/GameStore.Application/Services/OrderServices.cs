@@ -19,7 +19,7 @@ namespace GameStore.Application.Services
             _mapper = mapper;
         }
 
-        public CommandResult FinishCreditCardOrder(FinishCreditCardOrderCommand command)
+        public CommandResult FinishCreditCardOrder(FinishCreditCardOrderCommand command, Guid UserId)
         {
             var email = new Email(command.Email);
 
@@ -33,9 +33,9 @@ namespace GameStore.Application.Services
                command.Payer,
                email);
 
-            var cart = new ShoppingCart(command.UserId,command.ListOfItems);
+            var cart = new ShoppingCart(UserId ,command.ListOfItems);
 
-            var order = new Order(command.UserId, cart, payment);
+            var order = new Order(UserId, cart, payment);
 
             order.AddNonconformity(payment, cart);
 
@@ -47,7 +47,7 @@ namespace GameStore.Application.Services
             return new CommandResult(true, "Order finished with success.");
         }
 
-        public CommandResult FinishPayPalOrder(FinishPayPalOrderCommand command)
+        public CommandResult FinishPayPalOrder(FinishPayPalOrderCommand command, Guid UserId)
         {
             var email = new Email(command.Email);
 
@@ -60,9 +60,9 @@ namespace GameStore.Application.Services
                command.Payer,
                email);
 
-            var cart = new ShoppingCart(command.UserId,command.ListOfItems);
+            var cart = new ShoppingCart(UserId,command.ListOfItems);
 
-            var order = new Order(command.UserId, cart, payment);
+            var order = new Order(UserId, cart, payment);
 
             order.AddNonconformity(payment, cart);
 

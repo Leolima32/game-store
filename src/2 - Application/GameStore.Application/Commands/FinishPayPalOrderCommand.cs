@@ -5,9 +5,8 @@ using System.Collections.Generic;
 
 namespace GameStore.Application.Commands
 {
-    public class FinishPayPalOrderCommand: Notifiable
+    public class FinishPayPalOrderCommand
     {
-        public Guid UserId { get; private set; }
         public IList<CartItem> ListOfItems = new List<CartItem>();
 
         public string FirstName { get; set; }
