@@ -8,7 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Xunit;
 
-namespace GameStore.Tests
+namespace GameStore.Tests.Queries
 {
     public class GameSelectsTests
     {
