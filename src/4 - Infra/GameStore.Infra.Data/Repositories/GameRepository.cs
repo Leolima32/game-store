@@ -10,10 +10,10 @@ using System;
 
 namespace GameStore.Infra.Data.Repositories
 {
-    public class FakeRepository : Repository<Game>, IGameRepository
+    public class GameRepository : Repository<Game>, IGameRepository
     {
         private GameStoreContext _db;
-        public FakeRepository(GameStoreContext db) : base(db)
+        public GameRepository(GameStoreContext db) : base(db)
         {
             _db = db;
         }

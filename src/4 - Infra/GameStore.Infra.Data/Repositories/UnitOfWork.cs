@@ -24,7 +24,7 @@ namespace GameStore.Infra.Data.Repositories
             {
                 if (_gameRepository == null)
                 {
-                    _gameRepository = new FakeRepository(_db);
+                    _gameRepository = new GameRepository(_db);
                 }
                 return _gameRepository;
             }
