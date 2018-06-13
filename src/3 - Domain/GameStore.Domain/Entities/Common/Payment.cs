@@ -25,11 +25,13 @@ namespace GameStore.Domain.Entities.Common
             if(TotalPaid < Total)
                 AddNonconformity(new Nonconformity("payment.totalPaid", "total paid cannot be less than total value."));
 
-            if(email is null)
+            if(Email is null)
                 AddNonconformity(new Nonconformity("payment.email","email cannot be null."));
             
-            if(expireDate < DateTime.Today)
+            if(ExpireDate < DateTime.Today)
                 AddNonconformity(new Nonconformity("payment.expireDate","the date limit for this payment is already expired."));
+
+            AddNonconformity(Email);
         }
 
         public string Number { get; private set; }

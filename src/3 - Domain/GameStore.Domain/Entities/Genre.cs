@@ -14,7 +14,7 @@ namespace GameStore.Domain.Entities
         public Genre(string name)
         {
             Name = name;
-            if (String.IsNullOrEmpty(name))
+            if (String.IsNullOrEmpty(Name))
                 AddNonconformity(new Nonconformity("genre.name", "Genre Name cannot be null."));
         }
 

@@ -15,7 +15,7 @@ namespace GameStore.Domain.Entities
         {
             Name = name;
 
-            if (String.IsNullOrEmpty(name))
+            if (String.IsNullOrEmpty(Name))
                 AddNonconformity(new Nonconformity("plataform.name", "Plataform Name cannot be null or empty."));
         }
 

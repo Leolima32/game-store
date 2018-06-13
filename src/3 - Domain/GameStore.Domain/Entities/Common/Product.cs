@@ -14,9 +14,9 @@ namespace GameStore.Domain.Entities.Common
             Description = description;
             ShortDescription = shortDescription;
 
-            if (string.IsNullOrEmpty(name))
+            if (string.IsNullOrEmpty(Name))
                 AddNonconformity(new Nonconformity("product.name", "Name cannot be null or empty"));
-            if (string.IsNullOrEmpty(description))
+            if (string.IsNullOrEmpty(Description))
                 AddNonconformity(new Nonconformity("product.description", "Description cannot be null or empty"));
             if(Price <= 0)
                 AddNonconformity(new Nonconformity("product.price","Price cannot be 0 or a negative number"));

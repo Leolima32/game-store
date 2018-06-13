@@ -34,5 +34,12 @@ namespace GameStore.Domain.Entities.Common
                 Nonconformities.Concat(item.Nonconformities);
             }
         }
+
+        public void AddNonconformity(params ValueObject[] baseEntities) {
+            foreach (var item in baseEntities)
+            {
+                Nonconformities.Concat(item.Nonconformities);
+            }
+        }
     }
 }

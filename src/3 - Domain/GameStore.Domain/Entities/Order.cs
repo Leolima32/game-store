@@ -13,10 +13,12 @@ namespace GameStore.Domain.Entities
             ShoppingCart = shoppingCart;
             FormOfPayment = payment;
 
-            if (shoppingCart is null)
+            if (ShoppingCart is null)
                 AddNonconformity(new Nonconformity("order.shoppingCart", "Shopping Cart cannot be empty to issue an order."));
-            if (payment is null)
+            if (FormOfPayment is null)
                 AddNonconformity(new Nonconformity("order.payment", "Any order should have a least one method of payment."));
+
+            AddNonconformity(ShoppingCart,FormOfPayment);
         }
 
         public Guid UserId { get; private set; }
