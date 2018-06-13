@@ -5,6 +5,7 @@ using Xunit;
 
 namespace GameStore.Tests.Entities {
     public class CompanyTests {
+        
         [Fact]
         public void ShouldReturnErrorWhenFantasyNameIsNull() {
             var fakeCompanyName = new CompanyName("");

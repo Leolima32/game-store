@@ -15,6 +15,9 @@ namespace GameStore.Domain.Entities
 
             if (product is null)
                 AddNonconformity(new Nonconformity("cartItem.product", "Product cannot be null."));
+
+            if (quantity < 0)
+                AddNonconformity(new Nonconformity("cartItem.quantity", "Quantity cannot be negative."));
         }
 
         public Product Product { get; private set; }
