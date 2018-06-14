@@ -9,36 +9,41 @@ namespace GameStore.Domain.Entities.Common
 
     public abstract class BaseEntity
     {
-        
+
         [NotMapped]
-        public IList<Nonconformity> Nonconformities  { get; private set; } = new List<Nonconformity>(); 
+        public IList<Nonconformity> Nonconformities { get; private set; } = new List<Nonconformity>();
         [NotMapped]
         public bool IsInvalid { get { return Nonconformities.Count > 0; } }
         [NotMapped]
-        public bool IsValid { get {return Nonconformities.Count == 0; } }
+        public bool IsValid { get { return Nonconformities.Count == 0; } }
 
         public BaseEntity() { Id = Guid.NewGuid(); }
 
         public Guid Id { get; private set; }
-        public DateTime CreatedDate{ get; private set; }
+        public DateTime CreatedDate { get; private set; }
         public DateTime LastUpdated { get; private set; }
         public bool Active { get; private set; }
 
-        public void AddNonconformity(Nonconformity nonconformity) {
+        public void AddNonconformity(Nonconformity nonconformity)
+        {
             Nonconformities.Add(nonconformity);
         }
 
-        public void AddNonconformity(params BaseEntity[] baseEntities) {
+        public void AddNonconformity(params BaseEntity[] baseEntities)
+        {
             foreach (var item in baseEntities)
             {
-                Nonconformities.Concat(item.Nonconformities);
+                if (item != null)
+                    Nonconformities.Concat(item.Nonconformities);
             }
         }
 
-        public void AddNonconformity(params ValueObject[] baseEntities) {
+        public void AddNonconformity(params ValueObject[] baseEntities)
+        {
             foreach (var item in baseEntities)
             {
-                Nonconformities.Concat(item.Nonconformities);
+                if (item != null)
+                    Nonconformities.Concat(item.Nonconformities);
             }
         }
     }
