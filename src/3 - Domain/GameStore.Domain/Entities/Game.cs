@@ -16,13 +16,15 @@ namespace GameStore.Domain.Entities
             double score,
             EDepartment department,
             double price,
-            DateTime releaseDate
+            DateTime releaseDate,
+            int availableQuantity
            ) : base(
                 name,
                 department,
                 price,
                 description,
-                shortDescription)
+                shortDescription,
+                availableQuantity)
         {
             ReleaseDate = releaseDate;
             Score = score;

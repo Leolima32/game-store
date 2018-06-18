@@ -22,7 +22,7 @@ namespace GameStore.Tests.Mocks
             {
                 base._entities.Add(new Game("Fictional Tests", "New fictional game.",
                 "new fictional games.",
-                9.8, EDepartment.Game, 89.99, new DateTime(2018, 1, 1)));
+                9.8, EDepartment.Game, 89.99, new DateTime(2018, 1, 1),5));
             }
         }
 
