@@ -2,10 +2,11 @@
 using System.Linq;
 using System.Collections.Generic;
 using GameStore.Domain.Entities.Common;
+using GameStore.Domain.ValueObjects;
 
 namespace GameStore.Domain.Entities
 {
-    public class ShoppingCart: BaseEntity
+    public class ShoppingCart : BaseEntity
     {
         protected ShoppingCart() { }
         public Guid UserId { get; private set; }
@@ -28,6 +29,11 @@ namespace GameStore.Domain.Entities
 
         public void AddItem(CartItem item)
         {
+            if (!QuantityIsAvailableInStock(item)) {
+                AddNonconformity(new Nonconformity("shoppingCart.quantity", "Total quantity exceed the number available in stock."));
+                return;
+            }
+
             if (!AlreadyContainThisItem(item))
             {
                 _listOfItems.Add(item);
@@ -47,6 +53,12 @@ namespace GameStore.Domain.Entities
         public bool AlreadyContainThisItem(CartItem item)
         {
             return ListOfItems.Where(_ => _.Product == item.Product).Count() > 0;
+        }
+
+        public bool QuantityIsAvailableInStock(CartItem tryingToAddItem)
+        {
+            var existingCartItem = ListOfItems.Where(_ => _.Product == tryingToAddItem.Product).FirstOrDefault();
+            return (existingCartItem?.Quantity + tryingToAddItem.Quantity) < tryingToAddItem.Product.AvailableQuantity;
         }
 
     }
