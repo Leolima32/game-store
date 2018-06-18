@@ -3,8 +3,10 @@ using GameStore.Domain.Entities;
 using GameStore.Domain.ValueObjects;
 using Xunit;
 
-namespace GameStore.Tests.Entities {
-    public class CreditCardPaymentTests {
+namespace GameStore.Tests.Entities
+{
+    public class PaymentsTests
+    {
         [Fact]
         public void ShouldReturnErrorWhenPaymentDayIsExpired() {
             var payment = new CreditCardPayment(
@@ -35,6 +37,24 @@ namespace GameStore.Tests.Entities {
             Assert.True(payment.Nonconformities.Count == 1);
             Assert.Equal(payment.Nonconformities[0].Property, "payment.totalPaid");
             Assert.Equal(false, payment.IsValid);
+        }
+        
+        [Fact]
+        public void ShouldReturnErroWhenPayPalPaymentTransactionCodeIsNullOrEmpty()
+        {
+            var payment = new PayPalPayment(
+                string.Empty,
+                DateTime.Now,
+                DateTime.Now.AddDays(1),
+                6000,
+                6000,
+                "John Doe",
+                new Email("jd@email.com")
+            );
+
+            Assert.True(payment.Nonconformities.Count == 1);
+            Assert.Equal(payment.Nonconformities[0].Property, "payment.transactionCode");
+            Assert.Equal(false,payment.IsValid);
         }
     }
 }

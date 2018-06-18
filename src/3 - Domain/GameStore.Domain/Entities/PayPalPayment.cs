@@ -4,7 +4,7 @@ using System;
 
 namespace GameStore.Domain.Entities
 {
-    public class PayPalPayment: Payment
+    public class PayPalPayment : Payment
     {
         protected PayPalPayment() { }
         public PayPalPayment(
@@ -23,6 +23,11 @@ namespace GameStore.Domain.Entities
                 email)
         {
             TransactionCode = transactionCode;
+
+            if (String.IsNullOrEmpty(TransactionCode))
+            {
+                AddNonconformity(new Nonconformity("payment.transactionCode", "Transaction code cannot be null."));
+            }
         }
 
         public string TransactionCode { get; private set; }
