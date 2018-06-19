@@ -56,7 +56,10 @@ namespace GameStore.Domain.Entities
         public void ChangeQuantityBy(int value)
         {
             //increase quantity by value
-            Quantity += value;
+            if(Quantity + value > 0)
+                Quantity += value;
+            else
+                throw new CartItemQuantityCannotBeBelowZeroException();
         }
     }
 }

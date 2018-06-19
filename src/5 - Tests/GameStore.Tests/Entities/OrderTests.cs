@@ -12,7 +12,7 @@ namespace GameStore.Tests.Entities
     public class OrderTests
     {
         private FakeGameRepository _repository;
-        private IList<CartItem> listOfItens = new List<CartItem>();
+        private IList<CartItem> listOfItems = new List<CartItem>();
         private Payment payment;
 
         public OrderTests()
@@ -20,7 +20,7 @@ namespace GameStore.Tests.Entities
             _repository = new FakeGameRepository();
             for (int i = 0; i < 10; i++)
             {
-                listOfItens.Add(new CartItem(
+                listOfItems.Add(new CartItem(
                     _repository._entities.FirstOrDefault(),
                     1));
             }
@@ -50,7 +50,7 @@ namespace GameStore.Tests.Entities
         public void ShouldReturnErrorWhenPaymentIsNull()
         {
             var userGuid = Guid.NewGuid();
-            var shoppingCart = new ShoppingCart(userGuid, listOfItens);
+            var shoppingCart = new ShoppingCart(userGuid, listOfItems);
 
             var fakeOrder = new Order(new Guid(), shoppingCart, null);
 

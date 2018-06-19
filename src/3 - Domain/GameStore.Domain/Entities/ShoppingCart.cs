@@ -13,10 +13,15 @@ namespace GameStore.Domain.Entities
 
         private IList<CartItem> _listOfItems = new List<CartItem>();
 
+        public ShoppingCart(Guid userId, CartItem item)
+        {
+            UserId = userId;
+            AddItem(item);
+        }
         public ShoppingCart(Guid userId, IList<CartItem> listOfItems)
         {
             UserId = userId;
-            _listOfItems = listOfItems;
+            AddItem(listOfItems);
         }
 
         public IReadOnlyCollection<CartItem> ListOfItems
@@ -27,13 +32,34 @@ namespace GameStore.Domain.Entities
             }
         }
 
+        public void AddItem(IList<CartItem> listOfItems)
+        {
+            foreach (var item in listOfItems)
+            {
+                if (!QuantityIsAvailableInStock(item))
+                {
+                    AddNonconformity(new Nonconformity("shoppingCart.quantity", "Total quantity exceed the number available in stock."));
+                    return;
+                }
+                if (!AlreadyContainThisItem(item))
+                {
+                    _listOfItems.Add(item);
+                }
+                else
+                {
+                    var foundItem = ListOfItems.Where(_ => _.Product == item.Product).FirstOrDefault();
+                    foundItem.ChangeQuantityBy(item.Quantity);
+                }
+            }
+        }
+
         public void AddItem(CartItem item)
         {
-            if (!QuantityIsAvailableInStock(item)) {
+            if (!QuantityIsAvailableInStock(item))
+            {
                 AddNonconformity(new Nonconformity("shoppingCart.quantity", "Total quantity exceed the number available in stock."));
                 return;
             }
-
             if (!AlreadyContainThisItem(item))
             {
                 _listOfItems.Add(item);
@@ -58,7 +84,7 @@ namespace GameStore.Domain.Entities
         public bool QuantityIsAvailableInStock(CartItem tryingToAddItem)
         {
             var existingCartItem = ListOfItems.Where(_ => _.Product == tryingToAddItem.Product).FirstOrDefault();
-            return (existingCartItem?.Quantity + tryingToAddItem.Quantity) < tryingToAddItem.Product.AvailableQuantity;
+            return (existingCartItem?.Quantity ?? 0 + tryingToAddItem.Quantity) < tryingToAddItem.Product.AvailableQuantity;
         }
 
     }
