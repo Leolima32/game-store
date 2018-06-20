@@ -30,5 +30,25 @@ namespace GameStore.Domain.Entities.Common
         public string Description { get; private set; }
         public string ShortDescription { get; private set; }
         public string ImageUrl { get; private set; }
+
+        public void ChangeName(string name) {
+            Name = name;
+        }
+
+        public void ChangePrice(double price) {
+            Price = price;
+        }
+
+        public void ChangeAvailableQuantity(int quantity) {
+            AvailableQuantity = quantity;
+        }
+
+        public void ChangeDescription(string description) {
+            Description = description;
+        }
+
+        public void ChangeImageUrl(string imagePath) {
+            ImageUrl = imagePath;
+        }
     }
 }

@@ -33,5 +33,21 @@ namespace GameStore.Tests.Operations
             int countAfter = _repository._entities.Count;
             Assert.Equal(countAfter, countBefore - 1);
         }
+
+        [Fact]
+        public void ShouldUpdateGame() {
+            var game = _repository._entities.FirstOrDefault();
+            game.ChangeName("new super cool name");
+            _repository.Update(game);
+            Assert.True(_repository._entities.FirstOrDefault().Name == "new super cool name");
+        }
+
+        [Fact]
+        public void ShouldGetGameById() {
+            var game = _repository._entities.FirstOrDefault();
+            var id = game.Id;
+            var selectedGame = _repository.GetById(id);
+            Assert.Equal(game,selectedGame);
+        }
     }
 }
