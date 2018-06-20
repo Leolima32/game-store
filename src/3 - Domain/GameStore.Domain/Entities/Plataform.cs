@@ -22,5 +22,8 @@ namespace GameStore.Domain.Entities
         public string Name { get; private set; }
         public ICollection<GamePlataform> GamePlataforms { get; set; }
 
+        public void ChangeName(string name) {
+            Name = name;
+        }
     }
 }

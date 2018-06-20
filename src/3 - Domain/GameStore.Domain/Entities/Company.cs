@@ -28,5 +28,9 @@ namespace GameStore.Domain.Entities
 
         public ICollection<GameDeveloper> GameDevelopers { get; private set; }
         public ICollection<GamePublisher> GamePublishers { get; private set; }
+
+        public void ChangeName(string name) {
+            Name = new CompanyName(name);
+        }
     }
 }

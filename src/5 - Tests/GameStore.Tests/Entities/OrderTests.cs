@@ -18,7 +18,7 @@ namespace GameStore.Tests.Entities
         public OrderTests()
         {
             _repository = new FakeGameRepository();
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < 3; i++)
             {
                 listOfItems.Add(new CartItem(
                     _repository._entities.FirstOrDefault(),
@@ -34,7 +34,7 @@ namespace GameStore.Tests.Entities
                "John Doe",
                "123456789",
                DateTime.Now,
-               DateTime.Now.AddDays(-1),
+               DateTime.Now.AddDays(1),
                6000,
                6000,
                "John Doe",

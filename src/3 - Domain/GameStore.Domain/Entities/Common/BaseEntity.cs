@@ -34,7 +34,7 @@ namespace GameStore.Domain.Entities.Common
             foreach (var item in baseEntities)
             {
                 if (item != null)
-                    Nonconformities.Concat(item.Nonconformities);
+                    Nonconformities = Nonconformities.Concat(item.Nonconformities).ToList();
             }
         }
 
@@ -43,7 +43,7 @@ namespace GameStore.Domain.Entities.Common
             foreach (var item in baseEntities)
             {
                 if (item != null)
-                    Nonconformities.Concat(item.Nonconformities);
+                    Nonconformities = Nonconformities.Concat(item.Nonconformities).ToList();
             }
         }
     }
