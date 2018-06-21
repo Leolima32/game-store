@@ -1,0 +1,81 @@
+<div>
+  <nav class="navbar is-fixed-top has-shadow is-spaced" style="transition: all 0.3s ease 0s;">
+    <div class="container">
+      <div class="navbar-brand">
+        <a href="/" class="navbar-item router-link-exact-active is-active">
+          <i class="material-icons logo">videogame_asset</i>
+          <!-- <img src="https://mythril.nyc3.cdn.digitaloceanspaces.com/logo/1.png" alt="Mythril Logo"> -->
+        </a>
+        <div data-target="navMenuIndex" class="navbar-burger burger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+      <div id="navMenuIndex" class="navbar-menu">
+        <div class="navbar-start">
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a href="/games" class="navbar-link">
+              Games
+            </a>
+            <div class="navbar-dropdown">
+              <a href="/games" class="navbar-item">
+                Browse Games
+              </a>
+              <hr class="navbar-divider">
+              <a href="/reviews" class="navbar-item">
+                Reviews
+              </a>
+              <a href="/recommendations" class="navbar-item">
+                Recommendations
+              </a>
+            </div>
+          </div>
+          <div class="navbar-item has-dropdown is-hoverable">
+            <a href="#" class="navbar-link">
+              Community
+            </a>
+            <div class="navbar-dropdown">
+              <a href="/users" class="navbar-item">
+                Users
+              </a>
+              <hr class="navbar-divider">
+              <a href="/staff" class="navbar-item">
+                Staff
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="navbar-end">
+          <div class="navbar-item">
+            <div class="field is-grouped">
+              <p class="control has-icons-left is-hidden-touch">
+                <input placeholder="Search..." class="input nav-search" style="width: 200px;" type="text">
+                <span class="icon is-left">
+                  <i class="fas fa-search"></i>
+                </span>
+              </p>
+              <p class="control">
+                <a href="/login" class="button">
+                  <span class="icon is-small">
+                    <i class="fas fa-sign-in-alt"></i>
+                  </span>
+                  <span>Login</span>
+                </a>
+              </p>
+              <p class="control">
+                <a href="/register" class="button is-primary">
+                  <span class="icon">
+                    <i class="fas fa-user-plus"></i>
+                  </span>
+                  <span>Register</span>
+                </a>
+              </p>
+            </div>
+          </div>
+          <!---->
+        </div>
+      </div>
+    </div>
+  </nav>
+</div>
