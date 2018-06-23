@@ -15,16 +15,16 @@ import {
   animations: [
     trigger('carousel', [
       state('slide1', style({
-        background: '#186'
+        'background': 'url(../../../assets/images/hero/wall1.jpg)'
       })),
       state('slide2', style({
-        background: '#147'
+        'background': 'url(../../../assets/images/hero/wall2.png)'
       })),
       state('slide3', style({
-        background: '#900'
+        'background': 'url(../../../assets/images/hero/wall3.jpg)'
       })),
       state('slide4', style({
-        background: '#072'
+        'background': 'url(../../../assets/images/hero/wall4.jpg)'
       })),
       transition('slide1 => slide2', animate("500ms ease-in")),
       transition('slide2 => slide3', animate("500ms ease-in")),
