@@ -2,13 +2,52 @@
     height: 0.45rem;
     border-radius: 0;
 }
-
+.carousel-body {
+    position: relative;
+}
+.carousel-prev,.carousel-next {
+    cursor: pointer;
+        height: 45px;
+        width: 45px;
+        opacity: 0.5;
+        position: absolute;
+        top: 50%;
+}
+.carousel-prev {
+    left: 10px;
+}
+.carousel-next {
+    right: 10px;   
+}
 @media screen and (min-width: 700px) {
     .carousel-footer {
         padding: 3em 0;
-        background: rgba(0, 0, 3, 0.1)
+        background: rgba(0, 0, 5, 0.3)
     }
     .carousel-body {
         min-height: 30em;
+    }
+    .carousel-prev,.carousel-next {
+        cursor: pointer;
+        height: 65px;
+        width: 65px;
+        opacity: 0.5;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        -webkit-transition: opacity 0.2s ease-in-out;
+        -moz-transition: opacity 0.2s ease-in-out;
+        -ms-transition: opacity 0.2s ease-in-out;
+        -o-transition: opacity 0.2s ease-in-out;
+        transition: opacity 0.2s ease-in-out;
+    }
+    .carousel-prev:hover,.carousel-next:hover{
+        opacity: 1;
+    }
+    .carousel-prev {
+        left: 50px;
+    }
+    .carousel-next {
+        right: 50px;   
     }
 }
