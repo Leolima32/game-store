@@ -16,16 +16,20 @@ import {
   animations: [
     trigger('carousel', [
       state('slide1', style({
-        'background': 'url("{{imagePath}}")'
+        'background': 'url("{{imagePath}}")',
+        'background-size': 'cover'
       }), { params: { imagePath : '' } }),
       state('slide2', style({
-        'background': 'url("{{imagePath}}")'
+        'background': 'url("{{imagePath}}")',
+        'background-size': 'cover'
       }), { params: { imagePath : '' } }),
       state('slide3', style({
-        'background': 'url("{{imagePath}}")'
+        'background': 'url("{{imagePath}}")',
+        'background-size': 'cover'
       }), { params: { imagePath : '' } }),
       state('slide4', style({
-        'background': 'url("{{imagePath}}")'
+        'background': 'url("{{imagePath}}")',
+        'background-size': 'cover'
       }), { params: { imagePath : '' } }),
       transition('slide1 => slide2', animate("500ms ease-in")),
       transition('slide2 => slide3', animate("500ms ease-in")),
