@@ -1,0 +1,14 @@
+.carousel-progressbar {
+    height: 0.45rem;
+    border-radius: 0;
+}
+
+@media screen and (min-width: 700px) {
+    .carousel-footer {
+        padding: 3em 0;
+        background: rgba(0, 0, 3, 0.1)
+    }
+    .carousel-body {
+        min-height: 30em;
+    }
+}

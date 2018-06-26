@@ -1,12 +1,14 @@
-<section [@carousel]="{value: states[slideCounter], params: {imagePath: slides[slideCounter].imagePath }}" class="hero bg-home is-medium is-primary is-bold">
-  <div class="hero-body">
+<section [@carousel]="{value: states[slideCounter], params: {imagePath: slides[slideCounter].imagePath }}" class="hero carousel-body is-primary is-bold">
+  <div class="hero-body"></div>
+  <div class="legend-container hero-foot carousel-footer">
     <div class="container">
       <h1 class="title">
-        Primary bold title
+        {{slides[slideCounter].gameName}}
       </h1>
       <h2 class="subtitle">
-        Primary bold subtitle
+        {{slides[slideCounter].gameDescription}}
       </h2>
     </div>
   </div>
+  <progress class="progress carousel-progressbar is-primary" value="{{progessPercentage}}" max="100">15%</progress>
 </section>
