@@ -70,7 +70,15 @@ export class HeroComponent implements OnInit {
       else
         this.slideCounter = 0;
     }, 8000);
+  }
 
+  passSlideRight() {
+    this.slideCounter += 1
+    this.progessPercentage = 0;
+  }
 
+  passSlideLeft() {
+    this.slideCounter -= 1
+    this.progessPercentage = 0;
   }
 }

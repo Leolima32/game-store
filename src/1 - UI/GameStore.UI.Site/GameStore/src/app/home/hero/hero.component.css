@@ -7,17 +7,23 @@
 }
 .carousel-prev,.carousel-next {
     cursor: pointer;
-        height: 45px;
-        width: 45px;
-        opacity: 0.5;
-        position: absolute;
-        top: 50%;
+    height: 45px;
+    width: 45px;
+    opacity: 0.5;
+    position: absolute;
+    top: 100%;
+}
+.carousel-icon path {
+    fill: #000;
+}
+.carousel-prev:hover,.carousel-next:hover{
+    opacity: 1;
 }
 .carousel-prev {
-    left: 10px;
+    right: 50%;
 }
 .carousel-next {
-    right: 10px;   
+    left: 50%;
 }
 @media screen and (min-width: 700px) {
     .carousel-footer {
@@ -46,8 +52,13 @@
     }
     .carousel-prev {
         left: 50px;
+        right: unset;
     }
     .carousel-next {
-        right: 50px;   
+        right: 50px;
+        left: unset;
+    }
+    .carousel-icon path {
+        fill: #fff;
     }
 }
