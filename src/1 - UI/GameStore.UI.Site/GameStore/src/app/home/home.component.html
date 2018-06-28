@@ -1,11 +1,35 @@
 <gs-hero></gs-hero>
 <section class="section">
   <div class="container">
-    <p>
-      home works!
-    </p>
-    <ul *ngFor="let game of bestSellerGames">
-      <li>{{game?.name}}</li>
-    </ul>
+    <h2 class="title">Best Seller Games</h2>
+    <div class="columns is-multiline">
+      <div class="column is-one-quarter" *ngFor="let game of bestSellerGames">
+        <div class="card">
+          <div class="card-image">
+            <figure class="image is-4by3">
+              <img src="https://bulma.io/images/placeholders/1280x960.png" alt="Placeholder image">
+            </figure>
+          </div>
+          <div class="card-content best-seller-card-content">
+            <div class="media">
+              <div class="media-left">
+                <figure class="image is-48x48">
+                  <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
+                </figure>
+              </div>
+              <div class="media-content">
+                <p class="title is-4">{{game?.name}}</p>
+              </div>
+            </div>
+
+            <div class="content">
+              {{game?.shortDescription}}
+              <br>
+              <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
