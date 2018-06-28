@@ -13,7 +13,8 @@ export class HomeComponent implements OnInit {
   constructor(private gamesService: GamesService) { }
 
   ngOnInit() {
-    this.bestSellerGames = this.gamesService.bestSellerGames()
+      this.gamesService.bestSellerGames()
+      .subscribe(x => this.bestSellerGames = x)
   }
 
 }
