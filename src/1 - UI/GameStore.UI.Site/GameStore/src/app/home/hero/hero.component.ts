@@ -45,6 +45,8 @@ export class HeroComponent implements OnInit {
   states = ['slide1', 'slide2', 'slide3', 'slide4']
   slides: HeroSlide[] = new Array<HeroSlide>(4)
   progessPercentage: number = 0;
+  progressBarTimer: NodeJS.Timer;
+  sliderStateTimer: NodeJS.Timer;
 
   constructor() {
     //todo: create web service to feed the slides
@@ -52,33 +54,47 @@ export class HeroComponent implements OnInit {
     this.slides[1] = { gameName: 'Zelda: Breath of the Wild', gameDescription: 'Conversely to previous Legend of Zelda games, Breath of the Wild features a full open world, twelve times larger than the overworld in Twilight Princess', imagePath: '../../../assets/images/hero/wall2.png' }
     this.slides[2] = { gameName: 'Rise of the Tomb Raider', gameDescription: 'Rise of the Tomb Raider is an action-adventure video game developed by Crystal Dynamics. It is the sequel to the 2013 video game  ', imagePath: '../../../assets/images/hero/wall3.jpg' }
     this.slides[3] = { gameName: 'Fallout 4', gameDescription: 'Fallout 4 is a post-apocalyptic action role-playing video game developed by Bethesda Game Studios', imagePath: '../../../assets/images/hero/wall4.jpg' }
-    this.changeSlide()
+    this.setUpSlider()
   }
 
   ngOnInit() { }
 
+  increaseBarPercentage() {
+    this.progessPercentage += .23
+  }
+
   changeSlide() {
+    this.progessPercentage = 0;
+    if (this.states[this.slideCounter] != 'slide4')
+      this.slideCounter++
+    else
+      this.slideCounter = 0;
+  }
 
-    setInterval(() => {
-      this.progessPercentage += .2 
-    }, 11);
-
-    setInterval(() => {
-      this.progessPercentage = 0;
-      if (this.states[this.slideCounter] != 'slide4')
-        this.slideCounter++
-      else
-        this.slideCounter = 0;
-    }, 8000);
+  setUpSlider() {
+    this.progressBarTimer = setInterval(() => {
+      this.increaseBarPercentage()
+    }, 10);
+    this.sliderStateTimer = setInterval(() => {
+      this.changeSlide();
+    }, 7000);
   }
 
   passSlideRight() {
-    this.slideCounter += 1
+    this.slideCounter = (this.slideCounter != 3) ? this.slideCounter += 1 : 0
     this.progessPercentage = 0;
+    this.restartTimers()
   }
 
   passSlideLeft() {
-    this.slideCounter -= 1
+    this.slideCounter = (this.slideCounter != 0) ? this.slideCounter -= 1 : 3
     this.progessPercentage = 0;
+    this.restartTimers()
+  }
+
+  restartTimers() {
+    clearInterval(this.progressBarTimer)
+    clearInterval(this.sliderStateTimer)
+    this.setUpSlider()
   }
 }
