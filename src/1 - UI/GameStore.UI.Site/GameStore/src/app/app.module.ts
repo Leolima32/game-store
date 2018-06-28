@@ -9,20 +9,23 @@ import { HomeComponent } from './home/home.component';
 import { ROUTES } from "./app.routes";
 import { RouterModule } from '@angular/router';
 import { HeroComponent } from './home/hero/hero.component';
+import { GamesComponent } from './games/games.component';
+import { GamesService } from './games/games.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     HomeComponent,
-    HeroComponent
+    HeroComponent,
+    GamesComponent
   ],
   imports: [
     BrowserModule,
     RouterModule.forRoot(ROUTES),
     BrowserAnimationsModule
   ],
-  providers: [],
+  providers: [GamesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
