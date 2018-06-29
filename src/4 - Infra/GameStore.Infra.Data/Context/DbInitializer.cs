@@ -17,10 +17,10 @@ namespace GameStore.Infra.Data.Context
         UserManager<IdentityUser> _userManager, RoleManager<IdentityRole> _roleManager)
         {
             // Look for any games.
-            if (context.Games.Any())
-            {
-                return;   // DB has been seeded
-            }
+            // if (context.Games.Any())
+            // {
+            //     return;   // DB has been seeded
+            // }
 
             context.Database.EnsureDeleted();
             context.Database.EnsureCreated();
@@ -30,7 +30,6 @@ namespace GameStore.Infra.Data.Context
 
             await _roleManager.CreateAsync(role1);
             await _roleManager.CreateAsync(role2);
-
 
             var user1 = new IdentityUser() { UserName = "Admin", Email = "admin@admin.com" };
             var user2 = new IdentityUser() { UserName = "RandomCustomer", Email = "satisfiedcustomer@email.com" };
@@ -95,7 +94,8 @@ namespace GameStore.Infra.Data.Context
                 +"the empire of Niflheim. Noctis Lucis Caelum, heir to the Lucian throne, goes on"
                 +"a quest to retake his homeland and its magical Crystal ",
                 "an open world action role-playing video game developed and published by Square Enix",
-                9.8, EDepartment.Game, 89.99, new DateTime(2016,11,9), 10),
+                9.8, EDepartment.Game, 89.99, new DateTime(2016,11,9), 10) 
+                { ImageUrl = $"{Configuration["BaseUrl"]}images/ffxv.jpg"},
 
                 new Game("Grand Theft Auto V",
                 "The game is played from either a third-person or first-person"
@@ -103,7 +103,8 @@ namespace GameStore.Infra.Data.Context
                 +"three lead protagonists throughout single-player and switch between them both during "
                 +"and outside missions.",
                 "the single-player story follows three criminals and their efforts to commit "
-                +"heists while under pressure from a government agency.", 10, EDepartment.Game, 59.99, new DateTime(2013,9,17), 2),
+                +"heists while under pressure from a government agency.", 10, EDepartment.Game, 59.99, new DateTime(2013,9,17), 2)
+                { ImageUrl = $"{Configuration["BaseUrl"]}images/gtav.jpg"},
 
                 new Game("Child of light",
                 "The game's story takes place in the fictional land of Lemuria. "
@@ -111,7 +112,8 @@ namespace GameStore.Infra.Data.Context
                 +"must bring back the sun, the moon and the stars held captive "
                 +"by the Queen of the Night in order to return.",
                 " Aurora, a young girl from 1895 Austria, awakens on the lost fairytale", 
-                8.5, EDepartment.Game, 69.99, new DateTime(2014,4,29), 3),
+                8.5, EDepartment.Game, 69.99, new DateTime(2014,4,29), 3)
+                { ImageUrl = $"{Configuration["BaseUrl"]}images/childoflight.jpg"},
 
                 new Game("The Legend of Zelda: Breath of the Wild",
                 "The Legend of Zelda: Breath of the Wild is the nineteenth "
@@ -121,6 +123,7 @@ namespace GameStore.Infra.Data.Context
                 "The Legend of Zelda: Breath of the Wild was very highly received. "
                 +"It currently has a 98/100 on Metacritic, making it the highest scoring game this decade",
                 8.5, EDepartment.Game, 129.99, new DateTime(2014,4,29), 0)
+                { ImageUrl = $"{Configuration["BaseUrl"]}images/zelda.jpg"},
             };
             foreach (Game s in games)
             {
