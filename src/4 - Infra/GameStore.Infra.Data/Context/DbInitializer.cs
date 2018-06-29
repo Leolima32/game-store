@@ -16,13 +16,14 @@ namespace GameStore.Infra.Data.Context
         public static async Task Initialize(GameStoreContext context, IConfiguration Configuration,
         UserManager<IdentityUser> _userManager, RoleManager<IdentityRole> _roleManager)
         {
-            context.Database.EnsureDeleted();
-            context.Database.EnsureCreated();
             // Look for any games.
             if (context.Games.Any())
             {
                 return;   // DB has been seeded
             }
+
+            context.Database.EnsureDeleted();
+            context.Database.EnsureCreated();
 
             var role1 = new IdentityRole() { Name = "Admin" };
             var role2 = new IdentityRole() { Name = "Customer" };
