@@ -1,3 +1,7 @@
 .best-seller-card-content {
     height: 280px;
 }
+
+.card {
+    cursor: pointer;
+}

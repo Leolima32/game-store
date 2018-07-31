@@ -7,6 +7,8 @@ import { Observable } from "rxjs";
 @Injectable()
 export class GamesService {
 
+    currentGame: Game;
+
     constructor(private http: HttpClient) { }
 
     getAllGames(): Game[] {
@@ -15,5 +17,9 @@ export class GamesService {
 
     bestSellerGames(): Observable<Game[]> {
         return this.http.get<Game[]>(`${GAMESTORE_API}/games`);
+    }
+
+    gameById(id: string): Observable<Game> {
+        return this.http.get<Game>(`${GAMESTORE_API}/games/${id}`);
     }
 }

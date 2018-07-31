@@ -1,0 +1,7 @@
+.game-detail-hero {
+    min-height: 480px;
+}
+
+.button {
+    transition: background-color 500ms 
+}

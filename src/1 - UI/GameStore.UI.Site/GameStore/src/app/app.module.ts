@@ -12,6 +12,11 @@ import { RouterModule } from '@angular/router';
 import { HeroComponent } from './home/hero/hero.component';
 import { GamesComponent } from './games/games.component';
 import { GamesService } from './games/games.service';
+import { GamesDetailComponent } from './games-detail/games-detail.component';
+import { ScreenshotsComponent } from './games-detail/screenshots/screenshots.component';
+import { OverviewComponent } from './games-detail/overview/overview.component';
+import { SystemRequirementsComponent } from './games-detail/system-requirements/system-requirements.component';
+import { SimilarGamesComponent } from './games-detail/similar-games/similar-games.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +24,12 @@ import { GamesService } from './games/games.service';
     HeaderComponent,
     HomeComponent,
     HeroComponent,
-    GamesComponent
+    GamesComponent,
+    GamesDetailComponent,
+    ScreenshotsComponent,
+    OverviewComponent,
+    SystemRequirementsComponent,
+    SimilarGamesComponent
   ],
   imports: [
     BrowserModule,
