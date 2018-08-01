@@ -26,9 +26,9 @@ namespace GameStore.Application.Services
             return await _unit.Games.GetAllGamesWithDevelopersAsync();
         }
 
-        public async Task<IEnumerable<GameViewModel>> GetAllGames()
+        public async Task<IEnumerable<GameListViewModel>> GetAllGames()
         {
-            return _mapper.Map<IEnumerable<GameViewModel>>(await _unit.Games.GetAllAsync());
+            return _mapper.Map<IEnumerable<GameListViewModel>>(await _unit.Games.GetAllAsync());
         }
 
         public async Task<GameViewModel> GetGameById(Guid gameId)
@@ -48,9 +48,9 @@ namespace GameStore.Application.Services
             _unit.Games.Remove(id);
         }
 
-        public async Task<IEnumerable<GameViewModel>> GetBestRatedGames()
+        public async Task<IEnumerable<GameListViewModel>> GetBestRatedGames()
         {
-            return _mapper.Map<IEnumerable<GameViewModel>>(await _unit.Games.GetBestRatedGamesAsync());
+            return _mapper.Map<IEnumerable<GameListViewModel>>(await _unit.Games.GetBestRatedGamesAsync());
         }
     }
 }

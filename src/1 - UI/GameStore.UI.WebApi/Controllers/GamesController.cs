@@ -22,7 +22,7 @@ namespace GameStore.UI.WebApi.Controllers
         }
 
         [HttpGet]
-        public async Task<IEnumerable<GameViewModel>> Get()
+        public async Task<IEnumerable<GameListViewModel>> Get()
         {
             return await _services.GetAllGames();
         }
@@ -34,7 +34,7 @@ namespace GameStore.UI.WebApi.Controllers
         }
 
         [HttpGet("bestrated")]
-        public async Task<IEnumerable<GameViewModel>> GetBestRatedGames() {
+        public async Task<IEnumerable<GameListViewModel>> GetBestRatedGames() {
             return await _services.GetBestRatedGames();
         }
 

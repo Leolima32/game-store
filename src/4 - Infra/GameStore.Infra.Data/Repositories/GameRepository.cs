@@ -63,7 +63,7 @@ namespace GameStore.Infra.Data.Repositories
         public async Task<IEnumerable<Game>> GetBestRatedGamesAsync()
         {
             var query = from games in _db.Games
-                            orderby games.Score
+                            orderby games.Score descending
                             select games;
             return await query.ToListAsync();
         }
