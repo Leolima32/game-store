@@ -59,5 +59,13 @@ namespace GameStore.Infra.Data.Repositories
                       .Where(_ => _.Id == id)
                       .FirstOrDefaultAsync();
         }
+
+        public async Task<IEnumerable<Game>> GetBestRatedGamesAsync()
+        {
+            var query = from games in _db.Games
+                            orderby games.Score
+                            select games;
+            return await query.ToListAsync();
+        }
     }
 }

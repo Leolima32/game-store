@@ -34,6 +34,14 @@ namespace GameStore.Tests.Mocks
             return await query.ToListAsync();
         }
 
+        public async Task<IEnumerable<Game>> GetBestRatedGamesAsync()
+        {
+            var query = from games in _db.Games
+                            orderby games.Score
+                            select games;
+            return await query.ToListAsync();
+        }
+
         public IEnumerable<Game> SearchByName(string search)
         {
             return _db.Games.Where(p => p.Name.Contains(search));

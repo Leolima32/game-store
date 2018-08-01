@@ -8,11 +8,12 @@ namespace GameStore.Application.Interfaces
 {
     public interface IGameServices
     {
-        Task<IEnumerable<GameViewModel>> GetAllGames();
+        Task<IEnumerable<GameDetailViewModel>> GetAllGames();
         Task<IEnumerable<dynamic>> GetAllGamesWithDevelopersAsync();
-        Task<GameViewModel> GetGameById(Guid game);
+        Task<GameDetailViewModel> GetGameById(Guid game);
         void InsertGame(AddOrUpdateGameDTO game);
         void UpdateGame(AddOrUpdateGameDTO game);
         void DeleteGame(Guid id);
+        Task<IEnumerable<GameDetailViewModel>> GetBestRatedGames();
     }
 }

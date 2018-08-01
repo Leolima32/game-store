@@ -33,6 +33,11 @@ namespace GameStore.UI.WebApi.Controllers
             return await _services.GetGameById(id);
         }
 
+        [HttpGet("bestrated")]
+        public async Task<IEnumerable<GameViewModel>> GetBestRatedGames() {
+            return await _services.GetBestRatedGames();
+        }
+
         [Authorize(Roles = "Admin")]
         [HttpPost]
         public void Post([FromBody]AddOrUpdateGameDTO game)

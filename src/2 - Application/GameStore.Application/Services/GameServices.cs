@@ -47,5 +47,10 @@ namespace GameStore.Application.Services
         {
             _unit.Games.Remove(id);
         }
+
+        public async Task<IEnumerable<GameViewModel>> GetBestRatedGames()
+        {
+            return _mapper.Map<IEnumerable<GameViewModel>>(await _unit.Games.GetBestRatedGamesAsync());
+        }
     }
 }
