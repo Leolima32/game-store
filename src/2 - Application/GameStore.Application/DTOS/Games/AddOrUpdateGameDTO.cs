@@ -16,7 +16,6 @@ namespace GameStore.Application.DTOS.Games
         [Required()]
         public string Description { get; set; }
         public string ShortDescription { get; set; }
-        public string ImageUrl { get; set; }
 
         [Required(ErrorMessage = "Developers required.")]
         public ICollection<GameDeveloper> GameDevelopers { get; set; }

@@ -18,10 +18,12 @@ namespace GameStore.Tests.Mocks
 
         public bool ChangesSaved { get; set; }
 
-        public void Add(TEntity obj)
+        public Guid Add(TEntity obj)
         {
             _entities.Add(obj);
             SaveChanges();
+
+            return new Guid();
         }
 
         public async virtual Task<IEnumerable<TEntity>> GetAllAsync()

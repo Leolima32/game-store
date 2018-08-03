@@ -11,7 +11,7 @@ namespace GameStore.Domain.Interfaces.Repositories
         Task<IEnumerable<T>> GetAllAsync();
         T GetById(Guid id);
         Task<T> GetByIdAsync(Guid id);
-        void Add(T obj);
+        Guid Add(T obj);
         void Update(T obj);
         void Remove(Guid id);
     }

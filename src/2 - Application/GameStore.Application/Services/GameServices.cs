@@ -35,9 +35,9 @@ namespace GameStore.Application.Services
         {
             return _mapper.Map<GameViewModel>(await _unit.Games.GetByIdAsync(gameId));
         }
-        public void InsertGame(AddOrUpdateGameDTO gamevm)
+        public Guid InsertGame(AddOrUpdateGameDTO gamevm)
         {
-            _unit.Games.Add(_mapper.Map<Game>(gamevm));
+            return _unit.Games.Add(_mapper.Map<Game>(gamevm));
         }
         public void UpdateGame(AddOrUpdateGameDTO gamevm)
         {

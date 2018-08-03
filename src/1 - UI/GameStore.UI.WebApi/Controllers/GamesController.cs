@@ -8,6 +8,9 @@ using GameStore.UI.WebApi.Filters;
 using GameStore.Application.DTOS.Games;
 using Microsoft.AspNetCore.Authorization;
 using System.Linq;
+using Microsoft.AspNetCore.Hosting;
+using System.IO;
+using System.Net.Http.Headers;
 
 namespace GameStore.UI.WebApi.Controllers
 {
@@ -16,9 +19,11 @@ namespace GameStore.UI.WebApi.Controllers
     public class GamesController : Controller
     {
         private IGameServices _services;
-        public GamesController(IGameServices services)
+        private IHostingEnvironment _hostingEnvironment;
+        public GamesController(IGameServices services, IHostingEnvironment hostingEnvironment)
         {
             _services = services;
+            _hostingEnvironment = hostingEnvironment;
         }
 
         [HttpGet]
@@ -40,9 +45,14 @@ namespace GameStore.UI.WebApi.Controllers
 
         [Authorize(Roles = "Admin")]
         [HttpPost]
-        public void Post([FromBody]AddOrUpdateGameDTO game)
+        public ActionResult Post([FromBody]AddOrUpdateGameDTO game)
         {
-            _services.InsertGame(game);
+            var id = _services.InsertGame(game);
+            if(id != null) {
+                return new OkObjectResult(new ResultViewModel(id,200,"Success!"));
+            } else {
+                return new BadRequestObjectResult(new ResultViewModel(500, "Something went wrong! Try again later."));
+            }
         }
 
         [Authorize(Roles = "Admin")]
@@ -57,6 +67,35 @@ namespace GameStore.UI.WebApi.Controllers
         public void Delete(Guid id)
         {
             _services.DeleteGame(id);
+        }
+
+        [HttpPut("{id}/uploadImages")]
+        public ActionResult UploadImages(Guid id) {
+            try
+            {
+                var file = Request.Form.Files[0];
+                string folderName = "images/games/"+id;
+                string webRootPath = _hostingEnvironment.WebRootPath;
+                string newPath = Path.Combine(webRootPath, folderName);
+                if (!Directory.Exists(newPath))
+                {
+                    Directory.CreateDirectory(newPath);
+                }
+                if (file.Length > 0)
+                {
+                    string fileName = ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"');
+                    string fullPath = Path.Combine(newPath, fileName);
+                    using (var stream = new FileStream(fullPath, FileMode.Create))
+                    {
+                        file.CopyTo(stream);
+                    }
+                }
+                return Json("Upload Successful.");
+            }
+            catch (System.Exception ex)
+            {
+                return Json("Upload Failed: " + ex.Message);
+}
         }
     }
 }

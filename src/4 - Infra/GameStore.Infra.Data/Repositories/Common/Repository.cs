@@ -19,10 +19,12 @@ namespace GameStore.Infra.Data.Repositories.Common
             _db = db;
         }
 
-        public void Add(TEntity obj)
+        public Guid Add(TEntity obj)
         {
             _db.Set<TEntity>().Add(obj);
             _db.SaveChanges();
+
+            return obj.Id;
         }
 
         public async virtual Task<IEnumerable<TEntity>> GetAllAsync()
