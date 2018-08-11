@@ -8,5 +8,6 @@ export interface Game {
     rating: number;
     imagePath: string;
     imageRelativePath: string;
+    coverImagePath: string;
     coverImageRelativePath: string;
 }
