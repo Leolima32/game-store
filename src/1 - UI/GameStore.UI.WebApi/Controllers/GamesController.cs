@@ -43,6 +43,11 @@ namespace GameStore.UI.WebApi.Controllers
             return await _services.GetBestRatedGames();
         }
 
+        [HttpGet("bestsellers")]
+        public async Task<IEnumerable<GameListViewModel>> GetBestSellerGames() {
+            return await _services.GetBestSellerGames();
+        }
+
         [Authorize(Roles = "Admin")]
         [HttpPost]
         public ActionResult Post([FromBody]AddOrUpdateGameDTO game)
@@ -69,6 +74,7 @@ namespace GameStore.UI.WebApi.Controllers
             _services.DeleteGame(id);
         }
 
+        [Authorize(Roles = "Admin")]
         [HttpPut("{id}/uploadImages")]
         public ActionResult UploadImages(Guid id) {
             try

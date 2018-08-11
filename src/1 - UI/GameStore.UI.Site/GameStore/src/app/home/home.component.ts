@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GamesService } from '../games/games.service';
 import { Game } from '../games/game.model';
+import 'rxjs/add/operator/map';
 
 @Component({
   selector: 'gs-home',
@@ -14,8 +15,7 @@ export class HomeComponent implements OnInit {
   constructor(private gamesService: GamesService) { }
 
   ngOnInit() {
-      this.gamesService.bestSellerGames()
-      .subscribe(x => this.bestSellerGames = x)
+      this.gamesService.bestSellerGames().subscribe(x => this.bestSellerGames = x)
   }
 
 }

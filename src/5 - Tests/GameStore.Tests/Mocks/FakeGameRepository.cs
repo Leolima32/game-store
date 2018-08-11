@@ -42,6 +42,11 @@ namespace GameStore.Tests.Mocks
             return await query.ToListAsync();
         }
 
+        public Task<IEnumerable<Game>> GetBestSellerGamesAsync()
+        {
+            throw new NotImplementedException();
+        }
+
         public IEnumerable<Game> SearchByName(string search)
         {
             return _db.Games.Where(p => p.Name.Contains(search));

@@ -6,4 +6,7 @@ export interface Game {
     releaseDate: string;
     price: number;
     rating: number;
+    imagePath: string;
+    imageRelativePath: string;
+    coverImageRelativePath: string;
 }

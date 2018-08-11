@@ -52,5 +52,10 @@ namespace GameStore.Application.Services
         {
             return _mapper.Map<IEnumerable<GameListViewModel>>(await _unit.Games.GetBestRatedGamesAsync());
         }
+
+        public async Task<IEnumerable<GameListViewModel>> GetBestSellerGames()
+        {
+            return _mapper.Map<IEnumerable<GameListViewModel>>(await _unit.Games.GetBestSellerGamesAsync());
+        }
     }
 }

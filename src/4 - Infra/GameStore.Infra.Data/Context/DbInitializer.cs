@@ -94,8 +94,7 @@ namespace GameStore.Infra.Data.Context
                 +"the empire of Niflheim. Noctis Lucis Caelum, heir to the Lucian throne, goes on"
                 +"a quest to retake his homeland and its magical Crystal ",
                 "an open world action role-playing video game developed and published by Square Enix",
-                9.8, EDepartment.Game, 89.99, new DateTime(2016,11,9), 10) 
-                { ImageUrl = $"{Configuration["BaseUrl"]}images/ffxv.jpg"},
+                9.8, EDepartment.Game, 89.99, new DateTime(2016,11,9), 10),
 
                 new Game("Grand Theft Auto V",
                 "The game is played from either a third-person or first-person"
@@ -103,8 +102,7 @@ namespace GameStore.Infra.Data.Context
                 +"three lead protagonists throughout single-player and switch between them both during "
                 +"and outside missions.",
                 "the single-player story follows three criminals and their efforts to commit "
-                +"heists while under pressure from a government agency.", 10, EDepartment.Game, 59.99, new DateTime(2013,9,17), 2)
-                { ImageUrl = $"{Configuration["BaseUrl"]}images/gtav.jpg"},
+                +"heists while under pressure from a government agency.", 10, EDepartment.Game, 59.99, new DateTime(2013,9,17), 2),
 
                 new Game("Child of light",
                 "The game's story takes place in the fictional land of Lemuria. "
@@ -112,8 +110,7 @@ namespace GameStore.Infra.Data.Context
                 +"must bring back the sun, the moon and the stars held captive "
                 +"by the Queen of the Night in order to return.",
                 " Aurora, a young girl from 1895 Austria, awakens on the lost fairytale", 
-                8.5, EDepartment.Game, 69.99, new DateTime(2014,4,29), 3)
-                { ImageUrl = $"{Configuration["BaseUrl"]}images/childoflight.jpg"},
+                8.5, EDepartment.Game, 69.99, new DateTime(2014,4,29), 3),
 
                 new Game("The Legend of Zelda: Breath of the Wild",
                 "The Legend of Zelda: Breath of the Wild is the nineteenth "
@@ -122,9 +119,18 @@ namespace GameStore.Infra.Data.Context
                 +"Nintendo Switch on March 3, 2017.",
                 "The Legend of Zelda: Breath of the Wild was very highly received. "
                 +"It currently has a 98/100 on Metacritic, making it the highest scoring game this decade",
-                8.5, EDepartment.Game, 129.99, new DateTime(2014,4,29), 0)
-                { ImageUrl = $"{Configuration["BaseUrl"]}images/zelda.jpg"},
+                8.5, EDepartment.Game, 129.99, new DateTime(2014,4,29), 0),
             };
+
+            games[0].ChangeImagePath("/images/ffxv.jpg");
+            games[0].ChangeCoverImagePath("/images/coverffxv.jpg");
+            games[1].ChangeImagePath("/images/gtav.jpg");
+            games[1].ChangeCoverImagePath("/images/covergtav.png");
+            games[2].ChangeImagePath("/images/childoflight.jpg");
+            games[2].ChangeCoverImagePath("/images/coverchildoflight.jpg");
+            games[3].ChangeImagePath("/images/zelda.jpg");
+            games[3].ChangeCoverImagePath("/images/coverzelda.jpg");
+
             foreach (Game s in games)
             {
                 context.Games.Add(s);

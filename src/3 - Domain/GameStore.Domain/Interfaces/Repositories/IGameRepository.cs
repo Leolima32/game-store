@@ -9,5 +9,6 @@ namespace GameStore.Domain.Interfaces.Repositories
         IEnumerable<Game> SearchByName(string search);
         Task<IEnumerable<dynamic>> GetAllGamesWithDevelopersAsync();
         Task<IEnumerable<Game>> GetBestRatedGamesAsync();
+        Task<IEnumerable<Game>> GetBestSellerGamesAsync();
     }
 }

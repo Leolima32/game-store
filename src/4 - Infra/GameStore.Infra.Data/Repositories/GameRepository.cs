@@ -67,5 +67,10 @@ namespace GameStore.Infra.Data.Repositories
                             select games).Take(5);
             return await query.ToListAsync();
         }
+
+        public Task<IEnumerable<Game>> GetBestSellerGamesAsync()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

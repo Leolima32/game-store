@@ -15,5 +15,6 @@ namespace GameStore.Application.Interfaces
         void UpdateGame(AddOrUpdateGameDTO game);
         void DeleteGame(Guid id);
         Task<IEnumerable<GameListViewModel>> GetBestRatedGames();
+        Task<IEnumerable<GameListViewModel>> GetBestSellerGames();
     }
 }

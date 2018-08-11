@@ -17,7 +17,8 @@ namespace GameStore.Application.ViewModels
         public double Score { get; set; }
         public string Description { get; set; }
         public string ShortDescription { get; set; }
-        public string ImageUrl { get; set; }
+        public string ImageRelativePath { get; set; }
+        public string CoverImageRelativePath { get; set; }
 
         private ICollection<GameDeveloper> GameDevelopers { get; set; }
         private ICollection<GamePlataform> GamePlataforms { get; set; }
