@@ -3,7 +3,7 @@
   <div class="container">
     <h2 class="title">Best Seller Games</h2>
     <div class="columns is-multiline">
-      <div class="column is-one-quarter" *ngFor="let game of bestSellerGames">
+      <div class="column is-one-quarter-desktop is-half-tablet" *ngFor="let game of bestSellerGames">
         <div [routerLink]="['/games', game?.id]" class="card">
           <div class="card-image">
             <figure class="image is-4by3">

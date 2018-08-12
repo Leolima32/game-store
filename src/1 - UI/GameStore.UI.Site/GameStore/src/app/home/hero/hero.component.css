@@ -4,6 +4,7 @@
 }
 .carousel-body {
     position: relative;
+    min-height: 30em;
 }
 .carousel-prev,.carousel-next {
     cursor: pointer;
@@ -31,7 +32,7 @@
         background: rgba(0, 0, 5, 0.3)
     }
     .carousel-body {
-        min-height: 30em;
+        min-height: 36em;
     }
     .carousel-prev,.carousel-next {
         cursor: pointer;

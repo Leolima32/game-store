@@ -4,4 +4,10 @@
 
 .card {
     cursor: pointer;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+img {
+    object-fit: contain;
 }

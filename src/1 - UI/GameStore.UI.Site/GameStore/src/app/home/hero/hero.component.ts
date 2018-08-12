@@ -16,20 +16,24 @@ import {
   animations: [
     trigger('carousel', [
       state('slide1', style({
-        'background': 'url("{{imagePath}}")',
-        'background-size': 'cover'
+        'background-image': 'url("{{imagePath}}")',
+        'background-size': 'cover',
+        'background-position': '35% top'
       }), { params: { imagePath: '' } }),
       state('slide2', style({
-        'background': 'url("{{imagePath}}")',
-        'background-size': 'cover'
+        'background-image': 'url("{{imagePath}}")',
+        'background-size': 'cover',
+        'background-position': '35% top'
       }), { params: { imagePath: '' } }),
       state('slide3', style({
-        'background': 'url("{{imagePath}}")',
-        'background-size': 'cover'
+        'background-image': 'url("{{imagePath}}")',
+        'background-size': 'cover',
+        'background-position': '35% top'
       }), { params: { imagePath: '' } }),
       state('slide4', style({
-        'background': 'url("{{imagePath}}")',
-        'background-size': 'cover'
+        'background-image': 'url("{{imagePath}}")',
+        'background-size': 'cover',
+        'background-position': '35% top'
       }), { params: { imagePath: '' } }),
       transition('slide1 => slide2', animate("500ms ease-in")),
       transition('slide2 => slide3', animate("500ms ease-in")),
@@ -60,7 +64,7 @@ export class HeroComponent implements OnInit {
   ngOnInit() { }
 
   increaseBarPercentage() {
-    this.progessPercentage += .23
+    this.progessPercentage += .15
   }
 
   changeSlide() {
