@@ -6,6 +6,8 @@ import { OverviewComponent } from './games-detail/overview/overview.component';
 import { ScreenshotsComponent } from './games-detail/screenshots/screenshots.component';
 import { SystemRequirementsComponent } from './games-detail/system-requirements/system-requirements.component';
 import { SimilarGamesComponent } from './games-detail/similar-games/similar-games.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 export const ROUTES: Routes = [
     { path: '', component: HomeComponent },
@@ -19,5 +21,7 @@ export const ROUTES: Routes = [
             { path: 'requirements', component: SystemRequirementsComponent},
             { path: 'similar', component: SimilarGamesComponent}
         ]
-    }
+    },
+    { path: 'login', component: LoginComponent},
+    { path: 'register', component: RegisterComponent}
 ];

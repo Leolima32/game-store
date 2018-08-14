@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule, HttpClient } from '@angular/common/http'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -17,6 +18,8 @@ import { ScreenshotsComponent } from './games-detail/screenshots/screenshots.com
 import { OverviewComponent } from './games-detail/overview/overview.component';
 import { SystemRequirementsComponent } from './games-detail/system-requirements/system-requirements.component';
 import { SimilarGamesComponent } from './games-detail/similar-games/similar-games.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
@@ -29,13 +32,16 @@ import { SimilarGamesComponent } from './games-detail/similar-games/similar-game
     ScreenshotsComponent,
     OverviewComponent,
     SystemRequirementsComponent,
-    SimilarGamesComponent
+    SimilarGamesComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     RouterModule.forRoot(ROUTES),
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    FormsModule
   ],
   providers: [GamesService],
   bootstrap: [AppComponent]
