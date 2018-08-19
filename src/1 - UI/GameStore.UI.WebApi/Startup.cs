@@ -36,7 +36,9 @@ namespace GameStore.UI.WebApi
             services.AddCors(options => options.AddPolicy("AllowAllOrigins",
                builder =>
                {
-                   builder.AllowAnyOrigin();
+                   builder.AllowAnyOrigin()
+                   .AllowAnyMethod()
+                   .AllowAnyHeader();
                }));
 
             services.AddAutoMapper();
