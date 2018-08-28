@@ -7,6 +7,7 @@ using System.Net;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
+using GameStore.UI.WebApi.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -108,6 +109,16 @@ namespace GameStore.UI.WebApi.Controllers
             );
 
             return new JwtSecurityTokenHandler().WriteToken(token);
+        }
+
+        [HttpGet]
+        public AccountModel UserClaims() {
+            var identityClaims = (ClaimsIdentity)User.Identity;
+            var rules = identityClaims.FindAll(ClaimTypes.Role);
+            return new AccountModel() {
+                UserName = identityClaims.FindFirst("sub").Value,
+                Roles = rules
+            };
         }
 
         public class LoginDto
