@@ -114,10 +114,10 @@ namespace GameStore.UI.WebApi.Controllers
         [HttpGet]
         public AccountModel UserClaims() {
             var identityClaims = (ClaimsIdentity)User.Identity;
-            var rules = identityClaims.FindAll(ClaimTypes.Role);
+            var roles = identityClaims.FindAll(ClaimTypes.Role);
             return new AccountModel() {
                 UserName = identityClaims.FindFirst("sub").Value,
-                Roles = rules
+                Roles = roles.Select(_ => _.Value)
             };
         }
 
