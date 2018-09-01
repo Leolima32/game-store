@@ -20,6 +20,7 @@ import { SystemRequirementsComponent } from './games-detail/system-requirements/
 import { SimilarGamesComponent } from './games-detail/similar-games/similar-games.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { UserService } from './user/user.service';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,7 @@ import { RegisterComponent } from './register/register.component';
     BrowserAnimationsModule,
     FormsModule
   ],
-  providers: [GamesService],
+  providers: [GamesService, UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

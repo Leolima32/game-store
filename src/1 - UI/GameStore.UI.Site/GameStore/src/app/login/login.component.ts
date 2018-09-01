@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { User } from './user.model';
+import { UserLoginModel } from './user.model';
 import { HttpClient } from '../../../node_modules/@angular/common/http';
 import { GAMESTORE_API } from '../../app/app.api';
 import { Observable } from 'rxjs';
@@ -12,7 +12,7 @@ import { Router } from "@angular/router";
 })
 export class LoginComponent {
 
-  model = new User('', '', '')
+  model = new UserLoginModel('', '', '')
   token: string;
   invalidUser: boolean = false;
 
@@ -22,18 +22,18 @@ export class LoginComponent {
     this.postLogin(this.model).subscribe(
       x => { 
         this.token = x; 
-        console.log(this.token) 
+        localStorage.setItem('userToken',this.token);
         this.router.navigate(['/']);
       },
       error => this.invalidUser = true
     );
   }
 
-  postLogin(model: User): Observable<any> {
+  postLogin(model: UserLoginModel): Observable<any> {
     return this.http.post(`${GAMESTORE_API}/account/login`, model, { responseType: 'text' });
   }
 
   clear() {
-    this.model = new User('', '', '');
+    this.model = new UserLoginModel('', '', '');
   }
 }
