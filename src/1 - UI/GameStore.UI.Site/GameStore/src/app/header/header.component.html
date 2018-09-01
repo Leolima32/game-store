@@ -46,7 +46,7 @@
             </div>
           </div>
         </div>
-        <div class="navbar-end">
+        <div *ngIf="!logedInUser" class="navbar-end">
           <div class="navbar-item">
             <div class="field is-grouped">
               <p class="control has-icons-left is-hidden-touch">
@@ -71,7 +71,22 @@
                   <span>Register</span>
                 </a>
               </p>
-              <h3>{{logedInUser?.userName}}</h3>
+            </div>
+          </div>
+          <!---->
+        </div>
+        <div *ngIf="logedInUser" class="navbar-end">
+          <div class="navbar-item">
+            <div class="field is-grouped">
+              <h1>{{logedInUser?.userName}}</h1>
+              <p (click)="logOut()" class="control">
+                <a href="." class="button">
+                  <span class="icon is-small">
+                    <i class="fas fa-sign-in-alt"></i>
+                  </span>
+                  <span>Log Out</span>
+                </a>
+              </p>
             </div>
           </div>
           <!---->

@@ -15,4 +15,9 @@ export class HeaderComponent implements OnInit {
     this.userService.getUserInformation().subscribe(x => this.logedInUser = x);
   }
 
+  logOut() {
+    localStorage.removeItem('userToken');
+    this.logedInUser = null;
+  }
+
 }
