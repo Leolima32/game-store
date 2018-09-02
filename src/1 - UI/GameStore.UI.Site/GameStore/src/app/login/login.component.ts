@@ -1,9 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { UserLoginModel } from './user.model';
-import { HttpClient } from '../../../node_modules/@angular/common/http';
-import { GAMESTORE_API } from '../../app/app.api';
-import { Observable } from 'rxjs';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { UserLoginModel } from '../user/user.model';
 import { Router } from "@angular/router";
+import { UserService } from '../user/user.service';
 
 @Component({
   selector: 'gs-login',
@@ -16,21 +14,18 @@ export class LoginComponent {
   token: string;
   invalidUser: boolean = false;
 
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private userService: UserService, private router: Router) { }
 
   sendForm() {
-    this.postLogin(this.model).subscribe(
+    this.userService.login(this.model).subscribe(
       x => { 
         this.token = x; 
         localStorage.setItem('userToken',this.token);
+        this.userService.changeForIsLoggedState(true);
         this.router.navigate(['/']);
       },
       error => this.invalidUser = true
     );
-  }
-
-  postLogin(model: UserLoginModel): Observable<any> {
-    return this.http.post(`${GAMESTORE_API}/account/login`, model, { responseType: 'text' });
   }
 
   clear() {

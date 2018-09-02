@@ -1,5 +1,4 @@
 import { Game } from "./game.model";
-import { GAMESTORE_API, GAMESTORE_API_ROOT } from "../app.api";
 import { environment } from '../../environments/environment';
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from "@angular/core";
