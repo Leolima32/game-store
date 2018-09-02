@@ -9,8 +9,9 @@ import { Subscription } from 'rxjs';
 })
 export class HeaderComponent implements OnInit, OnDestroy {
 
-  logedInUser: UserDetail;
+  loggedUser: UserDetail;
   sub: Subscription;
+  isAdmin: boolean = false;
 
   constructor(private userService: UserService) { }
 
@@ -26,13 +27,17 @@ export class HeaderComponent implements OnInit, OnDestroy {
   }
 
   getUserInformation() {
-    this.userService.getUserInformation().subscribe(x => this.logedInUser = x);
+    this.userService.getUserInformation().subscribe(user => {
+      this.loggedUser = user;
+      if(user.roles.indexOf('Admin') != -1)
+        this.isAdmin = true;
+    });
   }
 
   logOut() {
     localStorage.removeItem('userToken');
     this.userService.changeForIsLoggedState(false);
-    this.logedInUser = null;
+    this.loggedUser = null;
   }
 
   ngOnDestroy() {

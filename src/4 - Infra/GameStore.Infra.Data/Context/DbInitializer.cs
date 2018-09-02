@@ -35,7 +35,7 @@ namespace GameStore.Infra.Data.Context
             var user2 = new IdentityUser() { UserName = "RandomCustomer", Email = "satisfiedcustomer@email.com" };
 
             await _userManager.CreateAsync(user1, "Admin123*");
-            await _userManager.CreateAsync(user2, "R@mdonUs3r");
+            await _userManager.CreateAsync(user2, "Customer123*");
             await _userManager.AddToRoleAsync(user1, "Admin");
             await _userManager.AddToRoleAsync(user2, "Customer");
 

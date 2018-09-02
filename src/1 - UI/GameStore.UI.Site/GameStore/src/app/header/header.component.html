@@ -20,7 +20,10 @@
             </a>
             <div class="navbar-dropdown">
               <a href="/games" class="navbar-item">
-                Browse Games
+                Browse games
+              </a>
+              <a href="/genres" class="navbar-item">
+                Browse by genre
               </a>
               <hr class="navbar-divider">
               <a href="/reviews" class="navbar-item">
@@ -31,22 +34,27 @@
               </a>
             </div>
           </div>
-          <div class="navbar-item has-dropdown is-hoverable">
+          <div *ngIf="isAdmin" class="navbar-item has-dropdown is-hoverable">
             <a href="#" class="navbar-link">
-              Community
+              Admin Area
             </a>
             <div class="navbar-dropdown">
-              <a href="/users" class="navbar-item">
-                Users
+              <a href="/admin/addgame" class="navbar-item">
+                Add new game
               </a>
-              <hr class="navbar-divider">
-              <a href="/staff" class="navbar-item">
-                Staff
+              <a href="/admin/addgenre" class="navbar-item">
+                Add new genre
+              </a>
+              <a href="/admin/addcompany" class="navbar-item">
+                Add new company
+              </a>
+              <a href="/admin/addconsole" class="navbar-item">
+                Add new console
               </a>
             </div>
           </div>
         </div>
-        <div *ngIf="!logedInUser" class="navbar-end">
+        <div *ngIf="!loggedUser" class="navbar-end">
           <div class="navbar-item">
             <div class="field is-grouped">
               <p class="control has-icons-left is-hidden-touch">
@@ -75,10 +83,10 @@
           </div>
           <!---->
         </div>
-        <div *ngIf="logedInUser" class="navbar-end">
+        <div *ngIf="loggedUser" class="navbar-end">
           <div class="navbar-item">
             <div class="field is-grouped">
-              <h1>{{logedInUser?.userName}}</h1>
+              <h1>{{loggedUser?.userName}}</h1>
               <p (click)="logOut()" class="control">
                 <a href="." class="button">
                   <span class="icon is-small">
