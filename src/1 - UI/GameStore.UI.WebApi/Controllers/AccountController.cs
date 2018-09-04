@@ -64,9 +64,11 @@ namespace GameStore.UI.WebApi.Controllers
             if (result.Succeeded)
             {
                 await _signInManager.SignInAsync(user, false);
-                return await GenerateJwtToken(model.Email, user);
+                return new {
+                    token = await GenerateJwtToken(model.Email, user)
+                };
             }
-            return Json(result.Errors);
+            return new BadRequestObjectResult(Json(result.Errors));
         }
 
         private async Task<object> GenerateJwtToken(string userName, IdentityUser user)

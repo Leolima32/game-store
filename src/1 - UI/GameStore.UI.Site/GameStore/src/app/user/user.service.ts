@@ -5,15 +5,15 @@ import { Observable, BehaviorSubject } from 'rxjs';
 import { UserDetail } from './user-detail.model';
 import { environment } from '../../environments/environment';
 import { UserLoginModel } from './user.model';
+import { UserRegisterModel } from './user-register.model';
 
 @Injectable()
 export class UserService {
 
-    // Observable navItem source
     private isLoggedSource = new BehaviorSubject<boolean>(false);
-    // Observable navItem stream
+
     isLogged$ = this.isLoggedSource.asObservable();
-    // service command
+
     changeForIsLoggedState(isLogged: boolean) {
         this.isLoggedSource.next(isLogged);
     }
@@ -22,6 +22,10 @@ export class UserService {
 
     login(model: UserLoginModel): Observable<any> {
         return this.http.post(`${environment.API_ROOT}/api/account/login`, model, { responseType: 'text' });
+    }
+
+    register(model: UserRegisterModel): Observable<any> {
+        return this.http.post(`${environment.API_ROOT}/api/account/register`,model);
     }
 
     getUserInformation(): Observable<UserDetail> {
