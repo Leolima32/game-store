@@ -16,7 +16,7 @@
                       <div class="field">
                           <div class="control">
                             <label for="">Email</label>
-                              <input class="input is-large" type="email" placeholder="Ex: sonic@thehedegog.com" required [(ngModel)]="model.email" name="email"
+                              <input class="input is-large" type="email" placeholder="Ex: sonic@thehedegog.com" required email [(ngModel)]="model.email" name="email"
                                   #email="ngModel" [ngClass]="{'is-danger': !email.valid && !email.pristine}">
                           </div>
                       </div>
