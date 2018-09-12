@@ -12,6 +12,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   loggedUser: UserDetail;
   sub: Subscription;
   isAdmin: boolean = false;
+  openMenu: boolean = false;
 
   constructor(private userService: UserService) { }
 
@@ -42,6 +43,11 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.sub.unsubscribe();
+  }
+
+  changeMenuState() {
+    console.log(this.openMenu);
+    this.openMenu = (this.openMenu) ? false: true;
   }
 
 }

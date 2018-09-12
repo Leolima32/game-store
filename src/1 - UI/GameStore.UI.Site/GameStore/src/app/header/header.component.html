@@ -6,13 +6,13 @@
           <i class="material-icons logo">videogame_asset</i>
           <!-- <img src="https://mythril.nyc3.cdn.digitaloceanspaces.com/logo/1.png" alt="Mythril Logo"> -->
         </a>
-        <div data-target="navMenuIndex" class="navbar-burger burger">
+        <div data-target="navMenuIndex" (click)="changeMenuState()" class="navbar-burger burger" [ngClass]="{'is-active': openMenu}">
           <span></span>
           <span></span>
           <span></span>
         </div>
       </div>
-      <div id="navMenuIndex" class="navbar-menu">
+      <div id="navMenuIndex" class="navbar-menu" [ngClass]="{'is-active': openMenu}">
         <div class="navbar-start">
           <div class="navbar-item has-dropdown is-hoverable">
             <a href="/games" class="navbar-link">
