@@ -21,6 +21,7 @@ import { SimilarGamesComponent } from './games-detail/similar-games/similar-game
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { UserService } from './user/user.service';
+import { GameItemComponent } from './games/game-item/game-item.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { UserService } from './user/user.service';
     SystemRequirementsComponent,
     SimilarGamesComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    GameItemComponent
   ],
   imports: [
     BrowserModule,
