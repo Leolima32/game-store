@@ -8,6 +8,7 @@ namespace GameStore.Domain.Interfaces.Repositories
         IPlataformRepository Plataforms { get; }
         IUserRepository Users { get ;}
         IOrderRepository Orders { get; }
+        IReviewRepository Reviews { get;}
         void Dispose();
     }
 }

@@ -23,6 +23,7 @@ namespace GameStore.Infra.Data.Context
         public DbSet<Order> Orders { get; set; }
         public DbSet<CreditCardPayment> CreditCardPayments { get; set; }
         public DbSet<PayPalPayment> PayPalPayments { get; set; }
+        public DbSet<Review> Reviews { get; set; } 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

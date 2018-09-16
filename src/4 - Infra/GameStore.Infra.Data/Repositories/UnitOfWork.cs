@@ -14,6 +14,7 @@ namespace GameStore.Infra.Data.Repositories
         private IPlataformRepository _plataformRepository;
         private IUserRepository _userRepository;
         private IOrderRepository _orderRepository;
+        private IReviewRepository _reviewRepository;
 
         private readonly GameStoreContext _db;
         public UnitOfWork(GameStoreContext db) { _db = db; }
@@ -87,6 +88,17 @@ namespace GameStore.Infra.Data.Repositories
                     _orderRepository = new OrderRepository(_db);
                 }
                 return _orderRepository;
+            }
+        }
+
+        public IReviewRepository Reviews {
+             get
+            {
+                if (_reviewRepository == null)
+                {
+                    _reviewRepository = new ReviewRepository(_db);
+                }
+                return _reviewRepository;
             }
         }
 
