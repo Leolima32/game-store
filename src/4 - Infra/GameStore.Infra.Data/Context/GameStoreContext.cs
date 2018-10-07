@@ -21,6 +21,8 @@ namespace GameStore.Infra.Data.Context
         public DbSet<Genre> Genres { get; set; }
         public DbSet<Plataform> Plataforms { get; set; }
         public DbSet<Order> Orders { get; set; }
+        public DbSet<ShoppingCart> ShoppingCarts { get; set; }
+        public DbSet<CartItem> CartItems { get; set; }
         public DbSet<CreditCardPayment> CreditCardPayments { get; set; }
         public DbSet<PayPalPayment> PayPalPayments { get; set; }
         public DbSet<Review> Reviews { get; set; } 
@@ -70,7 +72,29 @@ namespace GameStore.Infra.Data.Context
                 .HasOne(gg => gg.Publisher)
                 .WithMany("GamePublishers");
 
+
+            modelBuilder.Entity<ShoppingCart>()
+            .HasOne(s => s.Order)
+            .WithMany()
+            .HasForeignKey(e => e.OrderId);
+
+            modelBuilder.Entity<ShoppingCart>()
+            .HasMany(x => x.ListOfItems)
+            .WithOne(_ => _.ShoppingCart)
+            .HasForeignKey(f => f.ShoppingCartId);
+
+            modelBuilder.Entity<CartItem>()
+            .HasOne(_ => _.ShoppingCart)
+            .WithMany(x => x.ListOfItems)
+            .HasForeignKey(f => f.ShoppingCartId);
+
+            modelBuilder.Entity<CartItem>()
+            .HasOne(_ => _.Product)
+            .WithMany()
+            .HasForeignKey(f => f.ProductId);
+
             base.OnModelCreating(modelBuilder);
+            
         }
 
         public override int SaveChanges()

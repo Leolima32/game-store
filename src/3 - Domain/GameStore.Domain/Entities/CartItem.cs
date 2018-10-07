@@ -1,6 +1,7 @@
 ﻿using GameStore.Domain.Entities.Common;
 using GameStore.Domain.Exceptions;
 using GameStore.Domain.ValueObjects;
+using System;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace GameStore.Domain.Entities
@@ -20,6 +21,9 @@ namespace GameStore.Domain.Entities
                 AddNonconformity(new Nonconformity("cartItem.quantity", "Quantity cannot be negative."));
         }
 
+        public Guid ShoppingCartId { get; private set; }
+        public ShoppingCart ShoppingCart { get; private set; }
+        public Guid ProductId { get; private set; }
         public Product Product { get; private set; }
         public int Quantity { get; private set; }
 
@@ -56,7 +60,7 @@ namespace GameStore.Domain.Entities
         public void ChangeQuantityBy(int value)
         {
             //increase quantity by value
-            if(Quantity + value > 0)
+            if (Quantity + value > 0)
                 Quantity += value;
             else
                 throw new CartItemQuantityCannotBeBelowZeroException();

@@ -19,7 +19,7 @@ namespace GameStore.Infra.Data.Repositories.Common
             _db = db;
         }
 
-        public Guid Add(TEntity obj)
+        public virtual Guid Add(TEntity obj)
         {
             _db.Set<TEntity>().Add(obj);
             _db.SaveChanges();
@@ -36,7 +36,7 @@ namespace GameStore.Infra.Data.Repositories.Common
         {
             return await _db.Set<TEntity>().Where(x => x.Id == id).FirstOrDefaultAsync();
         }
-        public void Remove(Guid id)
+        public virtual void Remove(Guid id)
         {
             var entity = GetById(id);
             _db.Set<TEntity>().Remove(entity);

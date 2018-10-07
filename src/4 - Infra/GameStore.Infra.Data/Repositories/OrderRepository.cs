@@ -1,3 +1,4 @@
+using System.Linq;
 using GameStore.Domain.Entities;
 using GameStore.Domain.Interfaces.Repositories;
 using GameStore.Infra.Data.Context;
@@ -15,6 +16,12 @@ namespace GameStore.Infra.Data.Repositories
         {
             _db.Orders.Add(order);
             _db.SaveChanges();
+        }
+
+        public void FinishOrder(Order order) {
+            var cart = _db.ShoppingCarts.Where(_ => _.Id == order.ShoppingCart.Id).FirstOrDefault();
+            order.Deactivate();
+            cart.Deactivate();
         }
     }
 }

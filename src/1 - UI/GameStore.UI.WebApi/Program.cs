@@ -28,7 +28,7 @@ namespace GameStore.UI.WebApi
                 {
                     var context = services.GetRequiredService<GameStoreContext>();
                     var configuration = services.GetRequiredService<IConfiguration>();
-                    var userManager = services.GetRequiredService<UserManager<IdentityUser>>();
+                    var userManager = services.GetRequiredService<UserManager<IdentityUser<Guid>>>();
                     var roleManager = services.GetRequiredService<RoleManager<IdentityRole>>();
                     DbInitializer.Initialize(context, configuration, userManager,roleManager).GetAwaiter().GetResult();
                 }

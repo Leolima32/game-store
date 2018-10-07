@@ -68,9 +68,19 @@ namespace GameStore.Infra.Data.Repositories
             return await query.ToListAsync();
         }
 
-        public Task<IEnumerable<Game>> GetBestSellerGamesAsync()
+        public async Task<IEnumerable<Game>> GetBestSellerGamesAsync()
         {
-            throw new NotImplementedException();
+            var query = from games in _db.Games
+                        where (
+                            from cartItems in _db.CartItems
+                            join carts in _db.ShoppingCarts on cartItems.ShoppingCart.Id equals carts.Id
+                            join orders in _db.Orders on carts.OrderId equals orders.Id
+                            where orders.Active == false
+                            select cartItems.Id
+                        ).Take(5).Contains(games.Id)
+                        select games;   
+
+            return await query.ToListAsync();
         }
     }
 }

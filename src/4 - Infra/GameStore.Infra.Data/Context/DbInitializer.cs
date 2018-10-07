@@ -14,7 +14,7 @@ namespace GameStore.Infra.Data.Context
     public static class DbInitializer
     {
         public static async Task Initialize(GameStoreContext context, IConfiguration Configuration,
-        UserManager<IdentityUser> _userManager, RoleManager<IdentityRole> _roleManager)
+        UserManager<IdentityUser<Guid>> _userManager, RoleManager<IdentityRole> _roleManager)
         {
             // Look for any games.
             // if (context.Games.Any())
@@ -31,13 +31,19 @@ namespace GameStore.Infra.Data.Context
             await _roleManager.CreateAsync(role1);
             await _roleManager.CreateAsync(role2);
 
-            var user1 = new IdentityUser() { UserName = "Admin", Email = "admin@admin.com" };
-            var user2 = new IdentityUser() { UserName = "RandomCustomer", Email = "satisfiedcustomer@email.com" };
+            var user1 = new IdentityUser<Guid>() { UserName = "Admin", Email = "admin@admin.com" };
+            var user2 = new IdentityUser<Guid>() { UserName = "RandomCustomer", Email = "satisfiedcustomer@email.com" };
+            var user3 = new IdentityUser<Guid>() { UserName = "Vaan", Email = "vaanrabanestre@email.com" };
+            var user4 = new IdentityUser<Guid>() { UserName = "BashRosenberg", Email = "bashdamalsca@email.com" };
 
             await _userManager.CreateAsync(user1, "Admin123*");
             await _userManager.CreateAsync(user2, "Customer123*");
+            await _userManager.CreateAsync(user3, "Vaan123*");
+            await _userManager.CreateAsync(user4, "Bash123*");
             await _userManager.AddToRoleAsync(user1, "Admin");
             await _userManager.AddToRoleAsync(user2, "Customer");
+            await _userManager.AddToRoleAsync(user3, "Customer");
+            await _userManager.AddToRoleAsync(user4, "Customer");
 
             var companies = new Company[]
             {
@@ -155,6 +161,17 @@ namespace GameStore.Infra.Data.Context
                 new GamePublisher { Game = games[1], Publisher = companies[3] },
                 new GamePublisher { Game = games[2], Publisher = companies[4] },
                 new GamePublisher { Game = games[3], Publisher = companies[6] });
+
+
+            var shoppingCarts = new ShoppingCart[] {
+                new ShoppingCart((await _userManager.FindByNameAsync("Vaan")).Id),
+                new ShoppingCart((await _userManager.FindByNameAsync("BashRosenberg")).Id)
+            };
+
+            foreach (ShoppingCart c in shoppingCarts)
+            {
+                context.ShoppingCarts.Add(c);
+            }
 
             context.SaveChanges();
         }

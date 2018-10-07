@@ -9,22 +9,36 @@ namespace GameStore.Domain.Entities
     public class ShoppingCart : BaseEntity
     {
         protected ShoppingCart() { }
-        public Guid UserId { get; private set; }
 
-        private IList<CartItem> _listOfItems = new List<CartItem>();
+        public ShoppingCart(Guid userId)
+        {
+            UserId = userId;
+        }
 
         public ShoppingCart(Guid userId, CartItem item)
         {
             UserId = userId;
             AddItem(item);
         }
-        public ShoppingCart(Guid userId, IList<CartItem> listOfItems)
+
+        public ShoppingCart(Guid userId, IEnumerable<CartItem> listOfItems)
         {
             UserId = userId;
-            AddItem(listOfItems);
+            foreach (var item in listOfItems)
+                AddItem(item);
         }
 
-        public IReadOnlyCollection<CartItem> ListOfItems
+        public Guid UserId { get; private set; }
+
+        public IList<CartItem> _listOfItems = new List<CartItem>();
+
+        public Guid? OrderId { get; set; }
+
+        public Order Order { get; set; }
+
+        
+        
+        public IEnumerable<CartItem> ListOfItems
         {
             get
             {

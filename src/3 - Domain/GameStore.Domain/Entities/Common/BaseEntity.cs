@@ -46,5 +46,9 @@ namespace GameStore.Domain.Entities.Common
                     Nonconformities = Nonconformities.Concat(item.Nonconformities).ToList();
             }
         }
+
+        public void Deactivate() {
+            this.Active = false;
+        }
     }
 }
