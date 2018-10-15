@@ -14,13 +14,13 @@ namespace GameStore.Infra.Data.Context
     public static class DbInitializer
     {
         public static async Task Initialize(GameStoreContext context, IConfiguration Configuration,
-        UserManager<IdentityUser<Guid>> _userManager, RoleManager<IdentityRole> _roleManager)
+        UserManager<IdentityUser> _userManager, RoleManager<IdentityRole> _roleManager)
         {
             // Look for any games.
-            // if (context.Games.Any())
-            // {
-            //     return;   // DB has been seeded
-            // }
+            if (context.Games.Any())
+            {
+                return;   // DB has been seeded
+            }
 
             context.Database.EnsureDeleted();
             context.Database.EnsureCreated();
@@ -31,10 +31,10 @@ namespace GameStore.Infra.Data.Context
             await _roleManager.CreateAsync(role1);
             await _roleManager.CreateAsync(role2);
 
-            var user1 = new IdentityUser<Guid>() { UserName = "Admin", Email = "admin@admin.com" };
-            var user2 = new IdentityUser<Guid>() { UserName = "RandomCustomer", Email = "satisfiedcustomer@email.com" };
-            var user3 = new IdentityUser<Guid>() { UserName = "Vaan", Email = "vaanrabanestre@email.com" };
-            var user4 = new IdentityUser<Guid>() { UserName = "BashRosenberg", Email = "bashdamalsca@email.com" };
+            var user1 = new IdentityUser() { UserName = "Admin", Email = "admin@admin.com" };
+            var user2 = new IdentityUser() { UserName = "RandomCustomer", Email = "satisfiedcustomer@email.com" };
+            var user3 = new IdentityUser() { UserName = "Vaan", Email = "vaanrabanestre@email.com" };
+            var user4 = new IdentityUser() { UserName = "BashRosenberg", Email = "bashdamalsca@email.com" };
 
             await _userManager.CreateAsync(user1, "Admin123*");
             await _userManager.CreateAsync(user2, "Customer123*");
@@ -125,7 +125,7 @@ namespace GameStore.Infra.Data.Context
                 +"Nintendo Switch on March 3, 2017.",
                 "The Legend of Zelda: Breath of the Wild was very highly received. "
                 +"It currently has a 98/100 on Metacritic, making it the highest scoring game this decade",
-                8.5, EDepartment.Game, 129.99, new DateTime(2014,4,29), 0),
+                8.5, EDepartment.Game, 129.99, new DateTime(2014,4,29), 3),
             };
 
             games[0].ChangeImagePath("/images/ffxv.jpg");
@@ -162,16 +162,43 @@ namespace GameStore.Infra.Data.Context
                 new GamePublisher { Game = games[2], Publisher = companies[4] },
                 new GamePublisher { Game = games[3], Publisher = companies[6] });
 
+            var userId1 = await _userManager.FindByNameAsync("Vaan");
+            var userId2 = await _userManager.FindByNameAsync("BashRosenberg");
 
             var shoppingCarts = new ShoppingCart[] {
-                new ShoppingCart((await _userManager.FindByNameAsync("Vaan")).Id),
-                new ShoppingCart((await _userManager.FindByNameAsync("BashRosenberg")).Id)
+                new ShoppingCart(new Guid(userId1.Id)),
+                new ShoppingCart(new Guid(userId2.Id))
             };
+
+            shoppingCarts[0].AddItem(new CartItem(games[0], 1));
+            shoppingCarts[0].AddItem(new CartItem(games[1], 1));
+            shoppingCarts[0].AddItem(new CartItem(games[3], 1));
+
+            shoppingCarts[1].AddItem(new CartItem(games[0], 1));
+            shoppingCarts[1].AddItem(new CartItem(games[2], 1));
+            shoppingCarts[1].AddItem(new CartItem(games[3], 1));
 
             foreach (ShoppingCart c in shoppingCarts)
             {
                 context.ShoppingCarts.Add(c);
             }
+
+            var paymentMethod1 = new PayPalPayment("ACD", DateTime.Now, DateTime.Now.AddDays(1),2000,2000,"Vaan", new Email(userId1.Email));
+            var paymentMethod2 = new PayPalPayment("ABC", DateTime.Now, DateTime.Now.AddDays(1),2000,2000,"Bash", new Email(userId2.Email));
+
+            var order1 = new Order(new Guid(userId1.Id), shoppingCarts[0], paymentMethod1);
+            var order2 = new Order(new Guid(userId2.Id), shoppingCarts[1], paymentMethod2);
+
+            order1.Deactivate();
+            order2.Deactivate();
+
+            context.Orders.Add(order1);
+            context.Orders.Add(order2);
+
+            var reviews = new Review[] {
+                new Review()
+            };
+            
 
             context.SaveChanges();
         }

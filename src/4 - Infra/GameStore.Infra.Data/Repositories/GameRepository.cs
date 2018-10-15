@@ -63,24 +63,26 @@ namespace GameStore.Infra.Data.Repositories
         public async Task<IEnumerable<Game>> GetBestRatedGamesAsync()
         {
             var query = (from games in _db.Games
-                            orderby games.Score descending
-                            select games).Take(5);
+                         orderby games.Score descending
+                         select games).Take(5);
             return await query.ToListAsync();
         }
 
         public async Task<IEnumerable<Game>> GetBestSellerGamesAsync()
         {
-            var query = from games in _db.Games
-                        where (
-                            from cartItems in _db.CartItems
-                            join carts in _db.ShoppingCarts on cartItems.ShoppingCart.Id equals carts.Id
-                            join orders in _db.Orders on carts.OrderId equals orders.Id
-                            where orders.Active == false
-                            select cartItems.Id
-                        ).Take(5).Contains(games.Id)
-                        select games;   
-
-            return await query.ToListAsync();
+            return await Task.Run(() =>
+            {
+                return (
+                from cartItems in _db.CartItems
+                join carts in _db.ShoppingCarts on cartItems.ShoppingCartId equals carts.Id
+                join orders in _db.Orders on carts.Id equals orders.ShoppingCartId
+                group cartItems by cartItems.ProductId into ctGroup
+                let count = ctGroup.Count()
+                join games in _db.Games on ctGroup.Key equals games.Id
+                orderby count descending
+                select games
+                ).Take(5);
+            });
         }
     }
 }
