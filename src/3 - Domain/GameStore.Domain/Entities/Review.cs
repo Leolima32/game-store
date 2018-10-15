@@ -5,9 +5,24 @@ namespace GameStore.Domain.Entities
 {
     public class Review: BaseEntity
     {
-        public string Considerations { get; set; }
-        public Guid ProductId { get; set; }
-        public Guid UserId { get; set; }
-        public float Rating { get; set; }
+        public Review(Guid userId, Guid productId, double rating)
+        {
+            UserId = userId;
+            ProductId = productId;
+            Rating = rating;
+        }
+
+        public Review(Guid userId, Guid productId, double rating, string considerations)
+        {
+            UserId = userId;
+            ProductId = productId;
+            Rating = rating;
+            Considerations = considerations;
+        }
+
+        public string Considerations { get; private set; }
+        public Guid ProductId { get; private set; }
+        public Guid UserId { get; private set; }
+        public double Rating { get; private set; }
     }
 }

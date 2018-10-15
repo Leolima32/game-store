@@ -196,7 +196,17 @@ namespace GameStore.Infra.Data.Context
             context.Orders.Add(order2);
 
             var reviews = new Review[] {
-                new Review()
+                new Review(new Guid(userId1.Id), games[0].Id,5, "Nice and easy to play!"),
+                new Review(new Guid(userId1.Id), games[1].Id,2, "Boring and boring..."),
+                new Review(new Guid(userId1.Id), games[2].Id, 4 , "Really nice visuals"),
+                new Review(new Guid(userId1.Id), games[3].Id,5, "Good history"),
+                new Review(new Guid(userId2.Id), games[0].Id,4, "Soundtrack is awesome!"),
+                new Review(new Guid(userId2.Id), games[1].Id,2, "Bad gameplay and worse graphics"),
+                new Review(new Guid(userId2.Id), games[2].Id,2, "Don't recommend this"),
+                new Review(new Guid(user2.Id), games[0].Id,5, "Really enjoyed"),
+                new Review(new Guid(user2.Id), games[1].Id,1, "Can't play this any longer"),
+                new Review(new Guid(user2.Id), games[2].Id,5, "Great and atmospheric"),
+                new Review(new Guid(user2.Id), games[3].Id,3, "It's Ok!")
             };
             
 
