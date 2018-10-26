@@ -1,5 +1,8 @@
-﻿using GameStore.Domain.Entities.Enums;
+﻿using System.Collections.Generic;
+using GameStore.Domain.Entities.Enums;
 using GameStore.Domain.ValueObjects;
+using System.Linq;
+using System;
 
 namespace GameStore.Domain.Entities.Common
 {
@@ -19,8 +22,8 @@ namespace GameStore.Domain.Entities.Common
                 AddNonconformity(new Nonconformity("product.name", "Name cannot be null or empty"));
             if (string.IsNullOrEmpty(Description))
                 AddNonconformity(new Nonconformity("product.description", "Description cannot be null or empty"));
-            if(Price <= 0)
-                AddNonconformity(new Nonconformity("product.price","Price cannot be 0 or a negative number"));
+            if (Price <= 0)
+                AddNonconformity(new Nonconformity("product.price", "Price cannot be 0 or a negative number"));
         }
 
         public string Name { get; private set; }
@@ -31,23 +34,40 @@ namespace GameStore.Domain.Entities.Common
         public string ShortDescription { get; private set; }
         public string ImageRelativePath { get; private set; }
 
-        public void ChangeName(string name) {
+        public ICollection<Review> Reviews { get; private set; }
+
+        public double UserScore
+        {
+            get
+            {
+                return Math.Round(Reviews.Sum(_ => _.Rating) / Reviews.Count,1);
+            }
+        }
+
+        public double UsersScore { get; set; }
+
+        public void ChangeName(string name)
+        {
             Name = name;
         }
 
-        public void ChangePrice(double price) {
+        public void ChangePrice(double price)
+        {
             Price = price;
         }
 
-        public void ChangeAvailableQuantity(int quantity) {
+        public void ChangeAvailableQuantity(int quantity)
+        {
             AvailableQuantity = quantity;
         }
 
-        public void ChangeDescription(string description) {
+        public void ChangeDescription(string description)
+        {
             Description = description;
         }
 
-        public void ChangeImagePath(string imagePath) {
+        public void ChangeImagePath(string imagePath)
+        {
             ImageRelativePath = imagePath;
         }
     }

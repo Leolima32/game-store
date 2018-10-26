@@ -56,6 +56,7 @@ namespace GameStore.Infra.Data.Repositories
                       .ThenInclude(_ => _.Plataform)
                       .Include(_ => _.GamePublishers)
                       .ThenInclude(_ => _.Publisher)
+                      .Include(_ => _.Reviews)
                       .Where(_ => _.Id == id)
                       .FirstOrDefaultAsync();
         }

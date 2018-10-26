@@ -21,8 +21,9 @@ namespace GameStore.Domain.Entities
         }
 
         public string Considerations { get; private set; }
-        public Guid ProductId { get; private set; }
         public Guid UserId { get; private set; }
         public double Rating { get; private set; }
+        public Guid ProductId { get; private set; }
+        public Product Product { get; set; }
     }
 }

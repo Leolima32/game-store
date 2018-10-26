@@ -5,6 +5,7 @@ using AutoMapper;
 using GameStore.Application.Commands;
 using GameStore.Application.DTOS.Reviews;
 using GameStore.Application.Interfaces;
+using GameStore.Application.ViewModels;
 using GameStore.Domain.Entities;
 using GameStore.Domain.Interfaces.Repositories;
 
@@ -23,12 +24,12 @@ namespace GameStore.Application.Services
             _mapper = mapper;
         }
 
-        public IEnumerable<Review> GetReviewByProductId(Guid productId) {
-            return _unit.Reviews.GetReviewByProductId(productId);
+        public IEnumerable<ReviewListViewModel> GetReviewByProductId(Guid productId) {
+            return _mapper.Map<IEnumerable<ReviewListViewModel>>(_unit.Reviews.GetReviewByProductId(productId));
         }
 
-        public IEnumerable<Review> GetReviewByUserId(Guid userId) {
-            return _unit.Reviews.GetReviewByUserId(userId);
+        public IEnumerable<ReviewListViewModel> GetReviewByUserId(Guid userId) {
+            return _mapper.Map<IEnumerable<ReviewListViewModel>>(_unit.Reviews.GetReviewByUserId(userId));
         }
 
         public void Delete(Guid id)

@@ -208,8 +208,9 @@ namespace GameStore.Infra.Data.Context
                 new Review(new Guid(user2.Id), games[2].Id,5, "Great and atmospheric"),
                 new Review(new Guid(user2.Id), games[3].Id,3, "It's Ok!")
             };
-            
 
+            context.Reviews.AddRange(reviews);
+            
             context.SaveChanges();
         }
     }

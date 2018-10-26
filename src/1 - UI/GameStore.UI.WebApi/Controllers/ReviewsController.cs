@@ -9,10 +9,11 @@ using GameStore.Application.DTOS.Reviews;
 using GameStore.Application.ViewModels;
 using System.Collections.Generic;
 using GameStore.Domain.Entities;
+using GameStore.Application.Services;
 
 namespace GameStore.UI.WebApi.Controllers
 {
-    [Route("api/[controller]/[action]")]
+    [Route("api/[controller]")]
     public class ReviewsController : Controller
     {
         private readonly UserManager<IdentityUser> _userManager;
@@ -24,12 +25,12 @@ namespace GameStore.UI.WebApi.Controllers
         }
 
         [Route("product/{id}")]
-        public IEnumerable<Review> GetByProductId(Guid id) {
+        public IEnumerable<ReviewListViewModel> GetByProductId(Guid id) {
             return _services.GetReviewByProductId(id);
         }
 
         [Route("user/{id}")]
-        public IEnumerable<Review> GetByUserId(Guid id) {
+        public IEnumerable<ReviewListViewModel> GetByUserId(Guid id) {
             return _services.GetReviewByUserId(id);
         }
 

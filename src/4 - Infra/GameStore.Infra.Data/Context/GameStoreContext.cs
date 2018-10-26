@@ -94,6 +94,11 @@ namespace GameStore.Infra.Data.Context
             .HasForeignKey(f => f.ProductId);
 
             base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<Review>()
+            .HasOne(_ =>_.Product)
+            .WithMany(_ => _.Reviews)
+            .HasForeignKey(_ => _.ProductId);
             
         }
 

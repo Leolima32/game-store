@@ -15,6 +15,7 @@ namespace GameStore.Application.AutoMapper
             CreateMap<Company,CompanyViewModel>();
             CreateMap<Genre,GenreViewModel>();
             CreateMap<Plataform, PlataformViewModel>();
+            CreateMap<Review, ReviewListViewModel>();
         }   
     }
 }
