@@ -64,7 +64,8 @@ namespace GameStore.UI.WebApi.Controllers
             if (result.Succeeded)
             {
                 await _signInManager.SignInAsync(user, false);
-                return new {
+                return new
+                {
                     token = await GenerateJwtToken(model.Email, user)
                 };
             }
@@ -114,10 +115,15 @@ namespace GameStore.UI.WebApi.Controllers
         }
 
         [HttpGet]
-        public AccountModel UserClaims() {
+        public object UserClaims()
+        {
+            if (!User.Identity.IsAuthenticated)
+                return new BadRequestObjectResult("User not found");
+
             var identityClaims = (ClaimsIdentity)User.Identity;
             var roles = identityClaims.FindAll(ClaimTypes.Role);
-            return new AccountModel() {
+            return new AccountModel()
+            {
                 UserName = identityClaims.FindFirst("sub").Value,
                 Roles = roles.Select(_ => _.Value)
             };

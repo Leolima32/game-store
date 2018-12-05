@@ -34,17 +34,22 @@ namespace GameStore.Domain.Entities.Common
         public string ShortDescription { get; private set; }
         public string ImageRelativePath { get; private set; }
 
-        public ICollection<Review> Reviews { get; private set; }
+        public ICollection<Review> Reviews { get; private set; } = new List<Review>();
 
-        public double UserScore
+        public double? UsersScore
         {
             get
             {
-                return Math.Round(Reviews.Sum(_ => _.Rating) / Reviews.Count,1);
+                if (Reviews?.Count > 0)
+                    return Math.Round(Reviews.Sum(_ => _.Rating) / Reviews.Count, 1);
+                else
+                    return null;
+            }
+            set
+            {
+                value = null;
             }
         }
-
-        public double UsersScore { get; set; }
 
         public void ChangeName(string name)
         {
