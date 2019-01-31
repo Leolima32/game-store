@@ -8,6 +8,7 @@ import { SystemRequirementsComponent } from './games-detail/system-requirements/
 import { SimilarGamesComponent } from './games-detail/similar-games/similar-games.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { GenresComponent } from './genres/genres.component';
 
 export const ROUTES: Routes = [
     { path: '', component: HomeComponent },
@@ -22,6 +23,7 @@ export const ROUTES: Routes = [
             { path: 'similar', component: SimilarGamesComponent}
         ]
     },
+    { path: 'genres', component: GenresComponent },
     { path: 'login', component: LoginComponent},
     { path: 'register', component: RegisterComponent}
 ];

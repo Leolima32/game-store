@@ -13,6 +13,7 @@ import { RouterModule } from '@angular/router';
 import { HeroComponent } from './home/hero/hero.component';
 import { GamesComponent } from './games/games.component';
 import { GamesService } from './games/games.service';
+import { GenresService } from './genres/genres.service';
 import { GamesDetailComponent } from './games-detail/games-detail.component';
 import { ScreenshotsComponent } from './games-detail/screenshots/screenshots.component';
 import { OverviewComponent } from './games-detail/overview/overview.component';
@@ -22,6 +23,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { UserService } from './user/user.service';
 import { GameItemComponent } from './games/game-item/game-item.component';
+import { GenresComponent } from './genres/genres.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +39,8 @@ import { GameItemComponent } from './games/game-item/game-item.component';
     SimilarGamesComponent,
     LoginComponent,
     RegisterComponent,
-    GameItemComponent
+    GameItemComponent,
+    GenresComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +49,7 @@ import { GameItemComponent } from './games/game-item/game-item.component';
     BrowserAnimationsModule,
     FormsModule
   ],
-  providers: [GamesService, UserService],
+  providers: [GamesService, UserService,GenresService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
