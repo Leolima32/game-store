@@ -9,6 +9,7 @@ import { SimilarGamesComponent } from './games-detail/similar-games/similar-game
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { GenresComponent } from './genres/genres.component';
+import { GenresDetailComponent } from './genres-detail/genres-detail.component';
 
 export const ROUTES: Routes = [
     { path: '', component: HomeComponent },
@@ -24,6 +25,7 @@ export const ROUTES: Routes = [
         ]
     },
     { path: 'genres', component: GenresComponent },
+    { path: 'genres/:id', component: GenresDetailComponent },
     { path: 'login', component: LoginComponent},
     { path: 'register', component: RegisterComponent}
 ];

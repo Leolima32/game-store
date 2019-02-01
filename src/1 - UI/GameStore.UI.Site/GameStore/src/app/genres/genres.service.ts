@@ -20,4 +20,13 @@ export class GenresService {
               return genre
             }));
     }
+
+    getGamesByGenre(id: string): Observable<Game[]> {
+        return this.http.get<Game[]>(`${environment.API_ROOT}/api/games/listbygenre/${id}`).pipe(
+            map(game => {
+              game.map((game) => game.imagePath = `${environment.API_ROOT + game.imageRelativePath}`);
+              game.map((game) => game.coverImagePath = `${environment.API_ROOT + game.coverImageRelativePath}`);
+              return game
+            }));
+    }
 }

@@ -24,6 +24,7 @@ import { RegisterComponent } from './register/register.component';
 import { UserService } from './user/user.service';
 import { GameItemComponent } from './games/game-item/game-item.component';
 import { GenresComponent } from './genres/genres.component';
+import { GenresDetailComponent } from './genres-detail/genres-detail.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { GenresComponent } from './genres/genres.component';
     LoginComponent,
     RegisterComponent,
     GameItemComponent,
-    GenresComponent
+    GenresComponent,
+    GenresDetailComponent
   ],
   imports: [
     BrowserModule,
