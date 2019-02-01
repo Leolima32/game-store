@@ -26,6 +26,14 @@ namespace GameStore.Tests.Mocks
             }
         }
 
+        public async Task<IEnumerable<Game>> GetAllGamesFromThisGenreAsync(Guid genreId)
+        {
+            return await Task.Run(() =>
+            {
+                return _entities.Where(_ => _.GameGenres.Any(x => x.GenreId == genreId)).ToList();
+            });
+        }
+
         public async Task<IEnumerable<dynamic>> GetAllGamesWithDevelopersAsync()
         {
             var query = from game in _db.Games

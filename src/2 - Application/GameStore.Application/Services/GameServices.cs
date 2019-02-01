@@ -35,6 +35,12 @@ namespace GameStore.Application.Services
         {
             return _mapper.Map<GameViewModel>(await _unit.Games.GetByIdAsync(gameId));
         }
+
+        public async Task<IEnumerable<GameListViewModel>> GetGamesByGenre(Guid genreId)
+        {
+            return _mapper.Map<IEnumerable<GameListViewModel>>(await _unit.Games.GetAllGamesFromThisGenreAsync(genreId));
+        }
+
         public Guid InsertGame(AddOrUpdateGameDTO gamevm)
         {
             return _unit.Games.Add(_mapper.Map<Game>(gamevm));

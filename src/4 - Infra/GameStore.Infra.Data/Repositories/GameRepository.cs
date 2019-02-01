@@ -31,6 +31,22 @@ namespace GameStore.Infra.Data.Repositories
             return await query.ToListAsync();
         }
 
+        
+        public async Task<IEnumerable<Game>> GetAllGamesFromThisGenreAsync(Guid genreId)
+        {
+            return await _db.Games
+                      .Include(_ => _.GameDevelopers)
+                      .ThenInclude(_ => _.Developer)
+                      .Include(_ => _.GameGenres)
+                      .ThenInclude(_ => _.Genre)
+                      .Include(_ => _.GamePlataforms)
+                      .ThenInclude(_ => _.Plataform)
+                      .Include(_ => _.GamePublishers)
+                      .ThenInclude(_ => _.Publisher)
+                      .Where(_ => _.GameGenres.Any(x => x.GenreId == genreId))
+                      .ToListAsync();
+        }
+
         public override async Task<IEnumerable<Game>> GetAllAsync()
         {
             return await _db.Games
@@ -85,5 +101,6 @@ namespace GameStore.Infra.Data.Repositories
                 ).Take(5);
             });
         }
+
     }
 }

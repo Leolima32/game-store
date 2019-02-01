@@ -11,6 +11,7 @@ namespace GameStore.Application.Interfaces
         Task<IEnumerable<GameListViewModel>> GetAllGames();
         Task<IEnumerable<dynamic>> GetAllGamesWithDevelopersAsync();
         Task<GameViewModel> GetGameById(Guid game);
+        Task<IEnumerable<GameListViewModel>> GetGamesByGenre(Guid genreId);
         Guid InsertGame(AddOrUpdateGameDTO game);
         void UpdateGame(AddOrUpdateGameDTO game);
         void DeleteGame(Guid id);

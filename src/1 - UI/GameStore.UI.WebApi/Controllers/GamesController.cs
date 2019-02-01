@@ -32,6 +32,12 @@ namespace GameStore.UI.WebApi.Controllers
             return await _services.GetAllGames();
         }
 
+        [HttpGet("listbygenre/{genreId}")]
+        public async Task<IEnumerable<GameListViewModel>> GetListByGenre(Guid genreId)
+        {
+            return await _services.GetGamesByGenre(genreId);
+        }
+
         [HttpGet("{id}")]
         public async Task<GameViewModel> Get(Guid id)
         {
