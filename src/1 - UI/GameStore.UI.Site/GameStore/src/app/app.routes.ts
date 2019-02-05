@@ -10,10 +10,12 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { GenresComponent } from './genres/genres.component';
 import { GenresDetailComponent } from './genres-detail/genres-detail.component';
+import { AddgameComponent } from './games/addgame/addgame.component';
 
 export const ROUTES: Routes = [
     { path: '', component: HomeComponent },
     { path: 'games', component: GamesComponent },
+    { path: 'games/addgame', component: AddgameComponent},
     {
         path: 'games/:id', component: GamesDetailComponent,
         children: [
