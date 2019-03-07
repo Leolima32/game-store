@@ -2,7 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule, HttpClient } from '@angular/common/http'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { NgSelectModule } from '@ng-select/ng-select';
+import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -26,6 +27,8 @@ import { GameItemComponent } from './games/game-item/game-item.component';
 import { GenresComponent } from './genres/genres.component';
 import { GenresDetailComponent } from './genres-detail/genres-detail.component';
 import { AddgameComponent } from './games/addgame/addgame.component';
+import { CompaniesComponent } from './companies/companies.component';
+import { PlatformsComponent } from './platforms/platforms.component';
 
 @NgModule({
   declarations: [
@@ -44,14 +47,18 @@ import { AddgameComponent } from './games/addgame/addgame.component';
     GameItemComponent,
     GenresComponent,
     GenresDetailComponent,
-    AddgameComponent
+    AddgameComponent,
+    CompaniesComponent,
+    PlatformsComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     RouterModule.forRoot(ROUTES),
     BrowserAnimationsModule,
-    FormsModule
+    FormsModule,
+    NgSelectModule,
+    ReactiveFormsModule 
   ],
   providers: [GamesService, UserService,GenresService],
   bootstrap: [AppComponent]

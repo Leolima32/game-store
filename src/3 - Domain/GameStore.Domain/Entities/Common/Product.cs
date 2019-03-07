@@ -3,6 +3,7 @@ using GameStore.Domain.Entities.Enums;
 using GameStore.Domain.ValueObjects;
 using System.Linq;
 using System;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace GameStore.Domain.Entities.Common
 {
@@ -36,6 +37,7 @@ namespace GameStore.Domain.Entities.Common
 
         public ICollection<Review> Reviews { get; private set; } = new List<Review>();
 
+        [NotMapped]
         public double? UsersScore
         {
             get
