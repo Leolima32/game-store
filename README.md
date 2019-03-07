@@ -1,6 +1,6 @@
 # Game Store
 
-This project aims to be a perfect game store. It is dived in 2 applications, a web API developed in ASP.NET Core 2.0 and a website using Angular 4+. 
+This project aims to be a perfect game store. It is dived in 2 applications, a web API developed in ASP.NET Core 2.0 and a website using Angular 6.0.8. 
 
 ### Prerequisites
 
