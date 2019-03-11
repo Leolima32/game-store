@@ -6,11 +6,13 @@ import { CompaniesService } from 'src/app/companies/companies.services';
 import { PlatformsService } from 'src/app/platforms/platforms.service';
 import { AddGameService } from './addgame.service';
 import { NgSelectConfig } from '@ng-select/ng-select';
+import { ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'gs-addgame',
   templateUrl: './addgame.component.html',
-  styleUrls: ['./addgame.component.css']
+  styleUrls: ['./addgame.component.css'],
+  encapsulation: ViewEncapsulation.None
 })
 export class AddgameComponent implements OnInit {
 
