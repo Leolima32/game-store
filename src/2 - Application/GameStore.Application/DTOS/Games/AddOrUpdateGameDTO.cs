@@ -19,8 +19,8 @@ namespace GameStore.Application.DTOS.Games
 
         [Required(ErrorMessage = "Developers required.")]
         public ICollection<GameDeveloper> GameDevelopers { get; set; }
-        [Required(ErrorMessage = "Plataforms required.")]
-        public ICollection<GamePlataform> GamePlataforms { get; set; }
+        [Required(ErrorMessage = "Platforms required.")]
+        public ICollection<GamePlatform> GamePlatforms { get; set; }
         [Required(ErrorMessage = "Genres required.")]
         public ICollection<GameGenre> GameGenres { get; set; }
         public ICollection<GamePublisher> GamePublishers { get; set; }

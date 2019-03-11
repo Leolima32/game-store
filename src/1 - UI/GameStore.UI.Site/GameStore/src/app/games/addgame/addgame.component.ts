@@ -28,7 +28,7 @@ export class AddgameComponent implements OnInit {
   developerId: FormControl;
   publisherId: FormControl;
   genreId: any;
-  plataformId: FormControl;
+  platformId: FormControl;
 
   constructor(private genreService: GenresService,
     private companiesService: CompaniesService,
@@ -104,8 +104,8 @@ export class AddgameComponent implements OnInit {
     form.gamePublishers = this.form.value.gamePublishers.map((item) => {
       return { publisherId: item }
     })
-    form.gamePlataforms = this.form.value.gamePlatforms.map((item) => {
-      return { plataformId: item }
+    form.gamePlatforms = this.form.value.gamePlatforms.map((item) => {
+      return { platformId: item }
     })
 
     return form;

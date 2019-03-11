@@ -19,7 +19,7 @@ namespace GameStore.Infra.Data.Context
         public DbSet<Company> Companies { get; set; }
         public DbSet<Game> Games { get; set; }
         public DbSet<Genre> Genres { get; set; }
-        public DbSet<Plataform> Plataforms { get; set; }
+        public DbSet<Platform> Platforms { get; set; }
         public DbSet<Order> Orders { get; set; }
         public DbSet<ShoppingCart> ShoppingCarts { get; set; }
         public DbSet<CartItem> CartItems { get; set; }
@@ -52,15 +52,15 @@ namespace GameStore.Infra.Data.Context
                 .HasOne(gg => gg.Genre)
                 .WithMany("GameGenres");
 
-            modelBuilder.Entity<GamePlataform>().HasKey(t => new { t.GameId, t.PlataformId });
+            modelBuilder.Entity<GamePlatform>().HasKey(t => new { t.GameId, t.PlatformId });
 
-            modelBuilder.Entity<GamePlataform>()
+            modelBuilder.Entity<GamePlatform>()
             .HasOne(gp => gp.Game)
-            .WithMany("GamePlataforms");
+            .WithMany("GamePlatforms");
 
-            modelBuilder.Entity<GamePlataform>()
-                .HasOne(gp => gp.Plataform)
-                .WithMany("GamePlataforms");
+            modelBuilder.Entity<GamePlatform>()
+                .HasOne(gp => gp.Platform)
+                .WithMany("GamePlatforms");
 
             modelBuilder.Entity<GamePublisher>().HasKey(t => new { t.GameId, t.PublisherId });
 

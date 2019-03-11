@@ -34,7 +34,7 @@ namespace GameStore.Domain.Entities
         public double Score { get; private set; }
         public string CoverImageRelativePath {get; private set; }
 
-        public ICollection<GamePlataform> GamePlataforms { get; private set; }
+        public ICollection<GamePlatform> GamePlatforms { get; private set; }
         public ICollection<GameGenre> GameGenres { get; private set; }
         public ICollection<GameDeveloper> GameDevelopers { get; private set; }
         public ICollection<GamePublisher> GamePublishers { get; private set; }

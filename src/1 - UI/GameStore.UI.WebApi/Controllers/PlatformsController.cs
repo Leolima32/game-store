@@ -5,51 +5,51 @@ using System.Threading.Tasks;
 using GameStore.Application.Interfaces;
 using System.Collections.Generic;
 using GameStore.UI.WebApi.Filters;
-using GameStore.Application.DTOS.Plataforms;
+using GameStore.Application.DTOS.Platforms;
 using Microsoft.AspNetCore.Authorization;
 
 namespace GameStore.UI.WebApi.Controllers
 {
     [Route("api/[controller]")]
-    public class PlataformsController : Controller
+    public class PlatformsController : Controller
     {
-        private IPlataformServices _services;
-        public PlataformsController(IPlataformServices services)
+        private IPlatformServices _services;
+        public PlatformsController(IPlatformServices services)
         {
             _services = services;
         }
 
         [HttpGet]
-        public async Task<IEnumerable<PlataformViewModel>> Get()
+        public async Task<IEnumerable<PlatformViewModel>> Get()
         {
-            return await _services.GetAllPlataforms();
+            return await _services.GetAllPlatforms();
         }
 
         [HttpGet("{id}")]
-        public async Task<PlataformViewModel> Get(Guid id)
+        public async Task<PlatformViewModel> Get(Guid id)
         {
-            return await _services.GetPlataformById(id);
+            return await _services.GetPlatformById(id);
         }
 
         [Authorize(Roles = "Admin")]
         [HttpPost]
-        public void Post([FromBody]AddOrUpdatePlataformDTO plataform)
+        public void Post([FromBody]AddOrUpdatePlatformDTO platform)
         {
-            _services.InsertPlataform(plataform);
+            _services.InsertPlatform(platform);
         }
 
         [Authorize(Roles = "Admin")]
         [HttpPut]
-        public void Update([FromBody]AddOrUpdatePlataformDTO plataform)
+        public void Update([FromBody]AddOrUpdatePlatformDTO platform)
         {
-            _services.UpdatePlataform(plataform);
+            _services.UpdatePlatform(platform);
         }
 
         [Authorize(Roles = "Admin")]
         [HttpDelete("{id}")]
         public void Delete(Guid id)
         {
-            _services.DeletePlataform(id);
+            _services.DeletePlatform(id);
         }
     }
 }

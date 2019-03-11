@@ -8,17 +8,17 @@ using Microsoft.EntityFrameworkCore;
 
 namespace GameStore.Infra.Data.Repositories
 {
-    public class PlataformRepository : Repository<Plataform>, IPlataformRepository
+    public class PlatformRepository : Repository<Platform>, IPlatformRepository
     {
         private GameStoreContext _db;
-        public PlataformRepository(GameStoreContext db) : base(db)
+        public PlatformRepository(GameStoreContext db) : base(db)
         {
             _db = db;
         }
 
-        public override async Task<IEnumerable<Plataform>> GetAllAsync() {
-            return await  _db.Plataforms
-                            .Include(x => x.GamePlataforms)
+        public override async Task<IEnumerable<Platform>> GetAllAsync() {
+            return await  _db.Platforms
+                            .Include(x => x.GamePlatforms)
                             .ThenInclude(x => x.Game)
                             .ToListAsync();
         }

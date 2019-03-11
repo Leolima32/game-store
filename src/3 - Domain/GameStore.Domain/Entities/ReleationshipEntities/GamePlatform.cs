@@ -2,12 +2,12 @@
 
 namespace GameStore.Domain.Entities.ReleationshipEntities
 {
-    public class GamePlataform
+    public class GamePlatform
     {
         public Guid GameId { get; set; }
         public Game Game { get; set; }
 
-        public Guid PlataformId { get; set; }
-        public Plataform Plataform { get; set; }
+        public Guid PlatformId { get; set; }
+        public Platform Platform { get; set; }
     }
 }

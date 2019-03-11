@@ -22,7 +22,7 @@ namespace GameStore.Application.ViewModels
         public string CoverImageRelativePath { get; set; }
 
         private ICollection<GameDeveloper> GameDevelopers { get; set; }
-        private ICollection<GamePlataform> GamePlataforms { get; set; }
+        private ICollection<GamePlatform> GamePlatforms { get; set; }
         private ICollection<GameGenre> GameGenres { get; set; }
         private ICollection<GamePublisher> GamePublishers { get; set; }
 
@@ -64,14 +64,14 @@ namespace GameStore.Application.ViewModels
                 });
             }
         }
-        public IEnumerable<dynamic> Plataforms
+        public IEnumerable<dynamic> Platforms
         {
             get
             {
-                return GamePlataforms.Select(e => new
+                return GamePlatforms.Select(e => new
                 {
-                    Id = e.Plataform.Id,
-                    Name = e.Plataform.Name
+                    Id = e.Platform.Id,
+                    Name = e.Platform.Name
                 });
             }
         }

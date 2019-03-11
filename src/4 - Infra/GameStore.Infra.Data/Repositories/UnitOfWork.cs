@@ -11,7 +11,7 @@ namespace GameStore.Infra.Data.Repositories
         private IGameRepository _gameRepository;
         private ICompanyRepository _companyRepository;
         private IGenreRepository _genreRepository;
-        private IPlataformRepository _plataformRepository;
+        private IPlatformRepository _platformRepository;
         private IUserRepository _userRepository;
         private IOrderRepository _orderRepository;
         private IReviewRepository _reviewRepository;
@@ -55,15 +55,15 @@ namespace GameStore.Infra.Data.Repositories
             }
         }
 
-        public IPlataformRepository Plataforms
+        public IPlatformRepository Platforms
         {
             get
             {
-                if (_plataformRepository == null)
+                if (_platformRepository == null)
                 {
-                    _plataformRepository = new PlataformRepository(_db);
+                    _platformRepository = new PlatformRepository(_db);
                 }
-                return _plataformRepository;
+                return _platformRepository;
             }
         }
 

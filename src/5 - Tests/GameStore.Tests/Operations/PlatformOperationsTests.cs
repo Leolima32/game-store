@@ -6,25 +6,25 @@ using Xunit;
 
 namespace GameStore.Tests.Operations
 {
-    public class PlataformOperationsTests
+    public class PlatformOperationsTests
     {
-        private FakePlataformRepository _repository;
-        public PlataformOperationsTests()
+        private FakePlatformRepository _repository;
+        public PlatformOperationsTests()
         {
-            _repository = new FakePlataformRepository();
+            _repository = new FakePlatformRepository();
         }
 
         [Fact]
-        public void ShouldAddANewPlataform()
+        public void ShouldAddANewPlatform()
         {
             int countBefore = _repository._entities.Count;
-            _repository.Add(new Plataform("new fake console"));
+            _repository.Add(new Platform("new fake console"));
             int countAfter = _repository._entities.Count;
             Assert.Equal(countAfter, countBefore + 1);
         }
 
         [Fact]
-        public void ShoulDeletePlataform()
+        public void ShoulDeletePlatform()
         {
             int countBefore = _repository._entities.Count;
             Guid id = _repository._entities.FirstOrDefault().Id;
@@ -34,21 +34,21 @@ namespace GameStore.Tests.Operations
         }
 
         [Fact]
-        public void ShouldUpdatePlataform()
+        public void ShouldUpdatePlatform()
         {
-            var plataform = _repository._entities.FirstOrDefault();
-            plataform.ChangeName("new super cool name");
-            _repository.Update(plataform);
+            var platform = _repository._entities.FirstOrDefault();
+            platform.ChangeName("new super cool name");
+            _repository.Update(platform);
             Assert.True(_repository._entities.FirstOrDefault().Name == "new super cool name");
         }
 
         [Fact]
-        public void ShouldGetPlataformById()
+        public void ShouldGetPlatformById()
         {
-            var plataform = _repository._entities.FirstOrDefault();
-            var id = plataform.Id;
-            var selectedPlataform = _repository.GetById(id);
-            Assert.Equal(plataform, selectedPlataform);
+            var platform = _repository._entities.FirstOrDefault();
+            var id = platform.Id;
+            var selectedPlatform = _repository.GetById(id);
+            Assert.Equal(platform, selectedPlatform);
         }
     }
 }

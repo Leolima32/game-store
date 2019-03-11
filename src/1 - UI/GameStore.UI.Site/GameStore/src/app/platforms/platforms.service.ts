@@ -9,6 +9,6 @@ export class PlatformsService {
     constructor(private http: HttpClient) { }
     
     getAllPlatforms(): Observable<Platform[]> {
-        return this.http.get<Platform[]>(`${environment.API_ROOT}/api/plataforms`);
+        return this.http.get<Platform[]>(`${environment.API_ROOT}/api/platforms`);
     }
 }

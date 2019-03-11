@@ -2,7 +2,7 @@ using AutoMapper;
 using GameStore.Application.DTOS.Companies;
 using GameStore.Application.DTOS.Games;
 using GameStore.Application.DTOS.Genres;
-using GameStore.Application.DTOS.Plataforms;
+using GameStore.Application.DTOS.Platforms;
 using GameStore.Application.ViewModels;
 using GameStore.Domain.Entities;
 
@@ -21,7 +21,7 @@ namespace GameStore.Application.AutoMapper
             CreateMap<AddOrUpdateGameDTO,Game>();
             CreateMap<AddOrUpdateCompanyDTO, Company>();
             CreateMap<AddOrUpdateGenreDTO, Genre>();
-            CreateMap<AddOrUpdatePlataformDTO, Plataform>();
+            CreateMap<AddOrUpdatePlatformDTO, Platform>();
         }
     }
 }

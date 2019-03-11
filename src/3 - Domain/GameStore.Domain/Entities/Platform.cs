@@ -9,18 +9,18 @@ using GameStore.Domain.ValueObjects;
 
 namespace GameStore.Domain.Entities
 {
-    public class Plataform: BaseEntity
+    public class Platform: BaseEntity
     {
-        public Plataform(string name)
+        public Platform(string name)
         {
             Name = name;
 
             if (String.IsNullOrEmpty(Name))
-                AddNonconformity(new Nonconformity("plataform.name", "Plataform Name cannot be null or empty."));
+                AddNonconformity(new Nonconformity("platform.name", "Platform Name cannot be null or empty."));
         }
 
         public string Name { get; private set; }
-        public ICollection<GamePlataform> GamePlataforms { get; set; }
+        public ICollection<GamePlatform> GamePlatforms { get; set; }
 
         public void ChangeName(string name) {
             Name = name;

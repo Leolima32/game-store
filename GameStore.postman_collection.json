@@ -31,7 +31,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"name\": \"Tomb Raider\",\n    \"releaseDate\": \"2013-03-05T00:00:00\",\n    \"score\": 8.4,\n    \"price\": 59.99,\n    \"description\": \"Tomb Raider é um videojogo de ação-aventura, décimo título da série Tomb Raider e o quinto produzido pela Crystal Dynamics. Foi publicado pela Square Enix em 5 de Março de 2013 para Microsoft Windows, PlayStation 3 e Xbox 360\",\n    \"shortDescription\": \"Tomb Raider é um videojogo\",\n    \"imageUrl\": \"http://localhost/gamestore/images/ffxv.jpg\",\n    \"gameDevelopers\": [{\"DeveloperId\":\"CF3B03F4-C8E3-4BFD-8049-F062D9D284B3\"}],\n    \"gamePublishers\": [{\"PublisherId\":\"CF3B03F4-C8E3-4BFD-8049-F062D9D284B3\"}],\n    \"gameGenres\" : [{\"GenreId\":\"2F9C2551-643C-4EAB-BBF7-E39D1AADDB19\"},\n    \t\t\t\t{\"GenreId\":\"2BFC07A6-1E89-40A8-A329-24A33386BFB7\"}],\n    \"gamePlataforms\" : [{\"PlataformId\":\"752C8964-6317-4C8F-8A61-46FC2D387499\"},\n    \t\t\t\t{\"PlataformId\":\"19EFC320-7EAA-4C60-9E15-84B9A213307F\"}]\n}"
+							"raw": "{\n\t\"name\": \"Tomb Raider\",\n    \"releaseDate\": \"2013-03-05T00:00:00\",\n    \"score\": 8.4,\n    \"price\": 59.99,\n    \"description\": \"Tomb Raider é um videojogo de ação-aventura, décimo título da série Tomb Raider e o quinto produzido pela Crystal Dynamics. Foi publicado pela Square Enix em 5 de Março de 2013 para Microsoft Windows, PlayStation 3 e Xbox 360\",\n    \"shortDescription\": \"Tomb Raider é um videojogo\",\n    \"imageUrl\": \"http://localhost/gamestore/images/ffxv.jpg\",\n    \"gameDevelopers\": [{\"DeveloperId\":\"CF3B03F4-C8E3-4BFD-8049-F062D9D284B3\"}],\n    \"gamePublishers\": [{\"PublisherId\":\"CF3B03F4-C8E3-4BFD-8049-F062D9D284B3\"}],\n    \"gameGenres\" : [{\"GenreId\":\"2F9C2551-643C-4EAB-BBF7-E39D1AADDB19\"},\n    \t\t\t\t{\"GenreId\":\"2BFC07A6-1E89-40A8-A329-24A33386BFB7\"}],\n    \"gamePlatforms\" : [{\"PlatformId\":\"752C8964-6317-4C8F-8A61-46FC2D387499\"},\n    \t\t\t\t{\"PlatformId\":\"19EFC320-7EAA-4C60-9E15-84B9A213307F\"}]\n}"
 						},
 						"url": {
 							"raw": "{{URL}}/api/games",
@@ -59,7 +59,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"id\":\"bc0e9cdc-709d-43bb-e315-08d58787302f\",\n\t\"name\": \"TESTE\",\n    \"releaseDate\": \"2013-03-05T00:00:00\",\n    \"score\": 9.3,\n    \"price\": 59.99,\n    \"description\": \"Tomb Raider é um videojogo de ação-aventura, décimo título da série Tomb Raider e o quinto produzido pela Crystal Dynamics. Foi publicado pela Square Enix em 5 de Março de 2013 para Microsoft Windows, PlayStation 3 e Xbox 360\",\n    \"shortDescription\": \"Tomb Raider é um videojogo\",\n    \"imageUrl\": \"http://localhost/gamestore/images/ffxv.jpg\",\n    \"gameDevelopers\": [{\"DeveloperId\":\"3a332845-6a75-48f9-b7bf-5427570f8d9a\"}],\n    \"gamePublishers\": [{\"PublisherId\":\"3a332845-6a75-48f9-b7bf-5427570f8d9a\"}],\n    \"gameGenres\" : [{\"GenreId\":\"8a2593d7-7ae1-4a0a-89e4-a9aaeaba8074\"},\n    \t\t\t\t{\"GenreId\":\"089345b7-8ee8-4290-b840-5d0e20aba317\"}],\n    \"gamePlataforms\" : [{\"PlataformId\":\"d64c2f9d-7a4e-423d-bc1c-28f50387b3ad\"},\n    \t\t\t\t{\"PlataformId\":\"16df4c17-7f30-4fff-a90e-b379eb720f3f\"}]\n}"
+							"raw": "{\n\t\"id\":\"bc0e9cdc-709d-43bb-e315-08d58787302f\",\n\t\"name\": \"TESTE\",\n    \"releaseDate\": \"2013-03-05T00:00:00\",\n    \"score\": 9.3,\n    \"price\": 59.99,\n    \"description\": \"Tomb Raider é um videojogo de ação-aventura, décimo título da série Tomb Raider e o quinto produzido pela Crystal Dynamics. Foi publicado pela Square Enix em 5 de Março de 2013 para Microsoft Windows, PlayStation 3 e Xbox 360\",\n    \"shortDescription\": \"Tomb Raider é um videojogo\",\n    \"imageUrl\": \"http://localhost/gamestore/images/ffxv.jpg\",\n    \"gameDevelopers\": [{\"DeveloperId\":\"3a332845-6a75-48f9-b7bf-5427570f8d9a\"}],\n    \"gamePublishers\": [{\"PublisherId\":\"3a332845-6a75-48f9-b7bf-5427570f8d9a\"}],\n    \"gameGenres\" : [{\"GenreId\":\"8a2593d7-7ae1-4a0a-89e4-a9aaeaba8074\"},\n    \t\t\t\t{\"GenreId\":\"089345b7-8ee8-4290-b840-5d0e20aba317\"}],\n    \"gamePlatforms\" : [{\"PlatformId\":\"d64c2f9d-7a4e-423d-bc1c-28f50387b3ad\"},\n    \t\t\t\t{\"PlatformId\":\"16df4c17-7f30-4fff-a90e-b379eb720f3f\"}]\n}"
 						},
 						"url": {
 							"raw": "{{URL}}/api/games",
@@ -411,11 +411,11 @@
 			]
 		},
 		{
-			"name": "Plataforms",
+			"name": "Platforms",
 			"description": null,
 			"item": [
 				{
-					"name": "Add plataform",
+					"name": "Add platform",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -429,13 +429,13 @@
 							"raw": "{\n\t\"name\": \"Atari\"\n}"
 						},
 						"url": {
-							"raw": "{{URL}}/api/plataforms",
+							"raw": "{{URL}}/api/platforms",
 							"host": [
 								"{{URL}}"
 							],
 							"path": [
 								"api",
-								"plataforms"
+								"platforms"
 							]
 						},
 						"description": "Add new games"
@@ -443,7 +443,7 @@
 					"response": []
 				},
 				{
-					"name": "Update plataform",
+					"name": "Update platform",
 					"request": {
 						"method": "PUT",
 						"header": [
@@ -457,13 +457,13 @@
 							"raw": "{\n\t\"id\":\"AC8985F3-B833-4338-BE08-08D566815411\",\n\t\"name\": \"Atari\"\n}"
 						},
 						"url": {
-							"raw": "{{URL}}/api/plataforms",
+							"raw": "{{URL}}/api/platforms",
 							"host": [
 								"{{URL}}"
 							],
 							"path": [
 								"api",
-								"plataforms"
+								"platforms"
 							]
 						},
 						"description": "update games"
@@ -471,7 +471,7 @@
 					"response": []
 				},
 				{
-					"name": "Get all plataforms",
+					"name": "Get all platforms",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -480,13 +480,13 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{URL}}/api/plataforms",
+							"raw": "{{URL}}/api/platforms",
 							"host": [
 								"{{URL}}"
 							],
 							"path": [
 								"api",
-								"plataforms"
+								"platforms"
 							]
 						},
 						"description": "Get all games"
@@ -494,7 +494,7 @@
 					"response": []
 				},
 				{
-					"name": "Delete plataform",
+					"name": "Delete platform",
 					"request": {
 						"method": "DELETE",
 						"header": [],
@@ -503,13 +503,13 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{URL}}/api/plataforms",
+							"raw": "{{URL}}/api/platforms",
 							"host": [
 								"{{URL}}"
 							],
 							"path": [
 								"api",
-								"plataforms"
+								"platforms"
 							]
 						},
 						"description": "Delete one game"
@@ -517,7 +517,7 @@
 					"response": []
 				},
 				{
-					"name": "Get plataform by id",
+					"name": "Get platform by id",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -526,13 +526,13 @@
 							"raw": ""
 						},
 						"url": {
-							"raw": "{{URL}}/api/plataforms/4cb6f093-ad07-461c-a06e-2397c085da24",
+							"raw": "{{URL}}/api/platforms/4cb6f093-ad07-461c-a06e-2397c085da24",
 							"host": [
 								"{{URL}}"
 							],
 							"path": [
 								"api",
-								"plataforms",
+								"platforms",
 								"4cb6f093-ad07-461c-a06e-2397c085da24"
 							]
 						}

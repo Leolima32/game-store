@@ -63,16 +63,16 @@ namespace GameStore.Infra.Data.Context
                 context.Companies.Add(s);
             }
 
-            var plataforms = new Plataform[]
+            var platforms = new Platform[]
             {
-                new Plataform("Playstation 4"),
-                new Plataform("Xbox One"),
-                new Plataform("PC"),
-                new Plataform("Nintendo Switch")
+                new Platform("Playstation 4"),
+                new Platform("Xbox One"),
+                new Platform("PC"),
+                new Platform("Nintendo Switch")
             };
-            foreach (Plataform s in plataforms)
+            foreach (Platform s in platforms)
             {
-                context.Plataforms.Add(s);
+                context.Platforms.Add(s);
             }
 
             var genres = new Genre[]
@@ -152,11 +152,11 @@ namespace GameStore.Infra.Data.Context
                 new GameGenre { Game = games[2], Genre = genres[0] },
                 new GameGenre { Game = games[3], Genre = genres[0] },
                 new GameGenre { Game = games[3], Genre = genres[1] },
-                new GamePlataform { Game = games[0], Plataform = plataforms[0] },
-                new GamePlataform { Game = games[1], Plataform = plataforms[1] },
-                new GamePlataform { Game = games[1], Plataform = plataforms[2] },
-                new GamePlataform { Game = games[2], Plataform = plataforms[2] },
-                new GamePlataform { Game = games[3], Plataform = plataforms[3] },
+                new GamePlatform { Game = games[0], Platform = platforms[0] },
+                new GamePlatform { Game = games[1], Platform = platforms[1] },
+                new GamePlatform { Game = games[1], Platform = platforms[2] },
+                new GamePlatform { Game = games[2], Platform = platforms[2] },
+                new GamePlatform { Game = games[3], Platform = platforms[3] },
                 new GamePublisher { Game = games[0], Publisher = companies[0] },
                 new GamePublisher { Game = games[1], Publisher = companies[3] },
                 new GamePublisher { Game = games[2], Publisher = companies[4] },

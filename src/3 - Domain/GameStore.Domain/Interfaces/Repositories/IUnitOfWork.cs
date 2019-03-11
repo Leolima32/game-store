@@ -5,7 +5,7 @@ namespace GameStore.Domain.Interfaces.Repositories
         ICompanyRepository Companies { get; }
         IGameRepository Games { get; }
         IGenreRepository Genres { get; }
-        IPlataformRepository Plataforms { get; }
+        IPlatformRepository Platforms { get; }
         IUserRepository Users { get ;}
         IOrderRepository Orders { get; }
         IReviewRepository Reviews { get;}
