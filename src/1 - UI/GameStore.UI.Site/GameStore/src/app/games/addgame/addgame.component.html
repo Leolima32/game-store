@@ -3,37 +3,41 @@
     <div class="field">
       <label class="label">Name</label>
       <div class="control">
-        <input formControlName="name" class="input" type="text" placeholder="Text input">
+        <input formControlName="name" class="input" type="text" placeholder="Text input" [ngClass]="{
+          'is-danger': name.invalid && name.dirty
+        }">
       </div>
     </div>
     <div class="field">
       <label class="label">Release Date</label>
       <div class="control">
-        <input formControlName="releaseDate" class="input" type="date" placeholder="Text input">
-      </div>
-    </div>
-    <div class="field">
-      <label class="label">Score</label>
-      <div class="control">
-        <input formControlName="score" class="input" type="number" placeholder="Text input">
+        <input formControlName="releaseDate" class="input" type="date" placeholder="Text input" [ngClass]="{
+          'is-danger': releaseDate.invalid && releaseDate.dirty
+        }">
       </div>
     </div>
     <div class="field">
       <label class="label">Description</label>
       <div class="control">
-        <textarea formControlName="description" class="textarea" placeholder="Textarea"></textarea>
+        <textarea formControlName="description" class="textarea" placeholder="Textarea" [ngClass]="{
+          'is-danger': description.invalid && description.dirty
+        }"></textarea>
       </div>
     </div>
     <div class="field">
       <label class="label">Short Description</label>
       <div class="control">
-        <textarea formControlName="shortDescription" class="textarea" placeholder="Textarea"></textarea>
+        <textarea formControlName="shortDescription" class="textarea" placeholder="Textarea"[ngClass]="{
+          'is-danger': shortDescription.invalid && shortDescription.dirty
+        }"></textarea>
       </div>
     </div>
     <div class="field">
       <label class="label">Price</label>
       <div class="control">
-        <input formControlName="price" class="input" type="text" placeholder="Text input">
+        <input formControlName="price" class="input" type="text" placeholder="Text input"[ngClass]="{
+          'is-danger': price.invalid && price.dirty
+        }">
       </div>
     </div>
     <div class="field">

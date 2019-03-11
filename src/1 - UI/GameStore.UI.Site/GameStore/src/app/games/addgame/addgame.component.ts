@@ -64,7 +64,7 @@ export class AddgameComponent implements OnInit {
           }
         );
       console.log("Form Submitted!");
-      // this.form.reset();
+      this.form.reset();
     } else {
       console.log('invalid');
     }
@@ -75,7 +75,6 @@ export class AddgameComponent implements OnInit {
     this.name = new FormControl('', Validators.required);
     this.releaseDate = new FormControl('', Validators.required);
     this.description = new FormControl('', Validators.required);
-    this.score = new FormControl('');
     this.shortDescription = new FormControl('', Validators.required);
     this.price = new FormControl('', Validators.required);
   }
