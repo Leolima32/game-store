@@ -24,6 +24,8 @@
     "bulma": "^0.7.1",
     "core-js": "^2.5.4",
     "material-design-icons": "^3.0.1",
+    "ngx-currency-mask": "^4.3.2",
+    "ngx-mask": "^7.6.3",
     "rxjs": "^6.2.2",
     "rxjs-compat": "^6.2.2",
     "zone.js": "^0.8.26"

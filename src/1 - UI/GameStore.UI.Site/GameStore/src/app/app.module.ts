@@ -3,7 +3,7 @@ import { HttpClientModule, HttpClient } from '@angular/common/http'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { NgSelectModule } from '@ng-select/ng-select';
-import { FormsModule, ReactiveFormsModule  } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -29,6 +29,8 @@ import { GenresDetailComponent } from './genres-detail/genres-detail.component';
 import { AddgameComponent } from './games/addgame/addgame.component';
 import { CompaniesComponent } from './companies/companies.component';
 import { PlatformsComponent } from './platforms/platforms.component';
+import { NgxMaskModule } from 'ngx-mask';
+import { CurrencyMaskModule } from "ngx-currency-mask";
 
 @NgModule({
   declarations: [
@@ -58,9 +60,11 @@ import { PlatformsComponent } from './platforms/platforms.component';
     BrowserAnimationsModule,
     FormsModule,
     NgSelectModule,
-    ReactiveFormsModule 
+    ReactiveFormsModule,
+    NgxMaskModule.forRoot(),
+    CurrencyMaskModule
   ],
-  providers: [GamesService, UserService,GenresService],
+  providers: [GamesService, UserService, GenresService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
