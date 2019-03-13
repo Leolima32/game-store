@@ -23,7 +23,6 @@ export class AddgameComponent implements OnInit {
   form: FormGroup;
   name: FormControl;
   releaseDate: FormControl;
-  score: FormControl;
   price: FormControl;
   description: FormControl;
   shortDescription: FormControl;
@@ -85,7 +84,6 @@ export class AddgameComponent implements OnInit {
     this.form = this.formBuilder.group({
       name: this.name,
       releaseDate: this.releaseDate,
-      score: this.score,
       price: this.price,
       description: this.description,
       shortDescription: this.shortDescription,

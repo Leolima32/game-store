@@ -22,7 +22,7 @@ namespace GameStore.Tests.Mocks
             {
                 base._entities.Add(new Game("Fictional Tests", "New fictional game.",
                 "new fictional games.",
-                9.8, EDepartment.Game, 89.99, new DateTime(2018, 1, 1),5));
+                EDepartment.Game, 89.99, new DateTime(2018, 1, 1),5));
             }
         }
 
@@ -45,7 +45,7 @@ namespace GameStore.Tests.Mocks
         public async Task<IEnumerable<Game>> GetBestRatedGamesAsync()
         {
             var query = from games in _db.Games
-                            orderby games.Score
+                            orderby games.UsersScore
                             select games;
             return await query.ToListAsync();
         }

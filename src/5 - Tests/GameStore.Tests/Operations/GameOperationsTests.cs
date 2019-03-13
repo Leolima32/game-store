@@ -20,7 +20,7 @@ namespace GameStore.Tests.Operations
             int countBefore = _repository._entities.Count;
             _repository.Add(new Game("Fictional Tests", "New fictional game.",
                 "new fictional games.",
-                9.8, EDepartment.Game, 89.99, new DateTime(2018, 1, 1),5));
+                EDepartment.Game, 89.99, new DateTime(2018, 1, 1),5));
             int countAfter = _repository._entities.Count;
             Assert.Equal(countAfter, countBefore + 1);
         }

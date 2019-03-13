@@ -13,7 +13,6 @@ namespace GameStore.Domain.Entities
             string name,
             string description,
             string shortDescription,
-            double score,
             EDepartment department,
             double price,
             DateTime releaseDate,
@@ -27,11 +26,9 @@ namespace GameStore.Domain.Entities
                 availableQuantity)
         {
             ReleaseDate = releaseDate;
-            Score = score;
         }
 
         public DateTime ReleaseDate { get; private set; }
-        public double Score { get; private set; }
         public string CoverImageRelativePath {get; private set; }
 
         public ICollection<GamePlatform> GamePlatforms { get; private set; }

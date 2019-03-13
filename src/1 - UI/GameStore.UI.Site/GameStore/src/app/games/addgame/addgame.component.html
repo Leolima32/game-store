@@ -4,7 +4,7 @@
       <label class="label">Name</label>
       <div class="control">
         <input formControlName="name" class="input" type="text" placeholder="Text input" [ngClass]="{
-          'is-danger': name.invalid && (name.dirty || formDir.submitted)
+          'is-danger': (name.invalid && ((name.dirty || name.touched) || formDir.submitted))
         }">
         <div *ngIf="(name.invalid && ((name.dirty || name.touched) || formDir.submitted))">
           <div *ngIf="name.errors.required">
@@ -17,7 +17,7 @@
       <label class="label">Release Date</label>
       <div class="control">
         <input formControlName="releaseDate" class="input" type="date" placeholder="Text input" [ngClass]="{
-          'is-danger': releaseDate.invalid && (releaseDate.dirty || formDir.submitted)
+          'is-danger': (releaseDate.invalid && ((releaseDate.dirty || releaseDate.touched) || formDir.submitted))
         }">
         <div *ngIf="(releaseDate.invalid && ((releaseDate.dirty || releaseDate.touched) || formDir.submitted))">
           <div *ngIf="releaseDate.errors.required">
@@ -30,7 +30,7 @@
       <label class="label">Description</label>
       <div class="control">
         <textarea formControlName="description" class="textarea" placeholder="Textarea" [ngClass]="{
-          'is-danger': description.invalid && (description.dirty || formDir.submitted)
+          'is-danger': (description.invalid && ((description.dirty || description.touched) || formDir.submitted))
         }"></textarea>
         <div *ngIf="(description.invalid && ((description.dirty || description.touched) || formDir.submitted))">          
           <div *ngIf="description.errors.required">
@@ -43,7 +43,7 @@
       <label class="label">Short Description</label>
       <div class="control">
         <textarea formControlName="shortDescription" class="textarea" placeholder="Textarea" [ngClass]="{
-          'is-danger': shortDescription.invalid && (shortDescription.dirty || formDir.submitted)
+          'is-danger': (shortDescription.invalid && ((shortDescription.dirty || shortDescription.touched) || formDir.submitted))
         }"></textarea>
         <div *ngIf="(shortDescription.invalid && ((shortDescription.dirty || shortDescription.touched) || formDir.submitted))"> 
           <div *ngIf="shortDescription.errors.required">
@@ -56,7 +56,7 @@
       <label class="label">Price</label>
       <div class="control">
         <input formControlName="price" class="input" type="text" placeholder="Text input" [ngClass]="{
-          'is-danger': price.invalid && (price.dirty || formDir.submitted)
+          'is-danger': (price.invalid && ((price.dirty || price.touched) || formDir.submitted))
         }" currencyMask [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',', align: 'left' }">
         <div *ngIf="(price.invalid && ((price.dirty || price.touched) || formDir.submitted))"> 
           <div *ngIf="price.errors.required">
@@ -84,6 +84,11 @@
         <ng-select [formControl]="form.controls.gameDevelopers" [items]="companiesList" bindLabel="name.fantasyName"
           bindValue="id" [multiple]="true" placeholder="Select dropdown" required>
         </ng-select>
+        <div *ngIf="(form.controls.gameDevelopers.invalid && (form.controls.gameDevelopers.dirty || form.controls.gameDevelopers.touched)) || formDir.submitted">
+          <div *ngIf="form.controls.gameDevelopers.errors.required">
+            <p class="help is-danger">Developer(s) is required.</p>
+          </div>
+        </div>
       </div>
     </div>
     <div class="field">
@@ -92,6 +97,11 @@
         <ng-select [formControl]="form.controls.gamePublishers" [items]="companiesList" bindLabel="name.fantasyName"
           bindValue="id" [multiple]="true" placeholder="Select dropdown" required>
         </ng-select>
+        <div *ngIf="(form.controls.gamePublishers.invalid && (form.controls.gamePublishers.dirty || form.controls.gamePublishers.touched)) || formDir.submitted">
+          <div *ngIf="form.controls.gamePublishers.errors.required">
+            <p class="help is-danger">Publisher(s) is required.</p>
+          </div>
+        </div>
       </div>
     </div>
     <div class="field">
@@ -100,6 +110,11 @@
         <ng-select [formControl]="form.controls.gamePlatforms" [items]="platformsList" bindLabel="name" bindValue="id"
           [multiple]="true" placeholder="Select dropdown" required>
         </ng-select>
+        <div *ngIf="(form.controls.gamePlatforms.invalid && (form.controls.gamePlatforms.dirty || form.controls.gamePlatforms.touched)) || formDir.submitted">
+          <div *ngIf="form.controls.gamePlatforms.errors.required">
+            <p class="help is-danger">Platform(s) is required.</p>
+          </div>
+        </div>
       </div>
     </div>
     <div class="field">

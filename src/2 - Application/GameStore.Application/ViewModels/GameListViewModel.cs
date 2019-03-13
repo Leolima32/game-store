@@ -14,7 +14,6 @@ namespace GameStore.Application.ViewModels
         public Guid Id { get; set; }
         public string Name { get; set; }
         public DateTime ReleaseDate { get; set; }
-        public double Score { get; set; }
         public double? UsersScore { get; set; }
         public string ShortDescription { get; set; }
         public string ImageRelativePath { get; set; }

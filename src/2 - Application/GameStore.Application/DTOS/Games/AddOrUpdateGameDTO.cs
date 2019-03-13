@@ -12,8 +12,6 @@ namespace GameStore.Application.DTOS.Games
         public string Name { get; set; }
         public DateTime ReleaseDate { get; set; }
         [Required()]
-        public double Score { get; set; }
-        [Required()]
         public string Description { get; set; }
         public string ShortDescription { get; set; }
 
