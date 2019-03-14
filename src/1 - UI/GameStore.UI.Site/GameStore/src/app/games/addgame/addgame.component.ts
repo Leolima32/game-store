@@ -66,6 +66,7 @@ export class AddgameComponent implements OnInit {
         );
       console.log("Form Submitted!");
       this.form.reset();
+      this.form.resetForm();
     } else {
       console.log('invalid');
     }
