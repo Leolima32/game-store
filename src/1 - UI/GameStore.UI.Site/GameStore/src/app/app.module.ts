@@ -31,6 +31,7 @@ import { CompaniesComponent } from './companies/companies.component';
 import { PlatformsComponent } from './platforms/platforms.component';
 import { NgxMaskModule } from 'ngx-mask';
 import { CurrencyMaskModule } from "ngx-currency-mask";
+import { NotifierModule } from 'angular-notifier';
 
 @NgModule({
   declarations: [
@@ -62,7 +63,18 @@ import { CurrencyMaskModule } from "ngx-currency-mask";
     NgSelectModule,
     ReactiveFormsModule,
     NgxMaskModule.forRoot(),
-    CurrencyMaskModule
+    CurrencyMaskModule,
+    NotifierModule.withConfig({
+      position: {
+        horizontal: {
+          position: 'right',
+        },
+        vertical: {
+          position: 'top',
+          distance: 12
+        }
+      }
+    })
   ],
   providers: [GamesService, UserService, GenresService],
   bootstrap: [AppComponent]

@@ -1,5 +1,5 @@
 <div class="container">
-  <form [formGroup]="form" #formDir="ngForm" (ngSubmit)="onSubmit()">
+  <form [formGroup]="form" #formDir="ngForm" (ngSubmit)="onSubmit(formDir)">
     <div class="field">
       <label class="label">Name</label>
       <div class="control">
@@ -119,8 +119,21 @@
     </div>
     <div class="field">
       <label class="label">Image</label>
-      <div class="control">
-        <input class="input" type="text" placeholder="Text input">
+      <div class="file">
+        <label class="file-label">
+          <input class="file-input" type="file" name="resume">
+          <span class="file-cta">
+            <span class="file-icon">
+              <i class="fas fa-upload"></i>
+            </span>
+            <span class="file-label">
+              Choose a file…
+            </span>
+          </span>
+          <span class="file-name">
+            {{fileName}}
+          </span>
+        </label>
       </div>
     </div>
     <div class="field is-grouped">

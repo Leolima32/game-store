@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { GenresService } from 'src/app/genres/genres.service';
 import { Genre } from 'src/app/genres/genre.model';
-import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormBuilder, NgForm } from '@angular/forms';
 import { CompaniesService } from 'src/app/companies/companies.services';
 import { PlatformsService } from 'src/app/platforms/platforms.service';
 import { AddGameService } from './addgame.service';
 import { NgSelectConfig } from '@ng-select/ng-select';
 import { ViewEncapsulation } from '@angular/core';
+import { NotifierService } from 'angular-notifier';
 
 @Component({
   selector: 'gs-addgame',
@@ -36,7 +37,8 @@ export class AddgameComponent implements OnInit {
     private platformService: PlatformsService,
     private addGameService: AddGameService,
     private formBuilder: FormBuilder,
-    private config: NgSelectConfig
+    private config: NgSelectConfig,
+    private readonly notifierService: NotifierService
   ) { }
 
   ngOnInit() {
@@ -53,24 +55,21 @@ export class AddgameComponent implements OnInit {
     this.createForm()
   }
 
-  onSubmit() {
+  onSubmit(formDir: NgForm) {
     if (this.form.valid) {
       this.addGameService.postGame(this.mapForm(this.form.value))
         .subscribe(
           res => {
-            console.log(res);
+            // console.log(res.message);
+            this.notifierService.notify( 'success', 'This game was successfully added to the store.' );
           },
           err => {
             console.log("Error occured");
           }
         );
-      console.log("Form Submitted!");
       this.form.reset();
-      this.form.resetForm();
-    } else {
-      console.log('invalid');
+      formDir.resetForm();
     }
-
   }
 
   createFormControls() {
