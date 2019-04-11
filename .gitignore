@@ -75,3 +75,4 @@ yarn-error.log
 # rollup-test output
 /modules/rollup-test/dist/
 
+src/1 - UI/GameStore.UI.WebApi/wwwroot/images/*

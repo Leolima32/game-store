@@ -55,13 +55,13 @@ export class AddgameComponent implements OnInit {
     this.createForm()
   }
 
-  onSubmit(formDir: NgForm) {
+  onSubmit(formDir: NgForm, files) {
     if (this.form.valid) {
       this.addGameService.postGame(this.mapForm(this.form.value))
         .subscribe(
           res => {
-            // console.log(res.message);
             this.notifierService.notify( 'success', 'This game was successfully added to the store.' );
+            this.addGameService.postThumbImage(res.id, files).subscribe(res => { console.log('image sucessfuly uploaded') })
           },
           err => {
             console.log("Error occured");

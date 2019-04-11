@@ -81,12 +81,12 @@ namespace GameStore.UI.WebApi.Controllers
         }
 
         [Authorize(Roles = "Admin")]
-        [HttpPut("{id}/uploadImages")]
-        public ActionResult UploadImages(Guid id) {
+        [HttpPut("{id}/uploadthumbimage")]
+        public ActionResult UploadThumbImage(Guid id) {
             try
             {
                 var file = Request.Form.Files[0];
-                string folderName = "images/games/"+id;
+                string folderName = "images/games/"+id+"/thumb";
                 string webRootPath = _hostingEnvironment.WebRootPath;
                 string newPath = Path.Combine(webRootPath, folderName);
                 if (!Directory.Exists(newPath))
@@ -107,7 +107,7 @@ namespace GameStore.UI.WebApi.Controllers
             catch (System.Exception ex)
             {
                 return Json("Upload Failed: " + ex.Message);
-}
+            }
         }
     }
 }
