@@ -63,5 +63,12 @@ namespace GameStore.Application.Services
         {
             return _mapper.Map<IEnumerable<GameListViewModel>>(await _unit.Games.GetBestSellerGamesAsync());
         }
+
+        public async Task UpdateThumbImage(Guid id, string path)
+        {
+            var game = await _unit.Games.GetByIdAsync(id);
+            game.ChangeThumbImagePath(path);
+            _unit.Games.Update(game);
+        }
     }
 }

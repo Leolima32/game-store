@@ -15,6 +15,8 @@ namespace GameStore.Application.Interfaces
         Guid InsertGame(AddOrUpdateGameDTO game);
         void UpdateGame(AddOrUpdateGameDTO game);
         void DeleteGame(Guid id);
+        Task UpdateThumbImage(Guid id, string path);
+
         Task<IEnumerable<GameListViewModel>> GetBestRatedGames();
         Task<IEnumerable<GameListViewModel>> GetBestSellerGames();
     }

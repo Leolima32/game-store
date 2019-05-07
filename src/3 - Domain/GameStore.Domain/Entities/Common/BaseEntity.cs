@@ -17,9 +17,15 @@ namespace GameStore.Domain.Entities.Common
         [NotMapped]
         public bool IsValid { get { return Nonconformities.Count == 0; } }
 
-        public BaseEntity() { Id = Guid.NewGuid(); }
+        public BaseEntity()
+        {
+            if (Id == Guid.Empty)
+            {
+                Id = Guid.NewGuid();
+            }
+        }
 
-        public Guid Id { get; private set; }
+        public Guid Id { get; internal set; }
         public DateTime CreatedDate { get; private set; }
         public DateTime LastUpdated { get; private set; }
         public bool Active { get; private set; }
@@ -47,7 +53,8 @@ namespace GameStore.Domain.Entities.Common
             }
         }
 
-        public void Deactivate() {
+        public void Deactivate()
+        {
             this.Active = false;
         }
     }

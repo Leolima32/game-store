@@ -33,7 +33,7 @@ namespace GameStore.Domain.Entities.Common
         public int AvailableQuantity { get; private set; }
         public string Description { get; private set; }
         public string ShortDescription { get; private set; }
-        public string ImageRelativePath { get; private set; }
+        public string ImageRelativePath { get; internal set; }
 
         public ICollection<Review> Reviews { get; private set; } = new List<Review>();
 

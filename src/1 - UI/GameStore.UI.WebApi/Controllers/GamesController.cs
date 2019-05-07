@@ -45,12 +45,14 @@ namespace GameStore.UI.WebApi.Controllers
         }
 
         [HttpGet("bestrated")]
-        public async Task<IEnumerable<GameListViewModel>> GetBestRatedGames() {
+        public async Task<IEnumerable<GameListViewModel>> GetBestRatedGames()
+        {
             return await _services.GetBestRatedGames();
         }
 
         [HttpGet("bestsellers")]
-        public async Task<IEnumerable<GameListViewModel>> GetBestSellerGames() {
+        public async Task<IEnumerable<GameListViewModel>> GetBestSellerGames()
+        {
             return await _services.GetBestSellerGames();
         }
 
@@ -59,9 +61,12 @@ namespace GameStore.UI.WebApi.Controllers
         public ActionResult Post([FromBody]AddOrUpdateGameDTO game)
         {
             var id = _services.InsertGame(game);
-            if(id != null) {
-                return new OkObjectResult(new ResultViewModel(id,200,"Success!"));
-            } else {
+            if (id != null)
+            {
+                return new OkObjectResult(new ResultViewModel(id, 200, "Success!"));
+            }
+            else
+            {
                 return new BadRequestObjectResult(new ResultViewModel(500, "Something went wrong! Try again later."));
             }
         }
@@ -82,11 +87,12 @@ namespace GameStore.UI.WebApi.Controllers
 
         [Authorize(Roles = "Admin")]
         [HttpPut("{id}/uploadthumbimage")]
-        public ActionResult UploadThumbImage(Guid id) {
+        public async Task<ActionResult> UploadThumbImage(Guid id)
+        {
             try
             {
                 var file = Request.Form.Files[0];
-                string folderName = "images/games/"+id+"/thumb";
+                string folderName = "images/games/" + id + "/thumb";
                 string webRootPath = _hostingEnvironment.WebRootPath;
                 string newPath = Path.Combine(webRootPath, folderName);
                 if (!Directory.Exists(newPath))
@@ -101,6 +107,8 @@ namespace GameStore.UI.WebApi.Controllers
                     {
                         file.CopyTo(stream);
                     }
+
+                    await _services.UpdateThumbImage(id, "/" + folderName + "/" + fileName);
                 }
                 return Json("Upload Successful.");
             }

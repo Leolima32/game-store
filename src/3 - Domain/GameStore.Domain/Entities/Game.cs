@@ -39,5 +39,9 @@ namespace GameStore.Domain.Entities
         public void ChangeCoverImagePath(string path) {
             CoverImageRelativePath = path;
         }
+
+        public void ChangeThumbImagePath(string path) {
+            ImageRelativePath = path;
+        }
     }
 }
