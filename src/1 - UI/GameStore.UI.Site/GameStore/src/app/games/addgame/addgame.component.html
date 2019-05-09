@@ -121,17 +121,17 @@
       <label class="label">Image</label>
       <div class="file">
         <label class="file-label">
-          <input #thumbImage class="file-input" type="file" name="resume">
+          <input #thumbImage class="file-input" type="file" (change)="updateFileName(thumbImage.files)" name="resume">
           <span class="file-cta">
             <span class="file-icon">
               <i class="fas fa-upload"></i>
             </span>
-            <span class="file-label">
+            <span *ngIf="!fileName" class="file-label">
               Choose a file…
             </span>
-          </span>
-          <span class="file-name">
-            {{fileName}}
+            <span *ngIf="fileName" class="file-name">
+              {{fileName}}
+            </span>
           </span>
         </label>
       </div>

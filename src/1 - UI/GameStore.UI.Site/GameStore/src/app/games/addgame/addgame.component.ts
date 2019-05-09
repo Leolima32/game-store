@@ -31,6 +31,7 @@ export class AddgameComponent implements OnInit {
   publisherId: FormControl;
   genreId: any;
   platformId: FormControl;
+  fileName: string;
 
   constructor(private genreService: GenresService,
     private companiesService: CompaniesService,
@@ -109,5 +110,9 @@ export class AddgameComponent implements OnInit {
     })
 
     return form;
+  }
+
+  updateFileName(files) {
+    this.fileName = files[0].name;
   }
 }
