@@ -15,7 +15,7 @@ export class GamesService {
     getAllGames(): Observable<Game[]> {
         return this.http.get<Game[]>(`${environment.API_ROOT}/api/games`).pipe(
             map(game => {
-              game.map((game) => game.imagePath = `${environment.API_ROOT + game.imageRelativePath}`);
+              game.map((game) => game.imagePath = game.imageRelativePath != null ? `${environment.API_ROOT + game.imageRelativePath}` : game.imageRelativePath);
               game.map((game) => game.coverImagePath = `${environment.API_ROOT + game.coverImageRelativePath}`);
               return game
             }));
@@ -24,7 +24,7 @@ export class GamesService {
     bestSellerGames(): Observable<Game[]> {
         return this.http.get<Game[]>(`${environment.API_ROOT}/api/games/bestrated`).pipe(
             map(game => {
-              game.map((game) => game.imagePath = `${environment.API_ROOT + game.imageRelativePath}`);
+              game.map((game) => game.imagePath = game.imageRelativePath != null ? `${environment.API_ROOT + game.imageRelativePath}` : game.imageRelativePath);
               game.map((game) => game.coverImagePath = `${environment.API_ROOT + game.coverImageRelativePath}`);
               return game
             }));
@@ -33,7 +33,7 @@ export class GamesService {
     bestRatedGames(): Observable<Game[]> {
         return this.http.get<Game[]>(`${environment.API_ROOT}/api/games/bestrated`).pipe(
             map(game => {
-              game.map((game) => game.imagePath = `${environment.API_ROOT + game.imageRelativePath}`);
+              game.map((game) => game.imagePath = game.imageRelativePath != null ? `${environment.API_ROOT + game.imageRelativePath}` : game.imageRelativePath);
               game.map((game) => game.coverImagePath = `${environment.API_ROOT + game.coverImageRelativePath}`);
               return game
             }));
