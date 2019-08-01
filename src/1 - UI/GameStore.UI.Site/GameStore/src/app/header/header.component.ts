@@ -30,8 +30,9 @@ export class HeaderComponent implements OnInit, OnDestroy {
   getUserInformation() {
     this.userService.getUserInformation().subscribe(user => {
       this.loggedUser = user;
-      if(user.roles.indexOf('Admin') != -1)
+      if(user.roles.indexOf('Admin') != -1) 
         this.isAdmin = true;
+      else this.isAdmin = false;
     });
   }
 
@@ -39,6 +40,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     localStorage.removeItem('userToken');
     this.userService.changeForIsLoggedState(false);
     this.loggedUser = null;
+    this.isAdmin = false;
   }
 
   ngOnDestroy() {
