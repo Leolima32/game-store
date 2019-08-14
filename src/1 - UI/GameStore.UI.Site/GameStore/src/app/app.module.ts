@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule, HttpClient } from '@angular/common/http'
+import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { NgSelectModule } from '@ng-select/ng-select';
@@ -9,7 +9,7 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
 
-import { ROUTES } from "./app.routes";
+import { ROUTES } from './app.routes';
 import { RouterModule } from '@angular/router';
 import { HeroComponent } from './home/hero/hero.component';
 import { GamesComponent } from './games/games.component';
@@ -30,7 +30,7 @@ import { AddgameComponent } from './games/addgame/addgame.component';
 import { CompaniesComponent } from './companies/companies.component';
 import { PlatformsComponent } from './platforms/platforms.component';
 import { NgxMaskModule } from 'ngx-mask';
-import { CurrencyMaskModule } from "ngx-currency-mask";
+import { CurrencyMaskModule } from 'ngx-currency-mask';
 import { NotifierModule } from 'angular-notifier';
 
 @NgModule({

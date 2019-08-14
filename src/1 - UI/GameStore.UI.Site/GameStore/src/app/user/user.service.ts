@@ -25,11 +25,11 @@ export class UserService {
     }
 
     register(model: UserRegisterModel): Observable<any> {
-        return this.http.post(`${environment.API_ROOT}/api/account/register`,model);
+        return this.http.post(`${environment.API_ROOT}/api/account/register`, model);
     }
 
     getUserInformation(): Observable<UserDetail> {
-        var customHeaders = new HttpHeaders({ Authorization: `bearer ${localStorage.getItem('userToken')}` });
+        const customHeaders = new HttpHeaders({ Authorization: `bearer ${localStorage.getItem('userToken')}` });
         return this.http.get<UserDetail>(`${environment.API_ROOT}/api/account/userclaims`, { headers: customHeaders });
     }
 }
