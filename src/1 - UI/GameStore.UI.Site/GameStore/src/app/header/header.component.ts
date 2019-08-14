@@ -11,16 +11,17 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   loggedUser: UserDetail;
   sub: Subscription;
-  isAdmin: boolean = false;
-  openMenu: boolean = false;
+  isAdmin = false;
+  openMenu = false;
 
   constructor(private userService: UserService) { }
 
   ngOnInit() {
     if (localStorage.getItem('userToken') == null) {
       this.sub = this.userService.isLogged$.subscribe(isLogged => {
-        if (isLogged == true)
+        if (isLogged === true) {
           this.getUserInformation();
+        }
       });
     } else {
       this.getUserInformation();
@@ -30,9 +31,11 @@ export class HeaderComponent implements OnInit, OnDestroy {
   getUserInformation() {
     this.userService.getUserInformation().subscribe(user => {
       this.loggedUser = user;
-      if(user.roles.indexOf('Admin') != -1) 
+      if (user.roles.indexOf('Admin') !== -1) {
         this.isAdmin = true;
-      else this.isAdmin = false;
+      } else {
+        this.isAdmin = false;
+      }
     });
   }
 
@@ -49,7 +52,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   changeMenuState() {
     console.log(this.openMenu);
-    this.openMenu = (this.openMenu) ? false: true;
+    this.openMenu = (this.openMenu) ? false : true;
   }
 
 }
