@@ -12,11 +12,13 @@ import { GenresComponent } from './genres/genres.component';
 import { GenresDetailComponent } from './genres-detail/genres-detail.component';
 import { AddgameComponent } from './games/addgame/addgame.component';
 import { AuthGuard } from './user/auth-guard';
+import { UpdategameComponent } from './games/updategame/updategame.component';
 
 export const ROUTES: Routes = [
     { path: '', component: HomeComponent },
     { path: 'games', component: GamesComponent },
-    { path: 'games/addgame', component: AddgameComponent, canActivate: [AuthGuard]},
+    { path: 'games/add', component: AddgameComponent, canActivate: [AuthGuard]},
+    { path: 'games/update/:id', component: UpdategameComponent, canActivate: [AuthGuard]},
     {
         path: 'games/:id', component: GamesDetailComponent,
         children: [

@@ -10,22 +10,24 @@ export class AddGameService {
 
     constructor(private http: HttpClient) {
         this.customHeaders = new HttpHeaders({ Authorization: `bearer ${localStorage.getItem('userToken')}` });
-     }
+    }
 
     postGame(json: any): Observable<any> {
-        return this.http.post(`${environment.API_ROOT}/api/games`, json, { headers: this.customHeaders })
+        return this.http.post(`${environment.API_ROOT}/api/games`, json, { headers: this.customHeaders });
     }
 
     postThumbImage(id, files): Observable<any> {
 
-        if (files.length === 0)
-        return;
+        if (files.length === 0) {
+            return;
+        }
 
         const formData = new FormData();
 
-        for (let file of files)
+        for (const file of files) {
             formData.append(file.name, file);
+        }
 
         return this.http.put(`${environment.API_ROOT}/api/games/${id}/uploadthumbimage`, formData, { headers: this.customHeaders });
     }
-} 
+}

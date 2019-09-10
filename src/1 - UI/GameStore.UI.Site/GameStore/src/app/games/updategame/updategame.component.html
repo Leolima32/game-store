@@ -1,0 +1,89 @@
+<div class="container">
+  <form #gameForm="ngForm"  (ngSubmit)="onSubmit(gameForm)">
+    <div class="field">
+      <label class="label">Name</label>
+      <div class="control">
+        <input class="input" type="text" placeholder="Text input" [ngModel]="updatedGame.name" name="name">
+      </div>
+    </div>
+    <div class="field">
+      <label class="label">Release Date</label>
+      <div class="control">
+        <input class="input" name="releaseDate" type="date" placeholder="Text input" [ngModel]="updatedGame.releaseDate | date:'yyyy-MM-dd'">
+      </div>
+    </div>
+    <div class="field">
+      <label class="label">Description</label>
+      <div class="control">
+        <textarea placeholder="Textarea" class="textarea"  [ngModel]="updatedGame.description" name="description"></textarea>
+      </div>
+    </div>
+    <div class="field">
+      <label class="label">Short Description</label>
+      <div class="control">
+        <textarea placeholder="Textarea" class="textarea"  [ngModel]="updatedGame.shortDescription" name="shortDescription"></textarea>
+      </div>
+    </div>
+    <div class="field">
+      <label class="label">Price</label>
+      <div class="control">
+        <input type="text" class="input" placeholder="Text input" [ngModel]="updatedGame.price" name="price">
+      </div>
+    </div>
+    <div class="field">
+      <label class="label">Genres</label>
+      <div class="control">
+        <ng-select [items]="genresList" bindLabel="name" bindValue="id" [multiple]="true" placeholder="Select dropdown" required>
+        </ng-select>
+      </div>
+    </div>
+    <div class="field">
+      <label class="label">Developers</label>
+      <div class="control">
+        <ng-select [items]="companiesList" bindLabel="name.fantasyName" bindValue="id" [multiple]="true" placeholder="Select dropdown" required>
+        </ng-select>
+      </div>
+    </div>
+    <div class="field">
+      <label class="label">Publishers</label>
+      <div class="control">
+        <ng-select [items]="companiesList" bindLabel="name.fantasyName" bindValue="id" [multiple]="true" placeholder="Select dropdown" required>
+        </ng-select>
+      </div>
+    </div>
+    <div class="field">
+      <label class="label">Platform</label>
+      <div class="control">
+        <ng-select [items]="platformsList" bindLabel="name" bindValue="id" [multiple]="true" placeholder="Select dropdown" required>
+        </ng-select>
+      </div>
+    </div>
+    <div class="field">
+      <label class="label">Image</label>
+      <div class="file">
+        <label class="file-label">
+          <input #thumbImage class="file-input" type="file" (change)="updateFileName(thumbImage.files)" name="resume">
+          <span class="file-cta">
+            <span class="file-icon">
+              <i class="fas fa-upload"></i>
+            </span>
+            <span *ngIf="!fileName" class="file-label">
+              Choose a file…
+            </span>
+            <span *ngIf="fileName" class="file-name">
+              {{fileName}}
+            </span>
+          </span>
+        </label>
+      </div>
+    </div>
+    <div class="field is-grouped">
+      <div class="control">
+        <button type="submit" class="button is-link">Submit</button>
+      </div>
+      <div class="control">
+        <button class="button is-text">Cancel</button>
+      </div>
+    </div>
+  </form>
+</div>

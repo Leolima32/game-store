@@ -17,10 +17,10 @@ namespace GameStore.Infra.Data.Context
         UserManager<IdentityUser> _userManager, RoleManager<IdentityRole> _roleManager)
         {
             // Look for any games.
-            // if (context.Games.Any())
-            // {
-            //     return;   // DB has been seeded
-            // }
+            if (context.Games.Any())
+            {
+                return;   // DB has been seeded
+            }
 
             context.Database.EnsureDeleted();
             context.Database.EnsureCreated();

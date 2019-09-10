@@ -32,6 +32,7 @@ import { PlatformsComponent } from './platforms/platforms.component';
 import { NgxMaskModule } from 'ngx-mask';
 import { CurrencyMaskModule } from 'ngx-currency-mask';
 import { NotifierModule } from 'angular-notifier';
+import { UpdategameComponent } from './games/updategame/updategame.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { NotifierModule } from 'angular-notifier';
     GenresDetailComponent,
     AddgameComponent,
     CompaniesComponent,
-    PlatformsComponent
+    PlatformsComponent,
+    UpdategameComponent
   ],
   imports: [
     BrowserModule,
