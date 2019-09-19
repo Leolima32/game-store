@@ -1,3 +1,7 @@
+import { Genre } from "../genres/genre.model";
+import { Company } from "../companies/company.model";
+import { Platform } from "../platforms/platform.model";
+
 export interface Game {
     id: string;
     name: string;
@@ -10,4 +14,8 @@ export interface Game {
     imageRelativePath: string;
     coverImagePath: string;
     coverImageRelativePath: string;
+    genres: Genre[];
+    developers: Company[];
+    publishers: Company[];
+    platforms: Platform[];
 }

@@ -1,89 +1,168 @@
 <div class="container">
-  <form #gameForm="ngForm"  (ngSubmit)="onSubmit(gameForm)">
-    <div class="field">
-      <label class="label">Name</label>
-      <div class="control">
-        <input class="input" type="text" placeholder="Text input" [ngModel]="updatedGame.name" name="name">
-      </div>
-    </div>
-    <div class="field">
-      <label class="label">Release Date</label>
-      <div class="control">
-        <input class="input" name="releaseDate" type="date" placeholder="Text input" [ngModel]="updatedGame.releaseDate | date:'yyyy-MM-dd'">
-      </div>
-    </div>
-    <div class="field">
-      <label class="label">Description</label>
-      <div class="control">
-        <textarea placeholder="Textarea" class="textarea"  [ngModel]="updatedGame.description" name="description"></textarea>
-      </div>
-    </div>
-    <div class="field">
-      <label class="label">Short Description</label>
-      <div class="control">
-        <textarea placeholder="Textarea" class="textarea"  [ngModel]="updatedGame.shortDescription" name="shortDescription"></textarea>
-      </div>
-    </div>
-    <div class="field">
-      <label class="label">Price</label>
-      <div class="control">
-        <input type="text" class="input" placeholder="Text input" [ngModel]="updatedGame.price" name="price">
-      </div>
-    </div>
-    <div class="field">
-      <label class="label">Genres</label>
-      <div class="control">
-        <ng-select [items]="genresList" bindLabel="name" bindValue="id" [multiple]="true" placeholder="Select dropdown" required>
-        </ng-select>
-      </div>
-    </div>
-    <div class="field">
-      <label class="label">Developers</label>
-      <div class="control">
-        <ng-select [items]="companiesList" bindLabel="name.fantasyName" bindValue="id" [multiple]="true" placeholder="Select dropdown" required>
-        </ng-select>
-      </div>
-    </div>
-    <div class="field">
-      <label class="label">Publishers</label>
-      <div class="control">
-        <ng-select [items]="companiesList" bindLabel="name.fantasyName" bindValue="id" [multiple]="true" placeholder="Select dropdown" required>
-        </ng-select>
-      </div>
-    </div>
-    <div class="field">
-      <label class="label">Platform</label>
-      <div class="control">
-        <ng-select [items]="platformsList" bindLabel="name" bindValue="id" [multiple]="true" placeholder="Select dropdown" required>
-        </ng-select>
-      </div>
-    </div>
-    <div class="field">
-      <label class="label">Image</label>
-      <div class="file">
-        <label class="file-label">
-          <input #thumbImage class="file-input" type="file" (change)="updateFileName(thumbImage.files)" name="resume">
-          <span class="file-cta">
-            <span class="file-icon">
-              <i class="fas fa-upload"></i>
-            </span>
-            <span *ngIf="!fileName" class="file-label">
-              Choose a file…
-            </span>
-            <span *ngIf="fileName" class="file-name">
-              {{fileName}}
-            </span>
-          </span>
-        </label>
-      </div>
-    </div>
-    <div class="field is-grouped">
-      <div class="control">
-        <button type="submit" class="button is-link">Submit</button>
-      </div>
-      <div class="control">
-        <button class="button is-text">Cancel</button>
-      </div>
-    </div>
-  </form>
+    <form [formGroup]="form" #formDir="ngForm" (ngSubmit)="onSubmit(formDir, thumbImage.files)">
+        <div class="field">
+            <label class="label">Name</label>
+            <div class="control">
+                <input formControlName="name" class="input" type="text" placeholder="Text input"
+                    [ngModel]="updatedGame.name" [ngClass]="{
+                    'is-danger': (name.invalid && ((name.dirty || name.touched) || formDir.submitted))
+                  }">
+                <div *ngIf="(name.invalid && ((name.dirty || name.touched) || formDir.submitted))">
+                    <div *ngIf="name.errors.required">
+                        <p class="help is-danger">Name is required.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="field">
+            <label class="label">Release Date</label>
+            <div class="control">
+                <input formControlName="releaseDate" class="input" type="date" placeholder="Text input"
+                    [ngModel]="updatedGame.releaseDate | date:'yyyy-MM-dd'" [ngClass]="{
+                    'is-danger': (releaseDate.invalid && ((releaseDate.dirty || releaseDate.touched) || formDir.submitted))
+                  }">
+                <div *ngIf="(releaseDate.invalid && ((releaseDate.dirty || releaseDate.touched) || formDir.submitted))">
+                    <div *ngIf="releaseDate.errors.required">
+                        <p class="help is-danger">Release date is required.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="field">
+            <label class="label">Description</label>
+            <div class="control">
+                <textarea formControlName="description" class="textarea" placeholder="Textarea"
+                    [ngModel]="updatedGame.description" [ngClass]="{
+                    'is-danger': (description.invalid && ((description.dirty || description.touched) || formDir.submitted))
+                  }"></textarea>
+                <div *ngIf="(description.invalid && ((description.dirty || description.touched) || formDir.submitted))">
+                    <div *ngIf="description.errors.required">
+                        <p class="help is-danger">Description is required.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="field">
+            <label class="label">Short Description</label>
+            <div class="control">
+                <textarea formControlName="shortDescription" class="textarea" placeholder="Textarea"
+                    [ngModel]="updatedGame.shortDescription" [ngClass]="{
+                    'is-danger': (shortDescription.invalid && ((shortDescription.dirty || shortDescription.touched) || formDir.submitted))
+                  }"></textarea>
+                <div
+                    *ngIf="(shortDescription.invalid && ((shortDescription.dirty || shortDescription.touched) || formDir.submitted))">
+                    <div *ngIf="shortDescription.errors.required">
+                        <p class="help is-danger">Short description is required.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="field">
+            <label class="label">Price</label>
+            <div class="control">
+                <input formControlName="price" class="input" type="text" placeholder="Text input"
+                    [ngModel]="updatedGame.price" [ngClass]="{
+                    'is-danger': (price.invalid && ((price.dirty || price.touched) || formDir.submitted))
+                  }" currencyMask [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',', align: 'left' }">
+                <div *ngIf="(price.invalid && ((price.dirty || price.touched) || formDir.submitted))">
+                    <div *ngIf="price.errors.required">
+                        <p class="help is-danger">Price is required.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <ng-container *ngIf="genresListed">
+            <div class="field">
+                <label class="label">Genres</label>
+                <div class="control">
+                    <ng-select [formControl]="form.controls.gameGenres" [items]="genresList" bindLabel="name"
+                        bindValue="id" [ngModel]="genresListed" [multiple]="true" placeholder="Select dropdown"
+                        required>
+                    </ng-select>
+                    <div
+                        *ngIf="(form.controls.gameGenres.invalid && (form.controls.gameGenres.dirty || form.controls.gameGenres.touched)) || formDir.submitted">
+                        <div *ngIf="form.controls.gameGenres.errors.required">
+                            <p class="help is-danger">Genre(s) is required.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ng-container>
+
+        <ng-container *ngIf="developersListed">
+            <div class="field">
+                <label class="label">Developers</label>
+                <div class="control">
+                    <ng-select [formControl]="form.controls.gameDevelopers" [items]="companiesList"  bindLabel="name.fantasyName" 
+                    bindValue="id" [ngModel]="developersListed" [multiple]="true" placeholder="Select dropdown" required>
+                    </ng-select>
+                    <div
+                        *ngIf="(form.controls.gameDevelopers.invalid && (form.controls.gameDevelopers.dirty || form.controls.gameDevelopers.touched)) || formDir.submitted">
+                        <div *ngIf="form.controls.gameDevelopers.errors.required">
+                            <p class="help is-danger">Developer(s) is required.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="field">
+                <label class="label">Publishers</label>
+                <div class="control">
+                    <ng-select [formControl]="form.controls.gamePublishers" [items]="companiesList"
+                        bindLabel="name.fantasyName" [ngModel]="publishersListed" bindValue="id" [multiple]="true" placeholder="Select dropdown"
+                        required>
+                    </ng-select>
+                    <div
+                        *ngIf="(form.controls.gamePublishers.invalid && (form.controls.gamePublishers.dirty || form.controls.gamePublishers.touched)) || formDir.submitted">
+                        <div *ngIf="form.controls.gamePublishers.errors.required">
+                            <p class="help is-danger">Publisher(s) is required.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </ng-container>
+        <ng-container *ngIf="platformsListed">
+            <div class="field">
+            <label class="label">Platform</label>
+            <div class="control">
+                <ng-select [formControl]="form.controls.gamePlatforms" [items]="platformsList" bindLabel="name"
+                    bindValue="id" [ngModel]="platformsListed" [multiple]="true" placeholder="Select dropdown" required>
+                </ng-select>
+                <div
+                    *ngIf="(form.controls.gamePlatforms.invalid && (form.controls.gamePlatforms.dirty || form.controls.gamePlatforms.touched)) || formDir.submitted">
+                    <div *ngIf="form.controls.gamePlatforms.errors.required">
+                        <p class="help is-danger">Platform(s) is required.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </ng-container>
+        <div class="field">
+            <label class="label">Image</label>
+            <div class="file">
+                <label class="file-label">
+                    <input #thumbImage class="file-input" type="file" (change)="updateFileName(thumbImage.files)"
+                        name="resume">
+                    <span class="file-cta">
+                        <span class="file-icon">
+                            <i class="fas fa-upload"></i>
+                        </span>
+                        <span *ngIf="!fileName" class="file-label">
+                            Choose a file…
+                        </span>
+                        <span *ngIf="fileName" class="file-name">
+                            {{fileName}}
+                        </span>
+                    </span>
+                </label>
+            </div>
+        </div>
+        <div class="field is-grouped">
+            <div class="control">
+                <button type="submit" class="button is-link">Submit</button>
+            </div>
+            <div class="control">
+                <button class="button is-text">Cancel</button>
+            </div>
+        </div>
+    </form>
 </div>
