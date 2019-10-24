@@ -23,6 +23,7 @@ export class UpdategameComponent implements OnInit {
   developersListed: any;
   publishersListed: any;
   platformsListed: any;
+  idGame: string;
 
   genresList: Genre[];
   companiesList: Company[];
@@ -51,7 +52,8 @@ export class UpdategameComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.updateGameService.selectGame(this.route.snapshot.params['id']).subscribe((x) => {
+    this.idGame = this.route.snapshot.params['id'];
+    this.updateGameService.selectGame(this.idGame).subscribe((x) => {
       this.updatedGame = x;
       this.genresListed = this.updatedGame.genres.map(function (item) { return item.id; });
       this.developersListed = this.updatedGame.developers.map(function (item) { return item.id; });
@@ -74,14 +76,16 @@ export class UpdategameComponent implements OnInit {
 
   onSubmit(formDir: NgForm, files) {
     if (this.form.valid) {
-      this.updateGameService.updateGame(this.mapForm(this.form.value))
+      let payLoad = this.mapForm(this.form.value);
+      payLoad.id = this.idGame;
+      this.updateGameService.updateGame(payLoad)
         .subscribe(
           res => {
             this.notifierService.notify('success', 'This game was successfully added to the store.');
-            // this.updateGameService.postThumbImage(res.id, files).subscribe(res => { console.log('image sucessfuly uploaded') })
+            this.updateGameService.postThumbImage(this.idGame, files).subscribe(res => { console.log('image sucessfuly uploaded') })
           },
           err => {
-            console.log('Error occured');
+            this.notifierService.notify('error', err.error.message);
           }
         );
       this.form.reset();

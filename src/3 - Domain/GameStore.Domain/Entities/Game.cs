@@ -43,5 +43,25 @@ namespace GameStore.Domain.Entities
         public void ChangeThumbImagePath(string path) {
             ImageRelativePath = path;
         }
+
+        public void ChangeReleaseDate(DateTime date) {
+            ReleaseDate = date;
+        }
+
+        public void ChangeDevelopersList(ICollection<GameDeveloper> gameDevelopers) {
+            GameDevelopers = gameDevelopers;
+        }
+
+        public void ChangePublishersList(ICollection<GamePublisher> gamePublishers) {
+            GamePublishers = gamePublishers;
+        }
+
+        public void ChangeGenresList(ICollection<GameGenre> gameGenres) {
+            GameGenres = gameGenres;
+        }
+
+        public void ChangePlatformsList(ICollection<GamePlatform> gamePlatforms) {
+            GamePlatforms = gamePlatforms;
+        }
     }
 }

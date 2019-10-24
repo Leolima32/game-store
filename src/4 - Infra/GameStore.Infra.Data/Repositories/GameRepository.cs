@@ -1,4 +1,5 @@
 using GameStore.Domain.Entities;
+using GameStore.Domain.Entities.ReleationshipEntities;
 using GameStore.Domain.Interfaces.Repositories;
 using GameStore.Infra.Data.Context;
 using GameStore.Infra.Data.Repositories.Common;
@@ -100,6 +101,33 @@ namespace GameStore.Infra.Data.Repositories
                 select games
                 ).Take(5);
             });
+        }
+
+        public override void Update(Game obj)
+        {
+            Game game = _db.Games.Include(_ => _.GameDevelopers)
+                      .ThenInclude(_ => _.Developer)
+                      .Include(_ => _.GameGenres)
+                      .ThenInclude(_ => _.Genre)
+                      .Include(_ => _.GamePlatforms)
+                      .ThenInclude(_ => _.Platform)
+                      .Include(_ => _.GamePublishers)
+                      .ThenInclude(_ => _.Publisher).FirstOrDefault(x => x.Id == obj.Id);
+            if (game is null)
+                throw new ArgumentException();
+
+            // var result = _db.GameDevelopers.FromSql($"SELECT FROM gameDevelopers WHERE GameId = {obj.Id}").ToList();
+
+            game.ChangeName(obj.Name);
+            game.ChangePrice(obj.Price);
+            game.ChangeReleaseDate(obj.ReleaseDate);
+            game.ChangeDescription(obj.Description);
+            game.ChangeShortDescription(obj.ShortDescription);
+            game.ChangeDevelopersList(obj.GameDevelopers);
+            game.ChangePublishersList(obj.GamePublishers);
+            game.ChangeGenresList(obj.GameGenres);
+            game.ChangePlatformsList(obj.GamePlatforms);
+            _db.SaveChanges();
         }
 
     }

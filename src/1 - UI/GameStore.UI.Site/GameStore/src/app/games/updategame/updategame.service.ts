@@ -20,4 +20,19 @@ export class UpdateGameService {
     updateGame(json: any): Observable<any> {
         return this.httpClient.put(`${environment.API_ROOT}/api/games`, json, { headers: this.customHeaders });
     }
+
+    postThumbImage(id, files): Observable<any> {
+
+        if (files.length === 0) {
+            return;
+        }
+
+        const formData = new FormData();
+
+        for (const file of files) {
+            formData.append(file.name, file);
+        }
+
+        return this.httpClient.put(`${environment.API_ROOT}/api/games/${id}/uploadthumbimage`, formData, { headers: this.customHeaders });
+    }
 }

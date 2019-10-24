@@ -53,7 +53,7 @@ namespace GameStore.Infra.Data.Repositories.Common
             return _db.Set<TEntity>().Where(p => p.Id == id).FirstOrDefault();
         }
 
-        public void Update(TEntity obj)
+        public virtual void Update(TEntity obj)
         {
             _db.Entry(obj).State = EntityState.Modified;
             _db.SaveChanges();

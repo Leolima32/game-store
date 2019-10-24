@@ -73,6 +73,11 @@ namespace GameStore.Domain.Entities.Common
             Description = description;
         }
 
+        public void ChangeShortDescription(string shortDescription)
+        {
+            ShortDescription = shortDescription;
+        }
+
         public void ChangeImagePath(string imagePath)
         {
             ImageRelativePath = imagePath;
