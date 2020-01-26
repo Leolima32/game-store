@@ -9,41 +9,20 @@ import { Subscription } from 'rxjs';
 })
 export class HeaderComponent implements OnInit, OnDestroy {
 
-  loggedUser: UserDetail;
   sub: Subscription;
-  isAdmin = false;
+  currentUser: UserDetail;
   openMenu = false;
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService) {
+    this.currentUser = userService.currentUser;
 
-  ngOnInit() {
-    if (localStorage.getItem('userToken') == null) {
-      this.sub = this.userService.isLogged$.subscribe(isLogged => {
-        if (isLogged === true) {
-          this.getUserInformation();
-        }
-      });
-    } else {
-      this.getUserInformation();
-    }
+    this.sub = userService.currentUserChange.subscribe(_ => { this.currentUser = _ })
   }
 
-  getUserInformation() {
-    this.userService.getUserInformation().subscribe(user => {
-      this.loggedUser = user;
-      if (user.roles.indexOf('Admin') !== -1) {
-        this.isAdmin = true;
-      } else {
-        this.isAdmin = false;
-      }
-    });
-  }
+  ngOnInit() { }
 
   logOut() {
-    localStorage.removeItem('userToken');
-    this.userService.changeForIsLoggedState(false);
-    this.loggedUser = null;
-    this.isAdmin = false;
+    this.userService.logOut();
   }
 
   ngOnDestroy() {

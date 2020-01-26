@@ -36,7 +36,7 @@
               </a>
             </div>
           </div>
-          <div *ngIf="isAdmin" class="navbar-item has-dropdown is-hoverable">
+          <div *ngIf="currentUser?.isAdmin" class="navbar-item has-dropdown is-hoverable">
             <a href="#" class="navbar-link">
               Admin Area
             </a>
@@ -69,7 +69,7 @@
               </p>
             </div>
           </div>
-          <div *ngIf="!loggedUser" class="navbar-item">
+          <div *ngIf="!currentUser" class="navbar-item">
             <div class="field is-grouped">
               <p class="control">
                 <a href="/login" class="button">
@@ -89,9 +89,9 @@
               </p>
             </div>
           </div>
-          <div *ngIf="loggedUser" class="navbar-item has-dropdown is-hoverable"><a class="navbar-link">
+          <div *ngIf="currentUser" class="navbar-item has-dropdown is-hoverable"><a class="navbar-link">
               <figure class="image is-32x32 is-hidden-touch" style="background-image: url(&quot;https://mythril.nyc3.cdn.digitaloceanspaces.com/users/avatars/default.jpg&quot;); background-size: cover; background-position: center top; background-repeat: no-repeat; box-shadow: rgb(225, 231, 245) 0px 0px 0px 1px inset; margin-right: 10px;"></figure>
-              {{loggedUser?.userName}}
+              {{currentUser?.userName}}
             </a>
             <div class="navbar-dropdown is-right">
               <!-- <a href="/users/41/" class="navbar-item">

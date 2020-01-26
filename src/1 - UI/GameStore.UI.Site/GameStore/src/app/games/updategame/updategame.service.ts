@@ -3,14 +3,15 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Game } from '../game.model';
 import { environment } from 'src/environments/environment';
+import { UserService } from 'src/app/user/user.service';
 
 @Injectable({ providedIn: 'root' })
 export class UpdateGameService {
 
     customHeaders: HttpHeaders;
 
-    constructor(private httpClient: HttpClient) {
-        this.customHeaders = new HttpHeaders({ Authorization: `bearer ${localStorage.getItem('userToken')}` });
+    constructor(private httpClient: HttpClient, private userService: UserService) {
+        this.customHeaders = new HttpHeaders({ Authorization: `bearer ${userService.userToken}` });
     }
 
     selectGame(id: string): Observable<Game> {

@@ -11,21 +11,17 @@ import { UserService } from '../user/user.service';
 export class LoginComponent {
 
   model = new UserLoginModel('', '', '');
-  token: string;
   invalidUser = false;
 
   constructor(private userService: UserService, private router: Router) { }
 
   sendForm() {
-    this.userService.login(this.model).subscribe(
-      x => {
-        this.token = x;
-        localStorage.setItem('userToken', this.token);
-        this.userService.changeForIsLoggedState(true);
-        this.router.navigate(['/']);
-      },
-      error => this.invalidUser = true
-    );
+    const self = this;
+    this.userService.login(this.model).then(function (data) {
+      self.router.navigate(['/']);
+    }).catch(function () {
+      this.invalidUser = true;
+    });
   }
 
   clear() {
