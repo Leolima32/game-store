@@ -11,7 +11,7 @@ export class UpdateGameService {
     customHeaders: HttpHeaders;
 
     constructor(private httpClient: HttpClient, private userService: UserService) {
-        this.customHeaders = new HttpHeaders({ Authorization: `bearer ${userService.userToken}` });
+        this.customHeaders = new HttpHeaders({ Authorization: `bearer ${localStorage.token}` });
     }
 
     selectGame(id: string): Observable<Game> {

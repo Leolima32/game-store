@@ -10,19 +10,24 @@ import { Subscription } from 'rxjs';
 export class HeaderComponent implements OnInit, OnDestroy {
 
   sub: Subscription;
-  currentUser: UserDetail;
+  currentUser: any;
   openMenu = false;
+  isAdmin = false;
 
   constructor(private userService: UserService) {
-    this.currentUser = userService.currentUser;
-
-    this.sub = userService.currentUserChange.subscribe(_ => { this.currentUser = _ })
+    this.sub = userService.currentUserChange.subscribe(_ => this.reloadCurrentUser())
   }
 
-  ngOnInit() { }
+  ngOnInit() {
+    if (localStorage.getItem('token')) {
+      this.reloadCurrentUser();
+    }
+  }
 
   logOut() {
     this.userService.logOut();
+    this.currentUser = null;
+    this.isAdmin = false;
   }
 
   ngOnDestroy() {
@@ -32,6 +37,12 @@ export class HeaderComponent implements OnInit, OnDestroy {
   changeMenuState() {
     console.log(this.openMenu);
     this.openMenu = (this.openMenu) ? false : true;
+  }
+
+  reloadCurrentUser() {
+    let decodedToken = JSON.parse(atob(localStorage.token.split('.')[1]))
+    this.currentUser = decodedToken;
+    this.isAdmin = (decodedToken['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'] === "Admin")
   }
 
 }

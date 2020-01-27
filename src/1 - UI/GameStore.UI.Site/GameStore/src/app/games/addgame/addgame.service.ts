@@ -10,7 +10,7 @@ export class AddGameService {
     customHeaders: HttpHeaders;
 
     constructor(private http: HttpClient, private userService: UserService) {
-        this.customHeaders = new HttpHeaders({ Authorization: `bearer ${userService.userToken}` });
+        this.customHeaders = new HttpHeaders({ Authorization: `bearer ${localStorage.token}` });
     }
 
     postGame(json: any): Observable<any> {

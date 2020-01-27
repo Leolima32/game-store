@@ -12,14 +12,11 @@ export class AuthGuard implements CanActivate {
     constructor(private userService: UserService, private router: Router) { }
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-        return this.userService.getUserInformation().map(e => {
-            if (e.roles.indexOf('Admin') !== -1) {
-                return true;
-            } else {
-                this.router.navigate(['/login']);
-            }
-        }).catch(() => {
-            return Observable.of(false);
-        });
+        let decodedToken = JSON.parse(atob(localStorage.token.split('.')[1]))
+        if (decodedToken['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'] === "Admin") {
+            return true;
+        } else {
+            this.router.navigate(['/login']);
+        }
     }
 }
