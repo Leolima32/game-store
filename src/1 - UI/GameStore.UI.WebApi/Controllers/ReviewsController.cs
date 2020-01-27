@@ -25,11 +25,13 @@ namespace GameStore.UI.WebApi.Controllers
         }
 
         [Route("product/{id}")]
+        [HttpGet]
         public IEnumerable<ReviewListViewModel> GetByProductId(Guid id) {
             return _services.GetReviewByProductId(id);
         }
 
         [Route("user/{id}")]
+        [HttpGet]
         public IEnumerable<ReviewListViewModel> GetByUserId(Guid id) {
             return _services.GetReviewByUserId(id);
         }
