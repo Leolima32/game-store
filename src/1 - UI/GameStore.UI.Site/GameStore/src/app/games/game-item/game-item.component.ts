@@ -8,11 +8,17 @@ import { Game } from '../game.model';
 })
 export class GameItemComponent implements OnInit {
 
+  isAdmin: Boolean = false;
+
   @Input() game: Game;
 
   constructor() { }
 
   ngOnInit() {
+    if(localStorage.token) {
+      this.isAdmin = (JSON.parse(atob(localStorage.token.split('.')[1]))['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'] === "Admin")
+    }
+
   }
 
 }
