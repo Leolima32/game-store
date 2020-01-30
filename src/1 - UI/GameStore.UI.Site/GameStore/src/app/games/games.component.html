@@ -1,6 +1,6 @@
 <section class="section">
   <div class="container">
     <h1 class="title">Browse Games</h1>
-    <a *ngFor="let game of allGames" [routerLink]="['/games', game.id]"><gs-game-item [game]="game"></gs-game-item></a>
+    <a *ngFor="let game of allGames"><gs-game-item [game]="game"></gs-game-item></a>
   </div>
 </section>

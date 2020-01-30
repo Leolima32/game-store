@@ -1,5 +1,12 @@
 <div class="box">
-  <article class="media">
+  <button class="button is-primary is-pulled-right">
+    <span class="icon is-small">
+      <i class="material-icons" [routerLink]="['/games/update', game.id]" title="Edit"
+        alt="Pen">edit</i>
+    </span>
+    <span>Edit</span>
+  </button>
+  <article class="media" [routerLink]="['/games', game.id]">
     <div class="media-left">
       <figure class="image is-64x64">
         <img *ngIf="!game?.imagePath" src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
@@ -15,6 +22,5 @@
           <time datetime="2016-1-1">{{game?.releaseDate | date:'yyyy'}}</time>
         </div>
     </div>
-
   </article>
 </div>
