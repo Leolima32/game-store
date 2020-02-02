@@ -1,0 +1,33 @@
+m
+dC:\projects\repos\GameStore\src\2 - Application\GameStore.Application\AutoMapper\AutoMapperConfig.csutf-8|
+sC:\projects\repos\GameStore\src\2 - Application\GameStore.Application\AutoMapper\DomainToViewModelMappingProfile.csutf-8|
+sC:\projects\repos\GameStore\src\2 - Application\GameStore.Application\AutoMapper\ViewModelToDomainMappingProfile.csutf-8h
+_C:\projects\repos\GameStore\src\2 - Application\GameStore.Application\Commands\CommandResult.csutf-8w
+nC:\projects\repos\GameStore\src\2 - Application\GameStore.Application\Commands\FinishCreditCardOrderCommand.csutf-8s
+jC:\projects\repos\GameStore\src\2 - Application\GameStore.Application\Commands\FinishPayPalOrderCommand.csutf-8w
+nC:\projects\repos\GameStore\src\2 - Application\GameStore.Application\DTOS\Comapanies\AddOrUpdateCompanyDTO.csutf-8o
+fC:\projects\repos\GameStore\src\2 - Application\GameStore.Application\DTOS\Games\AddOrUpdateGameDTO.csutf-8q
+hC:\projects\repos\GameStore\src\2 - Application\GameStore.Application\DTOS\Genres\AddOrUpdateGenreDTO.csutf-8w
+nC:\projects\repos\GameStore\src\2 - Application\GameStore.Application\DTOS\Platforms\AddOrUpdatePlatformDTO.csutf-8s
+jC:\projects\repos\GameStore\src\2 - Application\GameStore.Application\DTOS\Reviews\AddOrUpdateReviewDTO.csutf-8m
+dC:\projects\repos\GameStore\src\2 - Application\GameStore.Application\Interfaces\ICompanyServices.csutf-8j
+aC:\projects\repos\GameStore\src\2 - Application\GameStore.Application\Interfaces\IGameServices.csutf-8k
+bC:\projects\repos\GameStore\src\2 - Application\GameStore.Application\Interfaces\IGenreServices.csutf-8k
+bC:\projects\repos\GameStore\src\2 - Application\GameStore.Application\Interfaces\IOrderServices.csutf-8n
+eC:\projects\repos\GameStore\src\2 - Application\GameStore.Application\Interfaces\IPlatformServices.csutf-8l
+cC:\projects\repos\GameStore\src\2 - Application\GameStore.Application\Interfaces\IReviewServices.csutf-8j
+aC:\projects\repos\GameStore\src\2 - Application\GameStore.Application\Services\CompanyServices.csutf-8g
+^C:\projects\repos\GameStore\src\2 - Application\GameStore.Application\Services\GameServices.csutf-8h
+_C:\projects\repos\GameStore\src\2 - Application\GameStore.Application\Services\GenreServices.csutf-8h
+_C:\projects\repos\GameStore\src\2 - Application\GameStore.Application\Services\OrderServices.csutf-8k
+bC:\projects\repos\GameStore\src\2 - Application\GameStore.Application\Services\PlatformServices.csutf-8i
+`C:\projects\repos\GameStore\src\2 - Application\GameStore.Application\Services\ReviewServices.csutf-8m
+dC:\projects\repos\GameStore\src\2 - Application\GameStore.Application\ViewModels\CompanyViewModel.csutf-8n
+eC:\projects\repos\GameStore\src\2 - Application\GameStore.Application\ViewModels\GameListViewModel.csutf-8j
+aC:\projects\repos\GameStore\src\2 - Application\GameStore.Application\ViewModels\GameViewModel.csutf-8k
+bC:\projects\repos\GameStore\src\2 - Application\GameStore.Application\ViewModels\GenreViewModel.csutf-8n
+eC:\projects\repos\GameStore\src\2 - Application\GameStore.Application\ViewModels\PlatformViewModel.csutf-8l
+cC:\projects\repos\GameStore\src\2 - Application\GameStore.Application\ViewModels\ResultViewModel.csutf-8p
+gC:\projects\repos\GameStore\src\2 - Application\GameStore.Application\ViewModels\ReviewListViewModel.csutf-8_
+TC:\Users\Leonardo\AppData\Local\Temp\.NETStandard,Version=v2.0.AssemblyAttributes.csutf-8ê
+ÑC:\projects\repos\GameStore\src\2 - Application\GameStore.Application\obj\Debug\netstandard2.0\GameStore.Application.AssemblyInfo.csutf-8

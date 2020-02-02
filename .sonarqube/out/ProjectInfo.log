@@ -1,0 +1,29 @@
+Product projects
+---------------------------------------
+C:\projects\repos\GameStore\src\3 - Domain\GameStore.Domain\GameStore.Domain.csproj
+C:\projects\repos\GameStore\src\4 - Infra\GameStore.Infra.Data\GameStore.Infra.Data.csproj
+C:\projects\repos\GameStore\src\2 - Application\GameStore.Application\GameStore.Application.csproj
+C:\projects\repos\GameStore\src\4 - Infra\GameStore.Infra.CrossCutting.IoC\GameStore.Infra.CrossCutting.IoC.csproj
+C:\projects\repos\GameStore\src\1 - UI\GameStore.UI.WebApi\GameStore.UI.WebApi.csproj
+
+
+Test projects
+---------------------------------------
+C:\projects\repos\GameStore\src\5 - Tests\GameStore.Tests\GameStore.Tests.csproj
+
+
+Invalid projects
+---------------------------------------
+{none}
+
+
+Skipped projects
+---------------------------------------
+{none}
+
+
+Excluded projects
+---------------------------------------
+{none}
+
+
