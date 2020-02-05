@@ -1,7 +1,7 @@
 <div class="box">
-  <button *ngIf="isAdmin" class="button is-primary is-pulled-right">
+  <button *ngIf="isAdmin" [routerLink]="['/games/update', game.id]" class="button is-primary is-pulled-right">
     <span class="icon is-small">
-      <i class="material-icons" [routerLink]="['/games/update', game.id]" title="Edit"
+      <i class="material-icons" title="Edit"
         alt="Pen">edit</i>
     </span>
     <span>Edit</span>
