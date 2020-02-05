@@ -16,12 +16,12 @@ namespace GameStore.Infra.Data.Context
         public static async Task Initialize(GameStoreContext context, IConfiguration Configuration,
         UserManager<IdentityUser> _userManager, RoleManager<IdentityRole> _roleManager)
         {
-            // Comment this if using postgresql version
-            //// Look for any games.
-            //// if (context.Games.Any())
-            //// {
-            ////     return;   // DB has been seeded
-            //// }
+            //// Comment this if using postgresql version for the first time
+            // Look for any games.
+            if (context.Games.Any())
+            {
+                return;   // DB has been seeded
+            }
 
             context.Database.EnsureDeleted();
             context.Database.EnsureCreated();

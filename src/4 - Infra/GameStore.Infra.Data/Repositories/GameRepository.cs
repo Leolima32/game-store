@@ -32,7 +32,7 @@ namespace GameStore.Infra.Data.Repositories
             return await query.ToListAsync();
         }
 
-        
+
         public async Task<IEnumerable<Game>> GetAllGamesFromThisGenreAsync(Guid genreId)
         {
             return await _db.Games
@@ -80,10 +80,10 @@ namespace GameStore.Infra.Data.Repositories
 
         public async Task<IEnumerable<Game>> GetBestRatedGamesAsync()
         {
-            var query = (from games in _db.Games
-                         orderby games.UsersScore descending
-                         select games).Take(5);
-            return await query.ToListAsync();
+            var source = await _db.Games
+                .Include(_ => _.Reviews).ToListAsync();
+                
+            return source.OrderByDescending(x => x.UsersScore).Take(5);
         }
 
         public async Task<IEnumerable<Game>> GetBestSellerGamesAsync()
