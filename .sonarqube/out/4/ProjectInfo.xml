@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ProjectInfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.sonarsource.com/msbuild/integration/2015/1">
+  <ProjectName>GameStore.UI.WebApi</ProjectName>
+  <ProjectLanguage>C#</ProjectLanguage>
+  <ProjectType>Product</ProjectType>
+  <ProjectGuid>b3c5d3e5-6ca9-4d52-a60e-497187763e83</ProjectGuid>
+  <FullPath>C:\projects\repos\GameStore\src\1 - UI\GameStore.UI.WebApi\GameStore.UI.WebApi.csproj</FullPath>
+  <IsExcluded>false</IsExcluded>
+  <AnalysisResults>
+    <AnalysisResult Id="FilesToAnalyze" Location="C:\projects\repos\GameStore\.sonarqube\out\4\FilesToAnalyze.txt" />
+  </AnalysisResults>
+  <AnalysisSettings>
+    <Property Name="sonar.cs.roslyn.reportFilePath">C:\projects\repos\GameStore\src\1 - UI\GameStore.UI.WebApi\bin\Debug\netcoreapp3.1\GameStore.UI.WebApi.dll.RoslynCA.json</Property>
+    <Property Name="sonar.cs.analyzer.projectOutPath">C:\projects\repos\GameStore\.sonarqube\out\4</Property>
+  </AnalysisSettings>
+  <Configuration>Debug</Configuration>
+  <Platform>AnyCPU</Platform>
+  <TargetFramework>netcoreapp3.1</TargetFramework>
+</ProjectInfo>
