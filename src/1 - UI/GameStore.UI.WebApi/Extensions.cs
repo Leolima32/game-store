@@ -6,13 +6,10 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace GameStore.UI.WebApi
 {
-    public static class HostSeedDbContext
+    public static class Extensions
     {
         public static IHost SeedDbContext<TContext>(this IHost host) where TContext : DbContext
         {
@@ -34,6 +31,32 @@ namespace GameStore.UI.WebApi
                 }
             }
 
+            return host;
+        }
+
+        public static IHost MigrateDatabase(this IHost host)
+        {
+            // Manually run any pending migrations if configured to do so.
+            var env = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
+
+            if (env == "Production")
+            {
+                using (var scope = host.Services.CreateScope())
+                {
+                    var services = scope.ServiceProvider;
+                    try
+                    {
+                        var dbContext = services.GetRequiredService<GameStoreContext>();
+
+                        dbContext.Database.Migrate();
+                    }
+                    catch (Exception ex)
+                    {
+                        var logger = services.GetRequiredService<ILogger<Program>>();
+                        logger.LogError(ex, "An error occurred while migrating the database.");
+                    }
+                }
+            }
             return host;
         }
     }

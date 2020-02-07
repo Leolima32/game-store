@@ -12,7 +12,8 @@
       "commandName": "IISExpress",
       "launchBrowser": true,
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "DATABASE_URL": "postgres://indoezpesismya:3555b34ae16484a047a461fa47dc8042dc420c750fe3c7309755d36bfcc7ad26@ec2-35-172-85-250.compute-1.amazonaws.com:5432/d1nrf7dqg70d92",
+        "ASPNETCORE_ENVIRONMENT": "Production"
       }
     },
     "GameStore.UI.WebApi": {

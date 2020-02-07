@@ -18,10 +18,11 @@ namespace GameStore.Infra.Data.Context
         {
             //// Comment this if using postgresql version for the first time
             // Look for any games.
-            if (context.Games.Any())
-            {
-                return;   // DB has been seeded
-            }
+
+            //if (context.Games.Any())
+            //{
+            //    return;   // DB has been seeded
+            //}
 
             context.Database.EnsureDeleted();
             context.Database.EnsureCreated();
