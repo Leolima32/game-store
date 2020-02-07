@@ -38,8 +38,8 @@ namespace GameStore.UI.WebApi
                }));
 
             services.AddAutoMapper();
-            services.AddDbContext<GameStoreContext>(options =>
-               options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddEntityFrameworkNpgsql().AddDbContext<GameStoreContext>(options =>
+               options.UseNpgsql(Configuration.GetConnectionString("PostgreSQLConnection")));
 
             services.AddIdentity<IdentityUser, IdentityRole>()
                 .AddEntityFrameworkStores<GameStoreContext>()
