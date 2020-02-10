@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Hosting;
 using GameStore.Infra.Data.Context;
 using Microsoft.Extensions.Hosting;
+using System;
 
 namespace GameStore.UI.WebApi
 {
@@ -9,8 +10,8 @@ namespace GameStore.UI.WebApi
         public static void Main(string[] args)
         {
             CreateHostBuilder(args).Build()
-                .MigrateDatabase()
-                .SeedDbContext<GameStoreContext>()
+                .CreateDatabase()
+                //.SeedDbContext<GameStoreContext>()
                 .Run();
         }
 
@@ -18,6 +19,8 @@ namespace GameStore.UI.WebApi
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
+                    var port = Environment.GetEnvironmentVariable("PORT") ?? "5000";
+                    webBuilder.UseUrls($"http://*:{port}");
                     webBuilder.UseStartup<Startup>();
                 });
     }

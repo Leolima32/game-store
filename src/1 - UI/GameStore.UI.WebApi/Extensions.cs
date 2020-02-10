@@ -34,27 +34,21 @@ namespace GameStore.UI.WebApi
             return host;
         }
 
-        public static IHost MigrateDatabase(this IHost host)
+        public static IHost CreateDatabase(this IHost host)
         {
-            // Manually run any pending migrations if configured to do so.
-            var env = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
-
-            if (env == "Production")
+            using (var scope = host.Services.CreateScope())
             {
-                using (var scope = host.Services.CreateScope())
+                var services = scope.ServiceProvider;
+                try
                 {
-                    var services = scope.ServiceProvider;
-                    try
-                    {
-                        var dbContext = services.GetRequiredService<GameStoreContext>();
-
-                        dbContext.Database.Migrate();
-                    }
-                    catch (Exception ex)
-                    {
-                        var logger = services.GetRequiredService<ILogger<Program>>();
-                        logger.LogError(ex, "An error occurred while migrating the database.");
-                    }
+                    var context = services.GetRequiredService<GameStoreContext>();
+                    context.Database.EnsureCreated();
+                    context.SaveChanges();
+                }
+                catch (Exception ex)
+                {
+                    var logger = services.GetRequiredService<ILogger<Program>>();
+                    logger.LogError(ex, "An error occurred while seeding the database.");
                 }
             }
             return host;

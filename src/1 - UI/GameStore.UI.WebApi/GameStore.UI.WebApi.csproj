@@ -36,5 +36,4 @@
     <ProjectReference Include="..\..\4 - Infra\GameStore.Infra.Data\GameStore.Infra.Data.csproj" />
     <ProjectReference Include="..\..\4 - Infra\GameStore.Infra.CrossCutting.IoC\GameStore.Infra.CrossCutting.IoC.csproj" />
   </ItemGroup>
-
 </Project>

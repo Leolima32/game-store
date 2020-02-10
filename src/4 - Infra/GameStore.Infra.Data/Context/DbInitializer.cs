@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using GameStore.Domain.Entities;
@@ -16,16 +15,11 @@ namespace GameStore.Infra.Data.Context
         public static async Task Initialize(GameStoreContext context, IConfiguration Configuration,
         UserManager<IdentityUser> _userManager, RoleManager<IdentityRole> _roleManager)
         {
-            //// Comment this if using postgresql version for the first time
             // Look for any games.
-
-            //if (context.Games.Any())
-            //{
-            //    return;   // DB has been seeded
-            //}
-
-            context.Database.EnsureDeleted();
-            context.Database.EnsureCreated();
+            if (context.Games.Any())
+            {
+                return;   // DB has been seeded
+            }
 
             var role1 = new IdentityRole() { Name = "Admin" };
             var role2 = new IdentityRole() { Name = "Customer" };
