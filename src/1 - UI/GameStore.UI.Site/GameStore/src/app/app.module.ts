@@ -33,6 +33,7 @@ import { NgxMaskModule } from 'ngx-mask';
 import { CurrencyMaskModule } from 'ngx-currency-mask';
 import { NotifierModule } from 'angular-notifier';
 import { UpdategameComponent } from './games/updategame/updategame.component';
+import { AddGenreComponent } from './genres/addgenre/addgenre.component';
 
 @NgModule({
   declarations: [
@@ -54,7 +55,8 @@ import { UpdategameComponent } from './games/updategame/updategame.component';
     AddgameComponent,
     CompaniesComponent,
     PlatformsComponent,
-    UpdategameComponent
+    UpdategameComponent,
+    AddGenreComponent
   ],
   imports: [
     BrowserModule,
