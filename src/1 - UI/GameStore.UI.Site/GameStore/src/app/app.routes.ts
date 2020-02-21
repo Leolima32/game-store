@@ -33,8 +33,8 @@ export const ROUTES: Routes = [
         ]
     },
     { path: 'genres', component: GenresComponent },
-    { path: 'genres/:id', component: GenresDetailComponent },
     { path: 'genres/add', component: AddGenreComponent, canActivate: [AuthGuard]},
+    { path: 'genres/:id', component: GenresDetailComponent },
     { path: 'company/add', component: AddCompanyComponent, canActivate: [AuthGuard]},
     { path: 'console/add', component: AddConsoleComponent, canActivate: [AuthGuard]},
     { path: 'login', component: LoginComponent},
