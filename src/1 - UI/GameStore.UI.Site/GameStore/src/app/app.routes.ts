@@ -14,6 +14,7 @@ import { AddgameComponent } from './games/addgame/addgame.component';
 import { AuthGuard } from './user/auth-guard';
 import { UpdategameComponent } from './games/updategame/updategame.component';
 import { AddGenreComponent } from './genres/addgenre/addgenre.component';
+import { AddCompanyComponent } from './company/addcompany/addcompany.component';
 
 export const ROUTES: Routes = [
     { path: '', component: HomeComponent },
@@ -32,6 +33,7 @@ export const ROUTES: Routes = [
     },
     { path: 'genres', component: GenresComponent },
     { path: 'genres/add', component: AddGenreComponent, canActivate: [AuthGuard]},
+    { path: 'company/add', component: AddCompanyComponent, canActivate: [AuthGuard]},
     { path: 'genres/:id', component: GenresDetailComponent },
     { path: 'login', component: LoginComponent},
     { path: 'register', component: RegisterComponent}
