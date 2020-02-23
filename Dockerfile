@@ -11,6 +11,10 @@ COPY ["src/3 - Domain/GameStore.Domain/GameStore.Domain.csproj", "src/3 - Domain
 COPY ["src/4 - Infra/GameStore.Infra.CrossCutting.IoC/GameStore.Infra.CrossCutting.IoC.csproj", "src/4 - Infra/GameStore.Infra.CrossCutting.IoC/"]
 COPY ["src/2 - Application/GameStore.Application/GameStore.Application.csproj", "src/2 - Application/GameStore.Application/"]
 RUN dotnet restore "src/1 - UI/GameStore.UI.WebApi/GameStore.UI.WebApi.csproj"
+
+RUN dotnet tool install --global dotnet-ef --version 3.1.0
+ENV PATH="${PATH}:~/.dotnet/tools"
+
 COPY . .
 WORKDIR "/src/src/1 - UI/GameStore.UI.WebApi"
 RUN dotnet build "GameStore.UI.WebApi.csproj" -c Release -o /app/build

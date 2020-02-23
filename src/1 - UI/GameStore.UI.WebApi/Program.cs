@@ -11,7 +11,7 @@ namespace GameStore.UI.WebApi
         {
             CreateHostBuilder(args).Build()
                 .CreateDatabase()
-                //.SeedDbContext<GameStoreContext>()
+                .SeedDbContext<GameStoreContext>()
                 .Run();
         }
 
