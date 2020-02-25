@@ -5,7 +5,7 @@
       <div class="control">
         <input id="name" formControlName="name" class="input" type="text" placeholder="Genre name"
         [ngClass]="{'is-danger': name?.invalid && (name?.dirty || name?.touched)}">
-        <div *ngIf="(name.invalid && ((name.dirty || name.touched) || formDir.submitted))">
+        <div *ngIf="(name.invalid && ((name.dirty || name.touched) || genreForm.submitted))">
           <div *ngIf="name.errors.required">
             <p class="help is-danger">Genre name is required.</p>
           </div>
