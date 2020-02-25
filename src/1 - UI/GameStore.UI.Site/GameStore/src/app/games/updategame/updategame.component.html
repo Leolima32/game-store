@@ -93,7 +93,7 @@
             <div class="field">
                 <label class="label">Developers</label>
                 <div class="control">
-                    <ng-select [formControl]="form.controls.gameDevelopers" [items]="companiesList"  bindLabel="name.fantasyName" 
+                    <ng-select [formControl]="form.controls.gameDevelopers" [items]="companiesList"  bindLabel="name" 
                     bindValue="id" [ngModel]="developersListed" [multiple]="true" placeholder="Select dropdown" required>
                     </ng-select>
                     <div
@@ -108,7 +108,7 @@
                 <label class="label">Publishers</label>
                 <div class="control">
                     <ng-select [formControl]="form.controls.gamePublishers" [items]="companiesList"
-                        bindLabel="name.fantasyName" [ngModel]="publishersListed" bindValue="id" [multiple]="true" placeholder="Select dropdown"
+                        bindLabel="name" [ngModel]="publishersListed" bindValue="id" [multiple]="true" placeholder="Select dropdown"
                         required>
                     </ng-select>
                     <div

@@ -32,7 +32,6 @@ namespace GameStore.Infra.Data.Context
             modelBuilder.Entity<GameDeveloper>().HasKey(t => new { t.GameId, t.DeveloperId });
 
             modelBuilder.Entity<Payment>().OwnsOne(typeof(Email), "Email");
-            modelBuilder.Entity<Company>().OwnsOne(typeof(CompanyName), "Name");
 
             modelBuilder.Entity<GameDeveloper>()
             .HasOne(gg => gg.Game)

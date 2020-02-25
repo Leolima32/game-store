@@ -8,8 +8,7 @@ namespace GameStore.Tests.Entities {
         
         [Fact]
         public void ShouldReturnErrorWhenFantasyNameIsNull() {
-            var fakeCompanyName = new CompanyName("");
-            var fakeComapany = new Company(fakeCompanyName,DateTime.Now);
+            var fakeComapany = new Company("",DateTime.Now);
             Assert.Equal(false, fakeComapany.IsValid);
             Assert.Equal(true, fakeComapany.IsInvalid);
         }
