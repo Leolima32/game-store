@@ -17,6 +17,8 @@ export class OverviewEditComponent implements OnInit {
     uploadUrl: 'v1/images' // if needed
   };
 
+  htmlContent: any;
+
   constructor() { }
 
   ngOnInit() {

@@ -18,6 +18,7 @@ namespace GameStore.Infra.Data.Context
 
         public DbSet<Company> Companies { get; set; }
         public DbSet<Game> Games { get; set; }
+        public DbSet<GameOverview> GamesOverview { get; set; }
         public DbSet<Genre> Genres { get; set; }
         public DbSet<Platform> Platforms { get; set; }
         public DbSet<Order> Orders { get; set; }

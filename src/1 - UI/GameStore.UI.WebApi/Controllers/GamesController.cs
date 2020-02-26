@@ -117,5 +117,12 @@ namespace GameStore.UI.WebApi.Controllers
                 return Json("Upload Failed: " + ex.Message);
             }
         }
+
+        [Authorize(Roles = "Admin")]
+        [HttpPost]
+        public async Task<ActionResult> Overview(AddOrUpdateGameOverviewDTO model)
+        {
+            var ret = _services.AddOrUpdateOverview(model);
+        }
     }
 }

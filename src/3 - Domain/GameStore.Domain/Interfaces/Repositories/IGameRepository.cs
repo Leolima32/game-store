@@ -12,5 +12,7 @@ namespace GameStore.Domain.Interfaces.Repositories
         Task<IEnumerable<Game>> GetAllGamesFromThisGenreAsync(Guid genreId);
         Task<IEnumerable<Game>> GetBestRatedGamesAsync();
         Task<IEnumerable<Game>> GetBestSellerGamesAsync();
+        Task<GameOverview> GetOverview(Guid gameId);
+        Task AddOrUpdateOverview(GameOverview gameOverview);
     }
 }
