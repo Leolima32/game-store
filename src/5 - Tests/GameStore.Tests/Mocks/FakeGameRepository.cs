@@ -26,6 +26,11 @@ namespace GameStore.Tests.Mocks
             }
         }
 
+        public Task AddOrUpdateOverview(GameOverview gameOverview)
+        {
+            throw new NotImplementedException();
+        }
+
         public async Task<IEnumerable<Game>> GetAllGamesFromThisGenreAsync(Guid genreId)
         {
             return await Task.Run(() =>
@@ -51,6 +56,11 @@ namespace GameStore.Tests.Mocks
         }
 
         public Task<IEnumerable<Game>> GetBestSellerGamesAsync()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<GameOverview> GetOverview(Guid gameId)
         {
             throw new NotImplementedException();
         }

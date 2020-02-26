@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { AngularEditorConfig } from '@kolkov/angular-editor';
+import { OverviewEditService } from './overview-edit.service';
+import { NotifierService } from 'angular-notifier';
 
 
 @Component({
@@ -18,10 +20,18 @@ export class OverviewEditComponent implements OnInit {
   };
 
   htmlContent: any;
+  @Input() gameId: any;
 
-  constructor() { }
+  constructor(private service: OverviewEditService,
+    private readonly notifierService: NotifierService) { }
 
-  ngOnInit() {
+  ngOnInit() { }
+
+  onSubmit() {
+    this.service.Submit({GameId: this.gameId, html: this.htmlContent}).subscribe(_ => {
+      this.notifierService.notify('success', 'Console was successfully added.')
+    }, err => {
+      console.log("Error occured");
+    })
   }
-
 }

@@ -122,7 +122,15 @@ namespace GameStore.UI.WebApi.Controllers
         [HttpPost]
         public async Task<ActionResult> Overview(AddOrUpdateGameOverviewDTO model)
         {
-            var ret = _services.AddOrUpdateOverview(model);
+            try
+            {
+                await _services.AddOrUpdateOverview(model);
+                return new OkObjectResult(new ResultViewModel(model.GameId, 200, "Success!"));
+            }
+            catch (Exception)
+            {
+                return new BadRequestObjectResult(new ResultViewModel(500, "Something went wrong! Try again later."));
+            }
         }
     }
 }
