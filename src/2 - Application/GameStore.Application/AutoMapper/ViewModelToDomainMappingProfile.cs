@@ -8,9 +8,9 @@ using GameStore.Domain.Entities;
 
 namespace GameStore.Application.AutoMapper
 {
-    public class ViewModelToDomainMappingProfile: Profile
+    public class DTOToDomainMappingProfile: Profile
     {
-        public ViewModelToDomainMappingProfile()
+        public DTOToDomainMappingProfile()
         {
             ShouldMapField = fieldInfo => true;
             ShouldMapProperty = propertyInfo => true;
@@ -22,6 +22,7 @@ namespace GameStore.Application.AutoMapper
             CreateMap<AddOrUpdateCompanyDTO, Company>();
             CreateMap<AddOrUpdateGenreDTO, Genre>();
             CreateMap<AddOrUpdatePlatformDTO, Platform>();
+            CreateMap<AddOrUpdateGameOverviewDTO, GameOverview>();
         }
     }
 }

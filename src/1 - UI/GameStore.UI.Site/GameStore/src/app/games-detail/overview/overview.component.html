@@ -1,4 +1,15 @@
-<p>
-  overview works!
-  {{game?.name}}
-</p>
+<button *ngIf="isAdmin && !showEdit" (click)="toggleEdit()" class="button is-primary">
+  <span class="icon is-small">
+    <i class="material-icons" title="Edit" alt="Pen">edit</i>
+  </span>
+  <span>Edit</span>
+</button>
+
+<gs-overview-edit *ngIf="showEdit"></gs-overview-edit>
+
+<button *ngIf="isAdmin && showEdit" (click)="toggleEdit()" class="button">
+  <span class="icon is-small">
+    <i class="material-icons" title="Edit" alt="Pen">cancel</i>
+  </span>
+  <span>Cancel</span>
+</button>
