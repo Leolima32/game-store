@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GamesService } from '../../games/games.service';
 import { Game } from '../../games/game.model';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'gs-overview',
@@ -10,13 +11,13 @@ import { Game } from '../../games/game.model';
 export class OverviewComponent implements OnInit {
 
   isAdmin = false;
-  game: Game;
+  gameId: string;
   showEdit = false;
 
-  constructor(private gamesService: GamesService) { }
+  constructor(private gamesService: GamesService, private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.game = this.gamesService.currentGame;
+    this.gameId = this.route.snapshot.params['id']
     let decodedToken = JSON.parse(atob(localStorage.token.split('.')[1]))
     this.isAdmin = (decodedToken['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'] === "Admin")
   }

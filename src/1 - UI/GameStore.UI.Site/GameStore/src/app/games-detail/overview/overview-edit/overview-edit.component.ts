@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { AngularEditorConfig } from '@kolkov/angular-editor';
 import { OverviewEditService } from './overview-edit.service';
 import { NotifierService } from 'angular-notifier';
@@ -21,6 +21,7 @@ export class OverviewEditComponent implements OnInit {
 
   htmlContent: any;
   @Input() gameId: any;
+  @Output() cancel = new EventEmitter()
 
   constructor(private service: OverviewEditService,
     private readonly notifierService: NotifierService) { }
@@ -33,5 +34,9 @@ export class OverviewEditComponent implements OnInit {
     }, err => {
       console.log("Error occured");
     })
+  }
+
+  closeForm() {
+    this.cancel.emit(false);
   }
 }

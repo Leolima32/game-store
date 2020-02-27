@@ -5,12 +5,5 @@
   <span>Edit</span>
 </button>
 
-<gs-overview-edit *ngIf="showEdit" [gameId]="game?.id"></gs-overview-edit>
-
-<button *ngIf="isAdmin && showEdit" (click)="toggleEdit()" class="button is-pulled-right">
-  <span class="icon is-small">
-    <i class="material-icons" title="Cancel" alt="Pen">cancel</i>
-  </span>
-  <span>Cancel</span>
-</button>
-
+<gs-overview-edit *ngIf="showEdit" (cancel)="toggleEdit()" [gameId]="gameId"></gs-overview-edit>
+<h1>Alo:{{ gameId}}</h1>
