@@ -2,6 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { AngularEditorConfig } from '@kolkov/angular-editor';
 import { OverviewEditService } from './overview-edit.service';
 import { NotifierService } from 'angular-notifier';
+import { environment } from 'src/environments/environment';
 
 
 @Component({
@@ -16,7 +17,7 @@ export class OverviewEditComponent implements OnInit {
     height: '25rem',
     minHeight: '5rem',
     placeholder: 'Enter text here...',
-    uploadUrl: 'v1/images' // if needed
+    uploadUrl: `${environment.API_ROOT}/api/images/converttobase64` // if needed
   };
 
   htmlContent: any;

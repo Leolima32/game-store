@@ -132,5 +132,11 @@ namespace GameStore.UI.WebApi.Controllers
                 return new BadRequestObjectResult(new ResultViewModel(500, "Something went wrong! Try again later."));
             }
         }
+
+        [HttpGet("{id}/overview")]
+        public async Task<dynamic> GetOverview(Guid id)
+        {
+            return await _services.GetOverview(id);
+        }
     }
 }

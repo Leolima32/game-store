@@ -20,5 +20,6 @@ namespace GameStore.Application.Interfaces
         Task<IEnumerable<GameListViewModel>> GetBestRatedGames();
         Task<IEnumerable<GameListViewModel>> GetBestSellerGames();
         Task AddOrUpdateOverview(AddOrUpdateGameOverviewDTO model);
+        Task<dynamic> GetOverview(Guid id);
     }
 }

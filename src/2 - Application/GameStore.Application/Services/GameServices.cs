@@ -75,5 +75,10 @@ namespace GameStore.Application.Services
         {
             await _unit.Games.AddOrUpdateOverview(_mapper.Map<GameOverview>(model));
         }
+
+        public async Task<dynamic> GetOverview(Guid id)
+        {
+            return await _unit.Games.GetOverview(id);
+        }
     }
 }
