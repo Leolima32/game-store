@@ -1,3 +1,5 @@
+<div [innerHTML]="overviewHtml"></div>
+
 <button *ngIf="isAdmin && !showEdit" (click)="toggleEdit()" class="button is-primary is-pulled-right">
   <span class="icon is-small">
     <i class="material-icons" title="Edit" alt="Pen">edit</i>
@@ -5,4 +7,4 @@
   <span>Edit</span>
 </button>
 
-<gs-overview-edit *ngIf="showEdit" (cancel)="toggleEdit()" [gameId]="gameId"></gs-overview-edit>
+<gs-overview-edit *ngIf="showEdit" (cancel)="toggleEdit()" [gameId]="gameId" [htmlContent]="overviewHtml"></gs-overview-edit>

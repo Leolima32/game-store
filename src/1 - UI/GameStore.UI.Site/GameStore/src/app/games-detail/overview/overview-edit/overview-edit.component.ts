@@ -20,7 +20,7 @@ export class OverviewEditComponent implements OnInit {
     uploadUrl: `${environment.API_ROOT}/api/images/converttobase64` // if needed
   };
 
-  htmlContent: any;
+  @Input() htmlContent: any;
   @Input() gameId: any;
   @Output() cancel = new EventEmitter()
 
