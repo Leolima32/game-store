@@ -14,10 +14,10 @@ export class OverviewComponent implements OnInit {
   gameId: string;
   showEdit = false;
 
-  constructor(private gamesService: GamesService, private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.gameId = this.route.snapshot.params['id']
+    this.gameId = this.route.parent.snapshot.params['id']
     let decodedToken = JSON.parse(atob(localStorage.token.split('.')[1]))
     this.isAdmin = (decodedToken['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'] === "Admin")
   }

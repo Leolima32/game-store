@@ -29,9 +29,9 @@ export class OverviewEditComponent implements OnInit {
   ngOnInit() { }
 
   onSubmit() {
-    this.service.Submit({GameId: this.gameId, html: this.htmlContent}).subscribe(_ => {
+    this.service.Submit({gameId: this.gameId, html: this.htmlContent}).subscribe(_ => {
       this.notifierService.notify('success', 'Console was successfully added.')
-    }, err => {
+    }, () => {
       console.log("Error occured");
     })
   }

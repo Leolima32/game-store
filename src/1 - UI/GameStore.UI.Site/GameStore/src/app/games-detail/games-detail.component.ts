@@ -19,8 +19,6 @@ export class GamesDetailComponent implements OnInit {
   ngOnInit() {
     this.gamesService.gameById(this.route.snapshot.params['id'])
        .subscribe(game => this.game = game)
-
-    this.gamesService.currentGame = this.game;
   }
 
 }

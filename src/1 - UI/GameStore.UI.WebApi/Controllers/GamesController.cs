@@ -119,8 +119,8 @@ namespace GameStore.UI.WebApi.Controllers
         }
 
         [Authorize(Roles = "Admin")]
-        [HttpPost]
-        public async Task<ActionResult> Overview(AddOrUpdateGameOverviewDTO model)
+        [HttpPost("overview")]
+        public async Task<ActionResult> Overview([FromBody]AddOrUpdateGameOverviewDTO model)
         {
             try
             {
