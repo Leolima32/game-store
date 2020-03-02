@@ -26,4 +26,8 @@ export class OverviewComponent implements OnInit {
   toggleEdit() {
     this.showEdit = !this.showEdit;
   }
+
+  updateHtml(event) {
+    this.overviewHtml = event;
+  }
 }
