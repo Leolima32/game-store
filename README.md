@@ -1,14 +1,14 @@
 # Game Store
 
-This project aims to be a perfect game store. It is dived in 2 applications, a web API developed in ASP.NET Core 2.0 and a website using Angular 6.0.8. 
+This project aims to be a perfect game store. It is dived in 2 applications, a web API developed in ASP.NET Core 3.1 and a website using Angular 6.0.8. 
 
 ### Prerequisites
 
-- You will need Visual Studio 2017 (preview 15.3), .NET Core SDK and the latest stable build of Node.js(for npm only) 
+- You will need Visual Studio 2017 with the .NET Core SDK installed and the latest stable build of Node.js
 - The latest SDK and tools can be downloaded from https://dot.net/core. 
-- Read the .NET Core 2.0 [release announcement](https://blogs.msdn.microsoft.com/dotnet/2017/08/14/announcing-net-core-2-0/) for more information.
-- the latest Node.js installer could be found [here](https://nodejs.org/en/)
-- A LocalDb SQL running instance
+- Read the .NET Core 3.1 [release announcement](https://blogs.msdn.microsoft.com/dotnet/2017/08/14/announcing-net-core-2-0/) for more information.
+- the latest Node.js installer could be found [here](https://nodejs.org/en/).
+- You can chose between Microsoft SQL Server and PostgreSQL. Ether way you will need a local db running instance for the selected database.
 
 Also, you can run the application in Visual Studio Code (Windows, Linux or MacOS).
 
@@ -18,7 +18,7 @@ To know more about how to setup your environment visit the [Microsoft .NET Downl
 
 #### API
 
-Install NuGet packages required and run
+First cd to ``` src\1 - UI\GameStore.UI.WebApi ``` to install NuGet packages required and run
 
 ```
 cd GameStore.UI.WebApi
@@ -34,6 +34,8 @@ same for GameStore.UI.WebApi/appsettings.development.json
     "DefaultConnection": "Your Connection String"
 }
 ```
+
+If you are using PostgreSQL change the ```"PostgreSQLConnection"``` key under ```ConnectionStrings``` configuration
 
 #### UI
 
@@ -67,7 +69,7 @@ You can also import the GameStore.postman_collection.json on Postman to see deta
 
 ## Technologies implemented:
 
-- ASP.NET Core 2.0
+- ASP.NET Core 3.1
 - Entity Framework Core 2.0
 - .NET Core Native DI
 - AutoMapper

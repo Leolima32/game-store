@@ -70,5 +70,15 @@ namespace GameStore.Application.Services
             game.ChangeThumbImagePath(path);
             _unit.Games.Update(game);
         }
+
+        public async Task AddOrUpdateOverview(AddOrUpdateGameOverviewDTO model)
+        {
+            await _unit.Games.AddOrUpdateOverview(_mapper.Map<GameOverview>(model));
+        }
+
+        public async Task<dynamic> GetOverview(Guid id)
+        {
+            return await _unit.Games.GetOverview(id);
+        }
     }
 }

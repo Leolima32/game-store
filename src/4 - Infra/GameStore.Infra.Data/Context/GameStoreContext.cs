@@ -18,6 +18,7 @@ namespace GameStore.Infra.Data.Context
 
         public DbSet<Company> Companies { get; set; }
         public DbSet<Game> Games { get; set; }
+        public DbSet<GameOverview> GamesOverview { get; set; }
         public DbSet<Genre> Genres { get; set; }
         public DbSet<Platform> Platforms { get; set; }
         public DbSet<Order> Orders { get; set; }
@@ -32,7 +33,6 @@ namespace GameStore.Infra.Data.Context
             modelBuilder.Entity<GameDeveloper>().HasKey(t => new { t.GameId, t.DeveloperId });
 
             modelBuilder.Entity<Payment>().OwnsOne(typeof(Email), "Email");
-            modelBuilder.Entity<Company>().OwnsOne(typeof(CompanyName), "Name");
 
             modelBuilder.Entity<GameDeveloper>()
             .HasOne(gg => gg.Game)

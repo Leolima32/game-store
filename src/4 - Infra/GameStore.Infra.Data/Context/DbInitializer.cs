@@ -21,6 +21,9 @@ namespace GameStore.Infra.Data.Context
                 return;   // DB has been seeded
             }
 
+            context.Database.EnsureDeleted();
+            context.Database.EnsureCreated();
+
             var role1 = new IdentityRole() { Name = "Admin" };
             var role2 = new IdentityRole() { Name = "Customer" };
 
@@ -43,16 +46,16 @@ namespace GameStore.Infra.Data.Context
 
             var companies = new Company[]
             {
-                new Company(new CompanyName("Square Enix"),new DateTime(1975,9,22)),
-                new Company(new CompanyName("Rockstar Games"),new DateTime(1998,12,1)),
-                new Company(new CompanyName("Ubisoft"), new DateTime(1986,3,1) ),
-                new Company(new CompanyName("Rockstar North"), new DateTime(1986,3,1)),
-                new Company(new CompanyName("Ubisoft Montreal"), new DateTime(1986,3,1)),
-                new Company(new CompanyName("Eletronic Arts"),new DateTime(1982,5,28)),
-                new Company(new CompanyName("Nintendo"), new DateTime(1889,9,23)),
-                new Company(new CompanyName("Bethesda"), new DateTime(1986,6,28)),
-                new Company(new CompanyName("Capcom"), new DateTime(1983,6,11)),
-                new Company(new CompanyName("Bandai Namco"),new DateTime(2006,3,31))
+                new Company("Square Enix",new DateTime(1975,9,22)),
+                new Company("Rockstar Games",new DateTime(1998,12,1)),
+                new Company("Ubisoft", new DateTime(1986,3,1) ),
+                new Company("Rockstar North", new DateTime(1986,3,1)),
+                new Company("Ubisoft Montreal", new DateTime(1986,3,1)),
+                new Company("Eletronic Arts",new DateTime(1982,5,28)),
+                new Company("Nintendo", new DateTime(1889,9,23)),
+                new Company("Bethesda", new DateTime(1986,6,28)),
+                new Company("Capcom", new DateTime(1983,6,11)),
+                new Company("Bandai Namco",new DateTime(2006,3,31))
             };
             foreach (Company s in companies)
             {

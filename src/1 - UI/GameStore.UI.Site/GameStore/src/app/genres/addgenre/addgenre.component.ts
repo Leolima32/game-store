@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AddGenreService } from './addgenre.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { NotifierService } from 'angular-notifier';
 
 @Component({
   selector: 'gs-addgenre',
@@ -13,7 +14,8 @@ export class AddGenreComponent implements OnInit {
   name: FormControl;
   description: FormControl;
 
-  constructor(private service: AddGenreService) { }
+  constructor(private service: AddGenreService,
+    private readonly notifierService: NotifierService) { }
 
   ngOnInit() {
     this.name = new FormControl('', [Validators.required]);
@@ -23,6 +25,15 @@ export class AddGenreComponent implements OnInit {
       'name': this.name,
       'description': this.description
     });
+  }
+
+  onSubmit() {
+    this.service.Add(this.genreForm.value).subscribe(_ => {
+      this.notifierService.notify('success', 'Genre was successfully added.')
+    }, err => {
+      console.log("Error occured");
+    })
+    this.genreForm.reset();
   }
 
 }

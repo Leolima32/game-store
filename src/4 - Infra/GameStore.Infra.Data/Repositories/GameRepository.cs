@@ -130,5 +130,21 @@ namespace GameStore.Infra.Data.Repositories
             _db.SaveChanges();
         }
 
+        public async Task<GameOverview> GetOverview(Guid gameId)
+        {
+            return await _db.GamesOverview.Where(x => x.GameId == gameId).FirstOrDefaultAsync();
+        }
+
+        public async Task AddOrUpdateOverview(GameOverview gameOverview)
+        {
+            var go = await GetOverview(gameOverview.GameId);
+
+            if (go is null)
+                _db.GamesOverview.Add(gameOverview);
+            else
+                go.changeHtml(gameOverview.Html);
+
+            _db.SaveChanges();
+        }
     }
 }

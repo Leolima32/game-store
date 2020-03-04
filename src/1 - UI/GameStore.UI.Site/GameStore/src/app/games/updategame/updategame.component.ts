@@ -88,8 +88,6 @@ export class UpdategameComponent implements OnInit {
             this.notifierService.notify('error', err.error.message);
           }
         );
-      this.form.reset();
-      formDir.resetForm();
     }
   }
 

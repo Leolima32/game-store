@@ -20,6 +20,7 @@
     "@angular/platform-browser": "^6.0.3",
     "@angular/platform-browser-dynamic": "^6.0.3",
     "@angular/router": "^6.0.3",
+    "@kolkov/angular-editor": "^0.15.6",
     "@ng-select/ng-select": "^2.16.0",
     "angular-notifier": "^4.1.1",
     "bulma": "^0.7.1",

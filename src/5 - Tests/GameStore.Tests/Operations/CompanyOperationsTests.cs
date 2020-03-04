@@ -17,7 +17,7 @@ namespace GameStore.Tests.Operations {
         public void ShouldAddANewCompany()
         {
             int countBefore = _repository._entities.Count;
-            _repository.Add(new Company(new CompanyName("new super cool Company"),DateTime.Now));
+            _repository.Add(new Company("new super cool Company",DateTime.Now));
             int countAfter = _repository._entities.Count;
             Assert.Equal(countAfter, countBefore + 1);
         }
@@ -38,7 +38,7 @@ namespace GameStore.Tests.Operations {
             var company = _repository._entities.FirstOrDefault();
             company.ChangeName("new super cool name");
             _repository.Update(company);
-            Assert.True(_repository._entities.FirstOrDefault().Name.FantasyName == "new super cool name");
+            Assert.True(_repository._entities.FirstOrDefault().Name == "new super cool name");
         }
 
         [Fact]

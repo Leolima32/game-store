@@ -81,6 +81,10 @@ namespace GameStore.UI.WebApi
                 options.UseNpgsql(connStr);
             });
 
+            //   If you plan to use Microsoft SQL Server uncomment this section and delete previus AddEntityFrameworkNpgsql().AddDbContext section
+            //   services.AddDbContext<GameStoreContext>(options =>
+            //   options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+
 
             services.AddIdentity<IdentityUser, IdentityRole>()
                 .AddEntityFrameworkStores<GameStoreContext>()

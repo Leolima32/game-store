@@ -13,24 +13,25 @@ namespace GameStore.Domain.Entities
     {
         protected Company() { }
 
-        public Company(CompanyName name, DateTime founded)
+        public Company(string name, DateTime founded)
         {
             Name = name;
             Founded = founded;
 
-            if (String.IsNullOrEmpty(Name.FantasyName))
+            if (String.IsNullOrEmpty(name))
                 AddNonconformity(new Nonconformity("company.name.fantasyName", "Fantasy Name cannot be null."));
         }
 
-        public CompanyName Name { get; private set; }
+        public string Name { get; private set; }
         public DateTime Founded { get; private set; }
         public string LogoPath { get; private set; }
 
         public ICollection<GameDeveloper> GameDevelopers { get; private set; }
         public ICollection<GamePublisher> GamePublishers { get; private set; }
 
-        public void ChangeName(string name) {
-            Name = new CompanyName(name);
+        public void ChangeName(string name)
+        {
+            Name = name;
         }
     }
 }

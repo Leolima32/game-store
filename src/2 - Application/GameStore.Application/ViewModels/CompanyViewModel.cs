@@ -10,7 +10,7 @@ namespace GameStore.Application.ViewModels
     public class CompanyViewModel
     {
         public Guid Id { get; set; }
-        public CompanyName Name { get; set; }
+        public string Name { get; set; }
         public DateTime Founded { get; set; }
         public string LogoPath { get; set; }
 

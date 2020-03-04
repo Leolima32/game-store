@@ -2,13 +2,13 @@ import { Game } from "./game.model";
 import { environment } from '../../environments/environment';
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from "@angular/core";
-import { Observable } from "rxjs";
+import { Observable, Subject } from "rxjs";
 import { map } from "rxjs/operators";
 
 @Injectable()
 export class GamesService {
 
-    currentGame: Game;
+    currentGame: Subject<Game> = new Subject<Game>();
 
     constructor(private http: HttpClient) { }
 
@@ -43,6 +43,7 @@ export class GamesService {
         return this.http.get<Game>(`${environment.API_ROOT}/api/games/${id}`).pipe(
             map(game => { 
                 game.coverImagePath = `${environment.API_ROOT + game.coverImageRelativePath}`
+                this.currentGame.next(game);
                 return game;
             }));
     }

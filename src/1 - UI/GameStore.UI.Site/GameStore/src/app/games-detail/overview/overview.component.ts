@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { GamesService } from '../../games/games.service';
-import { Game } from '../../games/game.model';
+import { ActivatedRoute } from '@angular/router';
+import { OverviewService } from './overview.service';
 
 @Component({
   selector: 'gs-overview',
@@ -9,12 +9,25 @@ import { Game } from '../../games/game.model';
 })
 export class OverviewComponent implements OnInit {
 
-  game: Game;
+  isAdmin = false;
+  gameId: string;
+  showEdit = false;
+  overviewHtml: any;
 
-  constructor(private gamesService: GamesService) { }
+  constructor(private route: ActivatedRoute, private service: OverviewService) { }
 
   ngOnInit() {
-    this.game = this.gamesService.currentGame; 
+    this.gameId = this.route.parent.snapshot.params['id']
+    let decodedToken = JSON.parse(atob(localStorage.token.split('.')[1]))
+    this.isAdmin = (decodedToken['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'] === "Admin")
+    this.service.get(this.gameId).subscribe(_ => this.overviewHtml = _.html)
   }
 
+  toggleEdit() {
+    this.showEdit = !this.showEdit;
+  }
+
+  updateHtml(event) {
+    this.overviewHtml = event;
+  }
 }

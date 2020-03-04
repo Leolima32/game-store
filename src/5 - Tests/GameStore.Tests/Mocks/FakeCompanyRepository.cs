@@ -10,7 +10,7 @@ namespace GameStore.Tests.Mocks
         {
             for (var i = 0; i < 10; i++)
             {
-                base._entities.Add(new Company(new CompanyName("Fake Company"),DateTime.Now));
+                base._entities.Add(new Company("Fake Company",DateTime.Now));
             }
         }
     }

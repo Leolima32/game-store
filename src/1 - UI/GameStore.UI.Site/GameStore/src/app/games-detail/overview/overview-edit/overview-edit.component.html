@@ -1,0 +1,15 @@
+<angular-editor [config]="editorConfig" [(ngModel)]="htmlContent"></angular-editor>
+
+<button (click)="onSubmit()" class="button is-primary is-pulled-right">
+  <span class="icon is-small">
+    <i class="material-icons" title="Submit" alt="Pen">send</i>
+  </span>
+  <span>Submit</span>
+</button>
+
+<button (click)="closeForm()" class="button is-pulled-right">
+  <span class="icon is-small">
+    <i class="material-icons" title="Cancel" alt="Pen">cancel</i>
+  </span>
+  <span>Cancel</span>
+</button>

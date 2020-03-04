@@ -4,6 +4,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AngularEditorModule } from '@kolkov/angular-editor';
+
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -36,6 +38,7 @@ import { UpdategameComponent } from './games/updategame/updategame.component';
 import { AddGenreComponent } from './genres/addgenre/addgenre.component';
 import { AddCompanyComponent } from './company/addcompany/addcompany.component';
 import { AddConsoleComponent } from './console/add-console/add-console.component';
+import { OverviewEditComponent } from './games-detail/overview/overview-edit/overview-edit.component';
 
 @NgModule({
   declarations: [
@@ -60,7 +63,8 @@ import { AddConsoleComponent } from './console/add-console/add-console.component
     UpdategameComponent,
     AddGenreComponent,
     AddCompanyComponent,
-    AddConsoleComponent
+    AddConsoleComponent,
+    OverviewEditComponent
   ],
   imports: [
     BrowserModule,
@@ -82,7 +86,8 @@ import { AddConsoleComponent } from './console/add-console/add-console.component
           distance: 12
         }
       }
-    })
+    }),
+    AngularEditorModule
   ],
   providers: [GamesService, UserService, GenresService],
   bootstrap: [AppComponent]
