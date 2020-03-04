@@ -33,6 +33,7 @@ msbuild.wrn
 # Visual Studio 2015
 .vs/
 .vscode/
+.sonarqube
 .Application/bin
 .Application/obj
 .Domain/bin
