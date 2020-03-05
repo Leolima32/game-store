@@ -7,4 +7,4 @@
   <span>Edit</span>
 </button>
 
-<gs-overview-edit *ngIf="showEdit" (cancel)="toggleEdit()" (change)="updateHtml($event)" [gameId]="gameId" [htmlContent]="overviewHtml"></gs-overview-edit>
+<gs-overview-edit *ngIf="showEdit" (cancel)="toggleEdit()" (htmlChanged)="updateHtml($event)" [gameId]="gameId" [htmlContent]="overviewHtml"></gs-overview-edit>

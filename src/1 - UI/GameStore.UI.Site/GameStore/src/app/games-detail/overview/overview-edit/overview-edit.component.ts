@@ -23,7 +23,7 @@ export class OverviewEditComponent implements OnInit {
   @Input() htmlContent: any;
   @Input() gameId: any;
   @Output() cancel = new EventEmitter()
-  @Output() change = new EventEmitter()
+  @Output() htmlChanged = new EventEmitter()
 
   constructor(private service: OverviewEditService,
     private readonly notifierService: NotifierService) { }
@@ -33,7 +33,7 @@ export class OverviewEditComponent implements OnInit {
   onSubmit() {
     this.service.Submit({gameId: this.gameId, html: this.htmlContent}).subscribe(_ => {
       this.notifierService.notify('success', 'Overview was successfully updated.')
-      this.change.emit(this.htmlContent);
+      this.htmlChanged.emit(this.htmlContent);
     }, () => {
       console.log("Error occured");
     })
