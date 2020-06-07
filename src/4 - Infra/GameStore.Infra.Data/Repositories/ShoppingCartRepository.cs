@@ -1,5 +1,6 @@
 using System;
 using System.Linq;
+using System.Threading.Tasks;
 using GameStore.Domain.Entities;
 using GameStore.Domain.Interfaces.Repositories;
 using GameStore.Infra.Data.Context;
@@ -27,6 +28,21 @@ namespace GameStore.Infra.Data.Repositories
 
             _db.SaveChanges();
             return cart.Id;
+        }
+
+        public Task<ShoppingCart> GetCartByUserId(Guid userId)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task CreateCart(ShoppingCart currentCart)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task SaveCart(ShoppingCart currentCart)
+        {
+            throw new NotImplementedException();
         }
     }
 }

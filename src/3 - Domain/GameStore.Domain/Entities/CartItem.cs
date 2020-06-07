@@ -2,7 +2,6 @@
 using GameStore.Domain.Exceptions;
 using GameStore.Domain.ValueObjects;
 using System;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace GameStore.Domain.Entities
 {

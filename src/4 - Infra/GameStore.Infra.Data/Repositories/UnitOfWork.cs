@@ -15,6 +15,7 @@ namespace GameStore.Infra.Data.Repositories
         private IUserRepository _userRepository;
         private IOrderRepository _orderRepository;
         private IReviewRepository _reviewRepository;
+        private IShoppingCartRepository _shoppingCartRepository;
 
         private readonly GameStoreContext _db;
         public UnitOfWork(GameStoreContext db) { _db = db; }
@@ -99,6 +100,17 @@ namespace GameStore.Infra.Data.Repositories
                     _reviewRepository = new ReviewRepository(_db);
                 }
                 return _reviewRepository;
+            }
+        }
+
+        public IShoppingCartRepository Carts {
+            get
+            {
+                if (_shoppingCartRepository == null)
+                {
+                    _shoppingCartRepository = new ShoppingCartRepository(_db);
+                }
+                return _shoppingCartRepository;
             }
         }
 

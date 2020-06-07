@@ -9,6 +9,7 @@ namespace GameStore.Domain.Interfaces.Repositories
         IUserRepository Users { get ;}
         IOrderRepository Orders { get; }
         IReviewRepository Reviews { get;}
+        IShoppingCartRepository Carts { get; }
         void Dispose();
     }
 }
