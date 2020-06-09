@@ -29,7 +29,7 @@ namespace GameStore.Application.Services
 
             CurrentCart.AddItem(_mapper.Map<CartItem>(item));
 
-            await _repo.SaveCart(CurrentCart);
+            _repo.Update(CurrentCart);
         }
     }
 }

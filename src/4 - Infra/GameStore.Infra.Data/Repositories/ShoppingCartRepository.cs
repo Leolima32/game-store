@@ -5,6 +5,7 @@ using GameStore.Domain.Entities;
 using GameStore.Domain.Interfaces.Repositories;
 using GameStore.Infra.Data.Context;
 using GameStore.Infra.Data.Repositories.Common;
+using Microsoft.EntityFrameworkCore;
 
 namespace GameStore.Infra.Data.Repositories
 {
@@ -30,19 +31,15 @@ namespace GameStore.Infra.Data.Repositories
             return cart.Id;
         }
 
-        public Task<ShoppingCart> GetCartByUserId(Guid userId)
+        public async Task<ShoppingCart> GetCartByUserId(Guid userId)
         {
-            throw new NotImplementedException();
+            return await _db.ShoppingCarts.Where(_ => _.UserId == userId).FirstOrDefaultAsync();
         }
 
-        public Task CreateCart(ShoppingCart currentCart)
+        public async Task CreateCart(ShoppingCart cart)
         {
-            throw new NotImplementedException();
-        }
-
-        public Task SaveCart(ShoppingCart currentCart)
-        {
-            throw new NotImplementedException();
+            _db.ShoppingCarts.Add(cart);
+            await _db.SaveChangesAsync();
         }
     }
 }

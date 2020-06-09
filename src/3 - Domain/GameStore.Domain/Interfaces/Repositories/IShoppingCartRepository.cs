@@ -8,6 +8,5 @@ namespace GameStore.Domain.Interfaces.Repositories
     {
         Task<ShoppingCart> GetCartByUserId(Guid userId);
         Task CreateCart(ShoppingCart currentCart);
-        Task SaveCart(ShoppingCart currentCart);
     }
 }

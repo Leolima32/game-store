@@ -39,6 +39,7 @@ import { AddGenreComponent } from './genres/addgenre/addgenre.component';
 import { AddCompanyComponent } from './company/addcompany/addcompany.component';
 import { AddConsoleComponent } from './console/add-console/add-console.component';
 import { OverviewEditComponent } from './games-detail/overview/overview-edit/overview-edit.component';
+import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
 
 @NgModule({
   declarations: [
@@ -64,7 +65,8 @@ import { OverviewEditComponent } from './games-detail/overview/overview-edit/ove
     AddGenreComponent,
     AddCompanyComponent,
     AddConsoleComponent,
-    OverviewEditComponent
+    OverviewEditComponent,
+    ShoppingCartComponent
   ],
   imports: [
     BrowserModule,

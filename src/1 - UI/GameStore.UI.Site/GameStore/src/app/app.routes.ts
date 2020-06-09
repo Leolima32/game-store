@@ -11,17 +11,19 @@ import { RegisterComponent } from './register/register.component';
 import { GenresComponent } from './genres/genres.component';
 import { GenresDetailComponent } from './genres-detail/genres-detail.component';
 import { AddgameComponent } from './games/addgame/addgame.component';
-import { AuthGuard } from './user/auth-guard';
+import { AdminGuard } from './user/admin-guard';
 import { UpdategameComponent } from './games/updategame/updategame.component';
 import { AddGenreComponent } from './genres/addgenre/addgenre.component';
 import { AddCompanyComponent } from './company/addcompany/addcompany.component';
 import { AddConsoleComponent } from './console/add-console/add-console.component';
+import { ShoppingCartComponent } from './shopping-cart/shopping-cart.component';
+import { CustomerGuard } from './user/customer-guard';
 
 export const ROUTES: Routes = [
     { path: '', component: HomeComponent },
     { path: 'games', component: GamesComponent },
-    { path: 'games/add', component: AddgameComponent, canActivate: [AuthGuard]},
-    { path: 'games/update/:id', component: UpdategameComponent, canActivate: [AuthGuard]},
+    { path: 'games/add', component: AddgameComponent, canActivate: [AdminGuard]},
+    { path: 'games/update/:id', component: UpdategameComponent, canActivate: [AdminGuard]},
     {
         path: 'games/:id', component: GamesDetailComponent,
         children: [
@@ -33,10 +35,11 @@ export const ROUTES: Routes = [
         ]
     },
     { path: 'genres', component: GenresComponent },
-    { path: 'genres/add', component: AddGenreComponent, canActivate: [AuthGuard]},
+    { path: 'genres/add', component: AddGenreComponent, canActivate: [AdminGuard]},
     { path: 'genres/:id', component: GenresDetailComponent },
-    { path: 'company/add', component: AddCompanyComponent, canActivate: [AuthGuard]},
-    { path: 'console/add', component: AddConsoleComponent, canActivate: [AuthGuard]},
+    { path: 'company/add', component: AddCompanyComponent, canActivate: [AdminGuard]},
+    { path: 'console/add', component: AddConsoleComponent, canActivate: [AdminGuard]},
+    { path: 'shoppingcart', component: ShoppingCartComponent, canActivate: [CustomerGuard]},
     { path: 'login', component: LoginComponent},
     { path: 'register', component: RegisterComponent}
 ];

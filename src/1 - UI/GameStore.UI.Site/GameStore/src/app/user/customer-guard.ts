@@ -5,15 +5,15 @@ import { Observable } from 'rxjs/Rx';
 import 'rxjs/operators';
 
 @Injectable({ providedIn: 'root' })
-export class AuthGuard implements CanActivate {
+export class CustomerGuard implements CanActivate {
 
-    isAdminLogged: boolean;
+    isCustomerLogged: boolean;
 
     constructor(private userService: UserService, private router: Router) { }
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
         let decodedToken = JSON.parse(atob(localStorage.token.split('.')[1]))
-        if (decodedToken['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'] === "Admin") {
+        if (decodedToken['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'] === "Customer") {
             return true;
         } else {
             this.router.navigate(['/login']);
