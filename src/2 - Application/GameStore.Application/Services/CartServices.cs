@@ -10,27 +10,27 @@ namespace GameStore.Application.Services
 {
     public class CartServices : ICartServices
     {
-        private readonly IShoppingCartRepository _repo;
+        private readonly IUnitOfWork _unit;
         private readonly IMapper _mapper;
-        public CartServices(IShoppingCartRepository repo, IMapper mapper)
+        public CartServices(IUnitOfWork unit, IMapper mapper)
         {
-            _repo = repo;
+            _unit = unit;
             _mapper = mapper;
         }
 
         public async Task AddItemToCart(CartItemDTO item, Guid userId)
         {
-            ShoppingCart CurrentCart = await _repo.GetCartByUserId(userId);
+            ShoppingCart CurrentCart = await _unit.Carts.GetCartByUserId(userId);
 
             if(CurrentCart is null)
             {
                 CurrentCart = new ShoppingCart(userId);
-                await _repo.CreateCart(CurrentCart);
+                await _unit.Carts.CreateCart(CurrentCart);
             }
 
             CurrentCart.AddItem(_mapper.Map<CartItem>(item));
 
-            _repo.Update(CurrentCart);
+            _unit.Carts.Update(CurrentCart);
         }
     }
 }
