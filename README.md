@@ -37,6 +37,8 @@ same for GameStore.UI.WebApi/appsettings.development.json
 
 If you are using PostgreSQL change the ```"PostgreSQLConnection"``` key under ```ConnectionStrings``` configuration
 
+There is a detailed explanation on how to switch to the database service of your choice on the Startup.cs file. Note that the Postgre SQL version is the default.
+
 #### UI
 
 Npm used here for management of packages.
