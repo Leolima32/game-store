@@ -19,8 +19,8 @@ namespace GameStore.UI.WebApi.Controllers
     public class GamesController : Controller
     {
         private IGameServices _services;
-        private IHostingEnvironment _hostingEnvironment;
-        public GamesController(IGameServices services, IHostingEnvironment hostingEnvironment)
+        private IWebHostEnvironment _hostingEnvironment;
+        public GamesController(IGameServices services, IWebHostEnvironment hostingEnvironment)
         {
             _services = services;
             _hostingEnvironment = hostingEnvironment;
