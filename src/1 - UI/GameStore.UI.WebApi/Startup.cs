@@ -40,7 +40,7 @@ namespace GameStore.UI.WebApi
 
             services.AddAutoMapper();
 
-
+            #region Using PostgreSQL database
             services.AddEntityFrameworkNpgsql().AddDbContext<GameStoreContext>(options =>
             {
                 // part of the book Little ASP.NET Core Book 
@@ -80,11 +80,13 @@ namespace GameStore.UI.WebApi
                 // or from the environment variable from Heroku, use it to set up your DbContext.
                 options.UseNpgsql(connStr);
             });
+            #endregion
 
+            #region Using Microsoft SQL Server database
             //   If you plan to use Microsoft SQL Server uncomment this section and delete previus AddEntityFrameworkNpgsql().AddDbContext section
             //   services.AddDbContext<GameStoreContext>(options =>
             //   options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
-
+            #endregion
 
             services.AddIdentity<IdentityUser, IdentityRole>()
                 .AddEntityFrameworkStores<GameStoreContext>()
