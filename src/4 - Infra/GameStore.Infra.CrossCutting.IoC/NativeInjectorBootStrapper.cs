@@ -20,7 +20,6 @@ namespace GameStore.Infra.CrossCutting.IoC
             services.AddTransient<IReviewServices, ReviewServices>();
             services.AddTransient<ICartServices, CartServices>();
             services.AddTransient<IUnitOfWork, UnitOfWork>();
-            services.AddSingleton(Mapper.Configuration);
             services.AddScoped<IMapper>(sp => new Mapper(sp.GetRequiredService<AutoMapper.IConfigurationProvider>(), sp.GetService));
             services.AddScoped<RoleManager<IdentityRole>>();
             services.AddScoped<UserManager<IdentityUser>>();

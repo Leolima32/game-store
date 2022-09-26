@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using GameStore.Application.AutoMapper;
 using GameStore.Infra.CrossCutting.IoC;
 using GameStore.Infra.Data.Context;
 using GameStore.UI.WebApi.Filters;
@@ -38,54 +39,53 @@ namespace GameStore.UI.WebApi
                    .AllowAnyHeader();
                }));
 
-            services.AddAutoMapper();
+            services.AddAutoMapper(typeof(DomainToViewModelMappingProfile), typeof(DTOToDomainMappingProfile));
 
             #region Using PostgreSQL database
-            services.AddEntityFrameworkNpgsql().AddDbContext<GameStoreContext>(options =>
-            {
-                // part of the book Little ASP.NET Core Book 
-                // https://github.com/nbarbettini/little-aspnetcore-book/blob/36cbe1bcb441eb6ada0e23bfab0cca9c5981b858/chapters/deploy-the-application/deploy-to-heroku-with-postgresql.md
-                
-                var env = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
+            //services.AddEntityFrameworkNpgsql().AddDbContext<GameStoreContext>(options =>
+            //{
+            //    // part of the book Little ASP.NET Core Book 
+            //    // https://github.com/nbarbettini/little-aspnetcore-book/blob/36cbe1bcb441eb6ada0e23bfab0cca9c5981b858/chapters/deploy-the-application/deploy-to-heroku-with-postgresql.md
 
-                string connStr;
+            //    var env = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
 
-                // Depending on if in development or production, use either Heroku-provided
-                // connection string, or development connection string from env var.
-                if (env == "Development")
-                {
-                    // Use connection string from file.
-                    connStr = Configuration.GetConnectionString("PostgreSQLConnection");
-                }
-                else
-                {
-                    // Use connection string provided at runtime by Heroku.
-                    var connUrl = Environment.GetEnvironmentVariable("DATABASE_URL");
+            //    string connStr;
 
-                    // Parse connection URL to connection string for Npgsql
-                    connUrl = connUrl.Replace("postgres://", string.Empty);
-                    var pgUserPass = connUrl.Split("@")[0];
-                    var pgHostPortDb = connUrl.Split("@")[1];
-                    var pgHostPort = pgHostPortDb.Split("/")[0];
-                    var pgDb = pgHostPortDb.Split("/")[1];
-                    var pgUser = pgUserPass.Split(":")[0];
-                    var pgPass = pgUserPass.Split(":")[1];
-                    var pgHost = pgHostPort.Split(":")[0];
-                    var pgPort = pgHostPort.Split(":")[1];
+            //    // Depending on if in development or production, use either Heroku-provided
+            //    // connection string, or development connection string from env var.
+            //    if (env == "Development")
+            //    {
+            //        // Use connection string from file.
+            //        connStr = Configuration.GetConnectionString("PostgreSQLConnection");
+            //    }
+            //    else
+            //    {
+            //        // Use connection string provided at runtime by Heroku.
+            //        var connUrl = Environment.GetEnvironmentVariable("DATABASE_URL");
 
-                    connStr = $"Server={pgHost};Port={pgPort};User Id={pgUser};Password={pgPass};Database={pgDb};sslmode=Prefer;Trust Server Certificate=true;CommandTimeout=300";
-                }
+            //        // Parse connection URL to connection string for Npgsql
+            //        connUrl = connUrl.Replace("postgres://", string.Empty);
+            //        var pgUserPass = connUrl.Split("@")[0];
+            //        var pgHostPortDb = connUrl.Split("@")[1];
+            //        var pgHostPort = pgHostPortDb.Split("/")[0];
+            //        var pgDb = pgHostPortDb.Split("/")[1];
+            //        var pgUser = pgUserPass.Split(":")[0];
+            //        var pgPass = pgUserPass.Split(":")[1];
+            //        var pgHost = pgHostPort.Split(":")[0];
+            //        var pgPort = pgHostPort.Split(":")[1];
 
-                // Whether the connection string came from the local development configuration file
-                // or from the environment variable from Heroku, use it to set up your DbContext.
-                options.UseNpgsql(connStr);
-            });
+            //        connStr = $"Server={pgHost};Port={pgPort};User Id={pgUser};Password={pgPass};Database={pgDb};sslmode=Prefer;Trust Server Certificate=true;CommandTimeout=300";
+            //    }
+
+            //    // Whether the connection string came from the local development configuration file
+            //    // or from the environment variable from Heroku, use it to set up your DbContext.
+            //    options.UseNpgsql(connStr);
+            //});
             #endregion
 
             #region Using Microsoft SQL Server database
-            //   If you plan to use Microsoft SQL Server uncomment this section and delete previus AddEntityFrameworkNpgsql().AddDbContext section
-            //   services.AddDbContext<GameStoreContext>(options =>
-            //   options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<GameStoreContext>(options =>
+            options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             #endregion
 
             services.AddIdentity<IdentityUser, IdentityRole>()
