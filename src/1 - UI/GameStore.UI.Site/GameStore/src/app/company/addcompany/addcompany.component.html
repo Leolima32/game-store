@@ -1,0 +1,35 @@
+<div class="container">
+  <form [formGroup]="companyForm" (ngSubmit)="onSubmit()">
+    <div class="field">
+      <label class="label">Name</label>
+      <div class="control">
+        <input id="name" formControlName="name" class="input" type="text" placeholder="Company name"
+        [ngClass]="{'is-danger': name?.invalid && (name?.dirty || name?.touched)}">
+        <div *ngIf="(name.invalid && ((name.dirty || name.touched) || companyForm.submitted))">
+          <div *ngIf="name.errors.required">
+            <p class="help is-danger">Company name is required.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="field">
+      <label class="label">Founded Date</label>
+      <div class="control">
+        <input formControlName="founded" class="input" type="date" placeholder="Text input" [ngClass]="{
+          'is-danger': (founded.invalid && ((founded.dirty || founded.touched) || companyForm.submitted))
+        }">
+        <div *ngIf="(founded.invalid && ((founded.dirty || founded.touched) || companyForm.submitted))">
+          <div *ngIf="founded.errors.required">
+            <p class="help is-danger">Founded date is required.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="field is-grouped">
+      <div class="control">
+        <button type="submit" class="button is-link">Submit</button>
+      </div>
+    </div>
+  </form>
+</div>
+

@@ -1,0 +1,13 @@
+.i-container {
+    width: 100%;
+    margin: 0 auto;
+    cursor: pointer;
+}
+
+.plus {
+    transition: ease-in;
+}
+
+.plus:hover {
+    opacity: 0.3;
+}

@@ -1,0 +1,29 @@
+<section class="hero is-medium is-primary is-bold">
+  <div class="hero-body game-detail-hero" [style.background-image]="'url('+ game?.coverImagePath +')'">
+    <div class="container-detail-game is-fluid">
+      <h1 class="title">
+        {{game?.name}}
+      </h1>
+      <h2 class="subtitle">
+        {{game?.shortDescription}}
+      </h2>
+      <p>Release date: {{game?.releaseDate | date:'longDate'}}</p>
+      <a class="button is-primary is-inverted is-outlined is-medium">Add to Cart
+        <i class="fas fa-shopping-cart"></i>
+      </a>
+    </div>
+  </div>
+</section>
+<section>
+  <div class="tabs">
+    <ul>
+      <li routerLinkActive="is-active"><a routerLink="overview">Overview</a></li>
+      <li routerLinkActive="is-active"><a routerLink="screenshots">Screenshots</a></li>
+      <li routerLinkActive="is-active"><a routerLink="requirements">System Requirements</a></li>
+      <li routerLinkActive="is-active"><a routerLink="similar">Similar Games</a></li>
+    </ul>
+  </div>
+</section>
+<section class="section">
+  <router-outlet></router-outlet>
+</section>
